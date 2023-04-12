@@ -1,0 +1,36 @@
+.contenedorCards{
+    /* Flexbox */
+    /* width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0;
+
+    display: flex;
+    gap: 20px */
+
+    /* Grid */
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+@font-face {
+    font-family: 'getSchwifty';
+    src:
+    url('getSchwifty.ttf') format('truetype'),
+    url('getschwifty-webfont.woff2') format('woff2'),
+    url('getschwifty-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{
+    font-family: 'getSchwifty', sans-serif;
+    background-image: url("./components/Asserts/fondo-body.jpg");
+}
+
+*{
+    cursor: url("./components/Asserts/1mouse.png"), auto;
+}
+
+

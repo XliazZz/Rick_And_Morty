@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'WubbaLubbaDubDub';
+    src:
+        url('../Font/WubbaLubbaDubDub.ttf') format('truetype'),
+        url('../Font/WubbaLubbaDubDub.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.divBienvenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+
+.subtitle {
+    font-size: 3em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: #00ff00;
+    text-shadow: 5px 4px 9px #00bcd7;
+}
+
+.subtitle:hover{
+    color: #00bcd7;
+    text-shadow: 5px 4px 9px #31c400;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+
+
+@keyframes myAnim {
+	0% {
+		transform: translate(0);
+	}
+
+	10% {
+		transform: translate(-2px, -2px);
+	}
+
+	20% {
+		transform: translate(2px, -2px);
+	}
+
+	30% {
+		transform: translate(-2px, 2px);
+	}
+
+	40% {
+		transform: translate(2px, 2px);
+	}
+
+	50% {
+		transform: translate(-2px, -2px);
+	}
+
+	60% {
+		transform: translate(2px, -2px);
+	}
+
+	70% {
+		transform: translate(-2px, 2px);
+	}
+
+	80% {
+		transform: translate(-2px, -2px);
+	}
+
+	90% {
+		transform: translate(2px, -2px);
+	}
+
+	100% {
+		transform: translate(0);
+	}
+}
+
+.unorderedList {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 3em;
+    display: flex;
+    flex-direction: row;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 15vw;
+    height: 15vh;
+    background-color: #000000;
+    color: white;
+    padding: 0.9em;
+    margin: 5px;
+    font-size: 19px;
+    font-weight: 600;
+    border-radius: 5%;
+    font-family: "WubbaLubbaDubDub";
+    transition: all 500ms ease-in-out;
+    animation: lights 4000ms infinite ease-in;
+}
+.listItem:hover {
+    background-color: white;
+    color: black;
+}
+
+@keyframes lights {
+    0% {
+
+    border: 2px solid #62d747;
+    }
+    50% {
+
+    border: 2px solid #0093a8;
+    }
+    70% {
+
+    border: 2px solid #00bcd7;
+    }
+    100% {
+
+    border: 2px solid #62d747;
+    }
+}
+
+.listItem img {
+    width: 47%;
+    object-fit: cover;
+    margin: 15px;
+}

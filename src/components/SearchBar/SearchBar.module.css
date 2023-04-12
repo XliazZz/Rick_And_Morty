@@ -1,0 +1,40 @@
+
+
+.input{
+    border: 1px solid #00d8f5;
+    border-radius: 15px 0px 0px 15px;
+    background-color: white;
+    font-size: 18px;
+    font-family: "WubbaLubbaDubDub";
+}
+
+.button{
+    border-radius: 0px 15px 15px 0px;
+    border: 0px;
+    background-color: #00d8f5;
+    height: 2em;
+    color: black;
+    font-family: "WubbaLubbaDubDub";
+    /* animation: lights 4000ms infinite ease-in; */
+}
+
+.button:hover {
+    background: #00a0b7;
+    text-decoration: none;
+    color: white;
+}
+
+@keyframes lights {
+    0% {
+    border: 1.5px solid #00ff00;
+    }
+    50% {
+    border: 1.5px solid #68ff68;
+    }
+    70% {
+    border: 1.5px solid #68ff68;
+    }
+    100% {
+    border: 1.5px solid #00ff00;
+    }
+}

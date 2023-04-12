@@ -1,0 +1,76 @@
+.navegador{
+    background-color: black;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    animation: lights 4000ms infinite ease-in;
+    /* margin-bottom:1em ; */
+}
+
+.boton{
+    border-radius: 15px 15px 15px 15px;
+    border: 0px;
+    background-color: #00d8f5;
+    height: 2em;
+    color: black;
+    margin: 0px 15px 0px 5px ;
+    font-family: 'WubbaLubbaDubDub';
+    animation: lights 4000ms infinite ease-in;
+    padding: 0px 5px 0px 5px ;
+}
+
+.boton:hover{
+    background: #00a0b7;
+    text-decoration: none;
+    color: white;
+}
+
+@keyframes lights {
+    0% {
+    border-bottom: 1px solid #00ff00;
+    }
+    50% {
+    border-bottom: 1px solid #21b601;
+    }
+    70% {
+    border-bottom: 1px solid #007282;
+    }
+    100% {
+    border-bottom: 1px solid #00ff00;
+    }
+}
+
+.logOut{
+    border-radius: 15px 15px 15px 15px;
+    border: 0px;
+    background-color: #00d8f5;
+    height: 2em;
+    color: black;
+    margin: 0px 5px 0px 5px ;
+    font-family: 'WubbaLubbaDubDub';
+    position: absolute;
+    left:6px;
+}
+
+.logOut:hover{
+    box-shadow: 0px 0px 10px 2px;
+    background-color: red;
+    animation: salir 1000ms infinite ease-in;
+    border: 1px solid black;
+}
+
+@keyframes salir {
+    0% {
+    box-shadow: 0px 0px 10px 2px rgb(160, 16, 16);
+    }
+    50% {
+    box-shadow: 0px 0px 10px 2px red;
+    }
+    70% {
+    box-shadow: 0px 0px 10px 2px red;
+    }
+    100% {
+    box-shadow: 0px 0px 10px 2px rgb(160, 16, 16);
+    }
+}

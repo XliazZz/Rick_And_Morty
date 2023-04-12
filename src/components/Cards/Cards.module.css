@@ -1,0 +1,18 @@
+.contenedorCards{
+    /* Flexbox */
+    /* width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px; */
+
+    /* Grid */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    row-gap: 30px;
+    padding-top: 10px;
+    padding-left: 35px;
+    padding-bottom: 10px;
+    height: 100%;
+}
+
