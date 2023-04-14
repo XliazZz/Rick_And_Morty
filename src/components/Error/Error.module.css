@@ -1,0 +1,54 @@
+.error{
+    background-color: black;
+    height: 500px;
+    margin:0px;
+    padding: 5px;
+    color: white;
+    
+}
+
+
+
+.fondoError{    
+    position: absolute;
+    height:200px;
+    left: 420px;
+    top: 270px;
+    border-radius: 500px;
+}
+
+.primero1{
+    position: absolute;
+    left: 250px;
+    font-size: 250px;
+    top: 0px;
+}
+
+.segundo2{
+    position: absolute;
+    right: 250px;
+    font-size: 250px;
+    top: 0px;
+}
+
+.youGun{
+    position: absolute;
+    bottom: 0px;
+    left: 370px;
+}
+.insulto{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+}
+
+.notfound{
+    margin: 0px;
+    padding: 0px;
+    color: red
+}
+
+b{
+    color: #8ffe77;
+}
+

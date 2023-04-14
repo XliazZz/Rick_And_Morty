@@ -1,8 +1,8 @@
+import { NavLink } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Nav.module.css"
-import { NavLink } from "react-router-dom";
 
-export default function nav ({onSearch}, {logOut}){
+export default function nav ({logOut, onSearch}){
     return(
         <div className={style.navegador}>
             <NavLink to="/" >
@@ -14,14 +14,14 @@ export default function nav ({onSearch}, {logOut}){
             </NavLink>
 
             <NavLink to="/favorites" >
-                <button>Favorites</button>
+                <button className={style.boton} >Favorites</button>
             </NavLink>
 
             <NavLink  to="/about">
                 <button className={style.boton} >About</button>
             </NavLink>
             
-            <SearchBar  onSearch={onSearch}></SearchBar>
+            <SearchBar onSearch={onSearch} />
         </div>
     )
 }

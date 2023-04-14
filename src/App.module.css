@@ -24,9 +24,10 @@
 }
 
 
+
 body{
     font-family: 'getSchwifty', sans-serif;
-    background-image: url("./components/Asserts/fondo-body.jpg");
+    /* background-image: url("./components/Asserts/fondo-body.jpg"); */
 }
 
 *{

@@ -1,10 +1,12 @@
 import style from "./Card.module.css"
-import { NavLink } from "react-router-dom";
-import { addFav, removeFav } from "../../redux/actions";
+import { NavLink, useLocation } from "react-router-dom";
+import { addFav, removeFav } from "../../redux/Actions/actions";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 
 function Card({id, onClose, name, status, species, gender, origin, image, addFav, removeFav, myFavorites}) {
+
+   const { pathname } = useLocation();
 
    const [isFav, setIsFav] = useState(false)
 
@@ -26,12 +28,17 @@ function Card({id, onClose, name, status, species, gender, origin, image, addFav
          }
       });
    }, [myFavorites]);
+
+   
    return (
       <div className={style.card}>
-         <button onClick={handleFavorite}>{isFav ? "❤️" : "🤍"}</button>
-         <button className={style.button} onClick={() => {onClose(id)}}>
+
+         <button className={style.corazon} onClick={handleFavorite}>{isFav ? "💚" : "🤍"}</button>
+
+         { pathname !== "/favorites" && <button className={style.button} onClick={() => {onClose(id)}}>
             X
-         </button>
+         </button>}
+
          <NavLink to={`/detail/${id}`}>
          <img className={style.imagen} src={image} alt='' />
          </NavLink>

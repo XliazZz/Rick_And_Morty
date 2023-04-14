@@ -25,7 +25,7 @@ function App() {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
-            window.alert('¡No hay personajes con este ID!');
+            navigate("*");
          }
       });
    }
@@ -57,22 +57,26 @@ function App() {
    useEffect(() => {
       !access && navigate('/')
    }, [access])
-////////////////////////////////////////////////////////////////////////////////////////////////////////
+
       return (
       <div className='App' >
-         {pathname !== "/" && <Nav logOut={logOut} onSearch={onSearch} />   }
+
+         { pathname !== "/" && <Nav onSearch={onSearch} logOut={logOut}/>  }
+
          <Routes>
             <Route path='/' element={<Form login={login} />} ></Route>
-            <Route path='/home' element={
-               <div className={style.contenedorCards}>
+
+            <Route path='/home' element={<div className={style.contenedorCards}>
                <Cards characters={characters} onClose={onClose} />
-               </div>} >
-            </Route>
+               </div>}>
+
+               </Route>
             <Route path='/about' element={<About />}></Route>
             <Route path='/detail/:id' element={<Detail />} ></Route>
             <Route path='/favorites' element={<Favorites />} />
             <Route path='*' element={<Errors />} > </Route>
          </Routes>
+
       </div>
    );
 }

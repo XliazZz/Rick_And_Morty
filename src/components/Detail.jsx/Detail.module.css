@@ -1,9 +1,11 @@
+
+
 .foto{
     margin: 40px;
     width: 300px;
     position: absolute;
-    right: 50px;
-    top: 100px;
+    right: 90px;
+    top: 125px;
     border: 2px solid #00d8f5;
     animation: lights 1000ms infinite ease-in;
 
@@ -31,15 +33,21 @@
 .nombre{
     color: red;
     position: absolute;
-    right: 160px;
+    right: 190px;
+    font-size: 40px;
 }
 
 .texto{
     color: #00ff00;
     position: absolute;
-    left: 90px;
-    top: 120px;
+    left: 100px;
+    top: 145px;
     font-family: "WubbaLubbaDubDub";
-    font-size: 25px;
+    font-size: 20px;
     text-shadow: 4px 4px 5px rgba(72,176,211,1);
+    background-color: black;
+}
+
+b{
+    color: white;
 }
