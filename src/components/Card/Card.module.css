@@ -1,8 +1,7 @@
 
-
 .card{
     border-radius: 5px;
-    width: 200px;
+    width: 220px;
     height: 299px;
     font-weight: bold;
     padding-top: 7px;
@@ -12,13 +11,14 @@
     background-position: center center;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 0%, rgba(1,0,16,0.832847787552521) 0%, rgba(0,0,0,0.6619794402135855) 100%);    
-    margin: 30px 0px 0px 10px;
     animation: lights 4000ms infinite ease-in;
+    transition: transform 0.2s ease-in-out;
 }
 
 
 .card:hover{
-    transform: translate(0px, -20px) scale(1.0, 1.0);
+    transform: translate(0, -10px);
+    transform-origin: bottom;
     color: black;    
 	--border-size: 2px;
 	--border-angle: 0turn;
@@ -29,10 +29,13 @@
 	animation: bg-spin 3s linear infinite;
 }
 
+
+
 @keyframes bg-spin {
     to {
         --border-angle: 1turn;
 }
+
 }
 
 @property --border-angle {
@@ -43,8 +46,8 @@
 
 .imagen{
     padding-top: 10px;
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
     border-radius: 100px  ;
     margin-top: 40px;
 }
@@ -78,7 +81,7 @@
     width: fit-content;
     height: fit-content;
     border-radius: 20px;
-    margin-left:67px;
+    margin-left:80px;
     margin-top: 5px;
     margin-bottom: 0px;
     color: green;
@@ -110,6 +113,6 @@
     position: absolute;
     background: none;
     border: none;
-    left: 153px;
+    left: 172px;
     font-size: 25px;
 }

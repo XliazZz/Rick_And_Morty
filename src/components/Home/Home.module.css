@@ -1,0 +1,49 @@
+.contenedorHome{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr)) 1fr; /* Agregamos una fila adicional */
+  column-gap: 50px;
+  row-gap: 30px;
+  background-image: linear-gradient(to bottom, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
+  padding: 50px;
+  min-height: 100vh;
+  min-width: 0;
+  overflow: auto;
+}
+
+.contenedorboton {
+  display: flex;
+  justify-content: center;
+  padding: 0px 0px 0px 236px; /* Agregado padding a la derecha */
+  column-gap: 15px;
+}
+
+.botonPage{
+  display: grid;
+  place-items: center;
+  color: black;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 20px;
+  height: 40px;
+  width: 160px;
+
+  background-color: #8ffe77;
+  color: black;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(142, 198, 63, 0.5);
+  transition: transform 0.2s ease-in-out;
+  font-family: "WubbaLubbaDubDub";
+}
+
+.botonPage:hover{
+  background-color: #00ffef;
+  color: #060606;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(142, 198, 63, 0.75);
+}

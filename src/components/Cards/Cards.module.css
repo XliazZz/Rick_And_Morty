@@ -1,18 +1,12 @@
 .contenedorCards{
-    /* Flexbox */
-    /* width: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    gap:20px; */
-
-    /* Grid */
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 50px;
     row-gap: 30px;
-    padding-top: 10px;
-    padding-left: 35px;
-    padding-bottom: 10px;
-    height: 100%;
+    background: rgb(24, 20, 32);
+    background: linear-gradient(180deg, rgba(24, 20, 32, 1) 0%, rgba(68, 47, 59, 1) 50%, rgba(64, 30, 80, 1) 100%);
+    padding: 50px;
+    min-height: 100vh;
+    min-width: 0;
+    overflow: auto;
 }
-

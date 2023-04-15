@@ -1,80 +1,83 @@
+import * as types from "../Action-types/actions-types";
 import axios from 'axios';
 
-export const ADD_FAV = "ADD_FAV";
-export const REMOVE_FAV = "REMOVE_FAV";
-export const FILTER = "FILTER";
-export const ORDER = "ORDER";
-export const GET_CHARACTERS = "GET_CHARACTERS"
-export const GET_CHARACTER_DETAIL = "GET_CHARACTER_DETAIL"
-export const CLEAN_DETAIL = "CLEAN_DETAIL"
-export const ONSEARCH = "ONSEARCH"
-
-// const URL_BASE = "https://be-a-rym.up.railway.app/api/character/";
-// const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
+const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
+const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
 
 
 export const addFav = (character) =>{
-    return { type: ADD_FAV, payload: character }
+    return { type: types.ADD_FAV, payload: character }
 };
 
 export const removeFav = (id) => {
-    return { type: REMOVE_FAV, payload: id }
+    return { type: types.REMOVE_FAV, payload: id }
 };
 
 export const filterCards = (gender) => {
-    return { type: FILTER, payload: gender }
+    return { type: types.FILTER, payload: gender }
 };
 
 export const orderCards = (orden) => {
-    return { type: ORDER, payload: orden }
+    return { type: types.ORDER, payload: orden }
 };
 
-// export const getCharacters = () => {
-//     return function(dispatch){
-//         axios(`${URL_BASE}?key=${API_KEY}`)
-//         .then(respose => respose.data)
-//         .then(data => dispatch({ type: GET_CHARACTERS, payload: data.info.results }))
-//     }
-// }; 
 
-// export const getCharacters = () => {
-//     return async function(dispatch){
-//         const respose = await axios(`${URL_BASE}?key=${API_KEY}`)
-//         return dispatch({ type: GET_CHARACTERS, payload: respose.data.info.results })
-//     }
-// }
+// Actions para mostrar los personajes en home
 
-// export const getCharacterDetail = (id) => {
-//     return function(dispatch){
-//         axios(`${URL_BASE}${id}?key=${API_KEY}`
-//         )
-//         .then(response => response.data)
-//         .then(data => dispatch({ type: GET_CHARACTER_DETAIL, payload: data}))
-//     }
-// };
+//esta action envia la solicitud a la API.
+export const request = () => ({
+    type: types.REQUEST,
+});
 
-// export const getCharacterDetail = (id) => {
-//     return async function(dispatch){
-//         const respose = await axios(`${URL_BASE}${id}?key=${API_KEY}`)
-//         console.log(respose)
-//         return dispatch({ type: GET_CHARACTER_DETAIL, payload: respose.data })
-//     }
-// }
+//Se envia cuando se reciben los datos correctamente,
+export const success = (characters) => ({
+    type: types.SUCCESS,
+    payload: characters,
+});
 
-// export const cleanDetail = () => {
-//     return { type: CLEAN_DETAIL }
-// }
+//Se envia cuando hay un error en la peticion.
+export const errorRequest = (error) => ({
+    type: types.ERRORREQUEST,
+    payload: error,
+});
 
-// export const onSearch = (id) => {
-//     return function(dispatch){
-//         axios(`${URL_BASE}${id}?key=${API_KEY}`)
-//             .then(({ data }) => {
-//             if (data.name) {
-//             dispatch({type: ONSEARCH, payload: data});
-//             }
-//             else{
-//                 window.alert('There are no characters with this ID!')
-//             }
-//         });
-//     }
-//     }
+
+//Hace la peticion a la api. Si es exitosa, se envia la accion "fetchCharacterSuccess", con los datos recibidos como argumento. si falla si envia "fetchCharacterFailure"
+export const getAllCharacters = (page) => async (dispatch) => {
+    dispatch(request());
+
+    try {
+        const response = await axios.get(`${URL_BASE}?key=${API_KEY}&page=${page}`);
+        const characters = response.data;
+        dispatch(success(characters.info.results));
+    } catch (error) {
+        const errorMessage = error.message;
+        dispatch(errorRequest(errorMessage));
+    }
+};
+
+
+
+//Paginate
+export function setPage(pageNumber){
+    return{
+        type: types.SET_PAGE,
+        payload: pageNumber
+    }
+}
+
+
+//SearchBar
+export const searchCharacter = (id) => {
+    return (dispatch) => {
+        dispatch({ type: types.SEARCH_CHARACTER });
+        axios.get(`${URL_BASE}/${id}?key=${API_KEY}`)
+        .then((respose) => {
+            const character = respose.data;
+            dispatch({ type: types.SEARCH_CHARACTER_SUCCESS, payload: character });
+        })
+        .catch((error) => {
+            dispatch({ type: types.SEARCH_CHARACTER_ERROR, payload: error.message });
+        });
+    };
+};

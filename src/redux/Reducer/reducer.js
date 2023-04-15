@@ -1,9 +1,15 @@
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, GET_CHARACTERS, GET_CHARACTER_DETAIL, CLEAN_DETAIL, ONSEARCH } from "../Actions/actions";
+import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SET_PAGE, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR } from "../Action-types/actions-types"
 
 const initialState = {
     myFavorites: [],
     allCharacters: [],
-    // characters: [],
+    isLoading: false,
+    error: null,
+    characters: [],
+    currentPage: 1,
+    itemsPerPage: 20,
+    totalPages: 1,
+    searchResults: [],
     // characterDetail: {}
 };
 
@@ -38,29 +44,55 @@ const rootReducer = (state = initialState, action) => {
                 : copyAllCharacters.sort((a,b) => b.id - a.id)
             };
 
-        // case GET_CHARACTERS:
-        //     return{
-        //         ...state,
-        //         character: action.payload
-        //     }
+        case REQUEST:
+            return{
+                ...state,
+                isLoading:true,
+                error: null,
+            };
 
-        // case GET_CHARACTER_DETAIL:
-        //     return{
-        //         ...state,
-        //         characterDetail: action.payload
-        //     }
+        case SUCCESS:
+            return{
+                ...state,
+                isLoading: false,
+                error: null,
+                characters: action.payload,
+            };
 
-        // case CLEAN_DETAIL:
-        //     return{
-        //         ...state,
-        //         characterDetail: {}
-        //     }
+        case ERRORREQUEST:
+            return{
+                ...state,
+                isLoading:false,
+                error: action.payload,
+            };
 
-        // case ONSEARCH:
-        //     return{
-        //         ...state,
-        //         characters: [...state.characters, action.payload]
-        //     }
+        case SET_PAGE:
+            return{
+                ...state,
+                currentPage: action.payload
+            };
+
+        case SEARCH_CHARACTER:
+            return{
+                ...state,
+                isLoading: true,
+                error: null,
+            };
+
+        case SEARCH_CHARACTER_SUCCESS:
+            return{
+                ...state,
+                searchResults: [...state.searchResults, action.payload],
+                isLoading: false,
+                error: null,
+            };
+
+        case SEARCH_CHARACTER_ERROR:
+            return{
+                ...state,
+                isLoading: false,
+                error: action.payload
+            };
 
         default:
             return{...state};

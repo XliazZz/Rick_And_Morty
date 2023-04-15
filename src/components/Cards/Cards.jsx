@@ -1,28 +1,36 @@
 import Card from "../Card/Card";
 import style from "./Cards.module.css"
+import { useSelector, useDispatch } from 'react-redux';
+import { searchCharacter } from "../../redux/Actions/actions";
+import { useEffect } from "react";
 
-function Cards({ characters, onClose }) {
+
+const Cards= ({ match  }) => {
+   const searchResults = useSelector(state => state.searchResults);
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      dispatch(searchCharacter(match))
+   }, [dispatch, match])
+
    return (
-      <div className={style.contenedorCards}>
-         {
-         characters?.map(({id, name, status, species, gender, origin, image, location}) => {
-            return(
-               <Card
-                  id={id}
-                  key={id}
-                  name={name}
-                  status={status}
-                  species={species}
-                  gender={gender}
-                  origin={origin}
-                  image={image}
-                  onClose={onClose}
-                  location={location.name}
-               />
-               )
-            })
-         }
-      </div>
+      <div className={style.contenedorCards} >
+      {
+               searchResults?.map(char => {
+                  return (
+                        <Card
+                           key={char.id}
+                           id={char.id}
+                           name={char.name}
+                           species={char.species}
+                           gender={char.gender}
+                           image={char.image}
+                           onClose={char.onClose}
+                        />
+                  )
+               })
+            }
+   </div>
    )
 }
 

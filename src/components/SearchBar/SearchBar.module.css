@@ -6,6 +6,9 @@
     font-family: "WubbaLubbaDubDub";
     margin-left: 10px;
     color: green;
+    position: absolute;
+    right: 130px;
+    height: 34.5px;
 }
 
 .boton {
@@ -15,12 +18,13 @@
     outline: none;
     color: black;
     background: #111;
-    cursor: pointer;
-    position: relative;
+    position: absolute;
     z-index: 0;
     border-radius: 10px;
     font-family: "WubbaLubbaDubDub";
     font-size: 23px;
+    position: absolute;
+    right: 30px;
 }
 
 .boton:before {
@@ -68,4 +72,9 @@
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+
+h1{
+    color: white;
+    padding-top: 35px;
 }
