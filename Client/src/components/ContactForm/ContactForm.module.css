@@ -1,0 +1,36 @@
+.background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.contactForm{
+  background-color: red;
+  background-color: red;
+  width: 400px;
+  height: 400px;
+}
+
+.textarea{
+  resize: none;
+  height: 100px;
+}
+
+.label{
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 1.0rem;
+  font-size: 25px;
+  font-family: "WubbaLubbaDubDub";
+}
+
+.submitButton{
+  position: absolute;
+  bottom: 25px;
+  left: 500px;
+}
+
+.input{
+  width: 300px;
+}

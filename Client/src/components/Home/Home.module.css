@@ -1,0 +1,231 @@
+.contenedorHome{
+    background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
+    padding-top: 1px;
+}
+
+.tituloHome{
+    color: white;
+    animation: titulo 1s ease 0.3s 1 normal forwards;
+    opacity: 0;
+    transition: opacity 2s ease 5s;
+    font-size: 34px;
+}
+
+.tituloHome:hover{
+    opacity: 1;
+}
+
+.rickymorty{
+    position: relative;
+    top: 70px;
+    right: 300px;
+    width: 355px;
+    height: 275px;
+    animation: rickymorty 3s ease 1.5s 1 normal forwards;
+    opacity: 0;
+    transition: opacity 4s ease 3s;
+}
+
+.rickymorty:hover{
+    opacity: 1;
+}
+
+@keyframes rickymorty {
+	0% {
+		opacity: 0;
+		transform: translateX(-250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.contenedorDescription{
+    width: 500px;
+    position: relative;
+    left: 460px;
+    bottom: 200px;
+    font-size: 25px;
+    font-family: "WubbaLubbaDubDub";
+    color: white;
+    background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 2%), hsl(210, 60%, 5%));
+    animation: description 2s ease 1s 1 normal forwards;
+    opacity: 0;
+    transition: opacity 3s ease 5s;
+}
+
+.contenedorDescription:hover{
+    opacity: 1;
+}
+
+@keyframes description {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes titulo {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.rickHome{
+    color: #00ff00;
+    font-size: 38px;
+    text-shadow: 0 0 15px #00b0c8, 0 0 10px #00b0c8;
+    margin-left: 5px;
+}
+
+.mortyHome{
+    font-size: 38px;
+    text-shadow: 0 0 15px #00ff00, 0 0 10px #00ff00;
+    margin-left: 5px;
+}
+
+.contenedorCharacters{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 50px;
+    row-gap: 20px;
+    padding: 30px;
+    min-height: 70vh;
+    min-width: 0;
+    overflow: auto;
+}
+
+.aleatorios{
+    font-size: 50px;
+    color: white;;
+    position: absolute;
+    top: 600px;
+    left: 300px;
+}
+
+.rickpepinillo{
+    width: 130px;
+    height: 200px;
+    position: absolute;
+    right:  1000px;
+    top: 650px;
+    animation: rickymorty 8s ease 1.5s 1 normal forwards;
+    opacity: 0;
+    transition: opacity 2s ease 3s;
+}
+
+.rickpepinillo:hover{
+    opacity: 1;
+}
+
+.fondorick{
+    background-image: linear-gradient(to top, hsl(210, 80%, 10%), hsl(0, 0%, 0%), hsl(0, 0%, 0%));    
+    height: 85vw;
+}
+
+.cabezarick{
+    position: relative;
+    width: 98.3vw;
+    transform: rotateX(180deg);
+}
+
+.Homeh2{
+    color: white;
+    width: 900px;
+    font-size: 35px;
+    left: 70px;
+    position: relative;
+    bottom: 110px;
+}
+
+.contenedorPortal{
+    margin-bottom:20px;
+    width: 230px;
+    height: 315px;
+    background-color: #00b0c8;
+    position: relative;
+    left: 170px;
+    bottom: 70px;
+    background-image: url("../Asserts/fondoPortal.jpg");
+    opacity: 0.95;
+    border-radius: 10px;
+    box-shadow: 0px 7px 28px 1px #030e1a;
+}
+
+.contenedorPortal2{
+    margin-bottom:20px;
+    width: 230px;
+    height: 315px;
+    background-color: #00b0c8;
+    position: relative;
+    left: 600px;
+    bottom: 427px;
+    background-image: url("../Asserts/fondoPortal.jpg");
+    opacity: 0.95;
+    border-radius: 10px;
+    box-shadow: 0px 7px 28px 1px #030e1a;
+}
+
+.portal{
+    width: 200px;
+    height: 180px;
+    position: relative;
+    animation: portal 60s ease 0s infinite normal both;
+    border-radius: 200000px;
+    right: 3px;
+}
+
+.portal2{
+    width: 200px;
+    height: 180px;
+    position: relative;
+    animation: portal 60s ease 0s infinite normal both;
+    border-radius: 200000px;
+    right: 3px;
+}
+
+.login{
+    font-size: 50px;
+    position: relative;
+    top: 15px;
+    color: white;
+    font-family: "WubbaLubbaDubDub";
+}
+
+.sign{
+    font-size: 50px;
+    position: relative;
+    top: 15px;
+    color: white;
+    font-family: "WubbaLubbaDubDub";
+}
+
+@keyframes portal {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.portal:hover{
+    filter: brightness(137%);
+}
+.portal2:hover{
+    filter: brightness(137%);
+}

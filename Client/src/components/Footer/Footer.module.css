@@ -1,0 +1,43 @@
+.footer {
+    background-color: black;
+    color: white;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: "WubbaLubbaDubDub";
+}
+
+.activeLink{
+    color: white;
+}
+
+.redesSociales{
+    font-size: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.icono{
+    color: #00b0c8 ;
+}
+
+.rick{
+    color: #8ffe77;
+    font-size: 20px;
+}
+
+
+
+.morty{
+    color:#00b0c8;
+    font-size: 20px;
+}
+
+.rickandmorty{
+    font-family: "getSchwifty";
+}

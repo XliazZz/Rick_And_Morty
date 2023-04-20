@@ -1,0 +1,189 @@
+.card {
+    border-radius: 5px;
+    width: 220px;
+    height: 299px;
+    font-weight: bold;
+    padding-top: 7px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 0%, rgba(1,0,16,0.832847787552521) 0%, rgba(0,0,0,0.6619794402135855) 100%);
+    animation: lights 4000ms infinite ease-in;
+    transition: transform 0.2s ease-in-out;
+    }
+    
+    .card:hover {
+    transform: translate(0, -10px);
+    transform-origin: bottom;
+    color: black;
+    --border-size: 2px;
+    --border-angle: 0turn;
+    background-image: conic-gradient(from var(--border-angle), #000000, #090607 50%, #000000), conic-gradient(from var(--border-angle), transparent 20%, #0095aa, #00ff00);
+    background-size: calc(100% - (var(--border-size) * 3)) calc(100% - (var(--border-size) * 3)), cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: bg-spin 3s linear infinite;
+    }
+    
+    @keyframes bg-spin {
+    to {
+    --border-angle: 1turn;
+    }
+    }
+    
+    @property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+    }
+    
+    .imagen {
+    padding-top: 10px;
+    width: 160px;
+    height: 160px;
+    border-radius: 100px;
+    margin: 0 auto; /* esta es la línea añadida para centrar la imagen */
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    }
+
+.imagen:hover{
+    animation: myAnim 1s ease 0s 1 normal forwards;
+
+}
+
+@keyframes myAnim {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+		transform: scale(1);
+	}
+
+	100% {
+		box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+		transform: scale(1.09);
+	}
+}
+
+.name{
+    color: white;
+    text-shadow: 0px 0px 6px rgba(0, 0, 0, 1),0px -1px 2px rgba(20, 45, 32, 1),0px 3px 0px rgba(103, 67, 99, 1);
+    position: absolute;
+    bottom:  5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.button{
+    border:3px;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    margin-left: 75px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    color: green;
+    position: absolute;
+    border: 1px solid #00d8f5;
+}
+
+.button:hover{
+    color: white;
+    background-color: black;
+}
+
+@keyframes lights {
+    0% {
+    border: 1px solid #0095aa;
+    }
+    50% {
+    border: 1px solid #00d8f5;
+    }
+    70% {
+    border: 1px solid #00ff00;
+    }
+    100% {
+    border: 1px solid #0095aa;
+    }
+}
+
+
+
+.heart-btn {
+    position: absolute;
+    display: inline-block;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 25px;
+    left: 92px;
+    }
+    
+    .heart-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .heart-icon:hover {
+        transform: scale(1.2);
+    }
+    
+    .heart-icon.beat {
+        animation: beat 0.4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes beat {
+        from {
+        transform: scale(1);
+        }
+        to {
+        transform: scale(1.2);
+        }
+    }
+    
+
+.status-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.status-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    right: 85px;
+    top: 25px;
+    margin-right: 5px;
+    position: relative; /* Agregado para posicionar correctamente ::after */
+}
+
+.status-circle:hover::after {
+    content: attr(data-status);
+    position: absolute;
+    left: calc(100% + 8px); /* Cambiado para que esté a la derecha del círculo */
+    transform: translate(-50%, -50%);
+    font-size: 17px;
+    font-weight: bold;
+    color: #fff;
+    bottom: 7px;
+    font-family: "WubbaLubbaDubDub";
+}
+
+.gender{
+    color: white;
+    position: absolute;
+    bottom:  100px;
+    right: 85px;
+}
