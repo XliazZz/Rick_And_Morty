@@ -16,6 +16,8 @@
   justify-content: center;
   padding: 0px 0px 0px 236px; /* Agregado padding a la derecha */
   column-gap: 15px;
+  position: relative;
+  left: 255px;
 }
 
 .botonPage{

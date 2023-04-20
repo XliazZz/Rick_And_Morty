@@ -28,10 +28,6 @@ export default function Nav({ logOut }) {
             <button className={style.aboutButton}>About</button>
         </NavLink>
 
-        <NavLink to="/home">
-            <button className={style.init}>home</button>
-        </NavLink>
-
         <SearchBar />
 
         </div>

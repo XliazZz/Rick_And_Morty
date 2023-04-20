@@ -83,7 +83,7 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
       </button>
    
 
-      {pathname !== "/favorites" && pathname !== "/home" && (
+      {pathname !== "/favorites" && pathname !== "/characters" && (
          <button className={style.button} onClick={onClose}>
             X
          </button>
