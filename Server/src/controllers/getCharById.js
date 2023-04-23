@@ -1,27 +1,24 @@
 const axios = require("axios");
 
+const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
+const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
 
-const getCharById = (res, id) => {
-    axios
-    .get(`https://rickandmortyapi.com/api/character/${id}`)
-    .then(respose => respose.data)
-    .then( data => {
-        let character = {
-            id: data.id,
-            name: data.name,
-            gender: data.gender,
-            species: data.species,
-            origin: data.origin?.name,
-            image: data.image,
-            status: data.status
-        }
-        res
-        .writeHead(200, { "Content-Type": "application/json" })
-        .end(JSON.stringify(character));
+const getCharById = (req, res) => {
+
+    const { id } = req.params;
+
+    if(!id){
+        return res.status(404).send("Not fount")
+    };
+
+    axios.get(`${URL_BASE}/${id}?key=${API_KEY}`)
+    .then((respose) => {
+        const { id, name, species, image, gender, origin, status } = respose.data;
+        return res.status(200).json({ id, name, species, image, gender, origin, status });
     })
-    .catch(err =>
-        res.writeHead(500, { "Content-Types": "text/plain" })
-        .end("Charater not found"))
+    .catch((error) => {
+        res.status(500).json({ error: error.message })
+    })
 };
 
 module.exports = getCharById;
