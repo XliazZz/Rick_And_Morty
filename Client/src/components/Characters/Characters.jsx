@@ -101,6 +101,7 @@ import { getAllCharacters, setPage } from '../../redux/Actions/actions';
 import Card from '../Card/Card';
 import style from "./Characters.module.css"
 import { NavLink } from 'react-router-dom';
+import portal from "../Asserts/PortalInicio.png"
 
 const Characters = ({ characters }) => {
 
@@ -112,7 +113,12 @@ const Characters = ({ characters }) => {
     }, [dispatch, currentPage]);
 
     if (isLoading) {
-        return <div className={style.loading}>Loading...</div>;
+        return (
+        <div>
+            <img className={style.portalLoading} src={portal} alt="portal" />
+            <p className={style.loading} >Loading...</p>
+        </div>
+        )
     }
 
     if (error) {

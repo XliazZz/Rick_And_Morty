@@ -16,7 +16,7 @@ const Footer = () => {
     }
 
     return location.pathname === "/" ? null : (
-        <div>
+        <div className={style.contenedorLoading} >
         <footer className={style.footer}>
             <NavLink to="./about" className={style.activeLink}>
                 <p>About me</p>

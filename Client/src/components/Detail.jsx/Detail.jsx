@@ -26,12 +26,6 @@ const Detail = () => {
     return (
         <div className={style.contenedorDetail} >
 
-            <div>
-                <button>
-                    <Link to='/home' >Home</Link>
-                </button>
-            </div>
-
             <div className={style.foto}>
             <img src={character.image} alt={character.name}/>
             </div>
@@ -44,6 +38,7 @@ const Detail = () => {
             <h2> <b>Origin : </b> {character.origin?.name}</h2>
             <h2> <b>Location : </b> {character.location?.name}</h2>
             </div>
+
         </div>
     )
 }

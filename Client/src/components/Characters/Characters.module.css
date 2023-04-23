@@ -4,7 +4,7 @@
   grid-template-rows: repeat(2, minmax(0, 1fr)) 1fr; /* Agregamos una fila adicional */
   column-gap: 50px;
   row-gap: 30px;
-  background-image: linear-gradient(to bottom, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
+  background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
   padding: 50px;
   min-height: 100vh;
   min-width: 0;
@@ -25,12 +25,13 @@
   place-items: center;
   color: black;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   transition: all 0.2s ease-in-out;
   margin-top: 20px;
-  height: 40px;
-  width: 160px;
-
+  height: 45px;
+  width: 200px;
+  position: relative;
+  left: 90px;
   background-color: #8ffe77;
   color: black;
   font-size: 1rem;
@@ -49,9 +50,24 @@
   box-shadow: 0 0 20px rgba(142, 198, 63, 0.75);
 }
 
+.contenedorLoading{
+  background-color: red;
+
+}
+
+.portalLoading{
+  position: relative;
+  top: 180px;
+  width: 300px;
+  height: 280px;
+  border-radius: 999px;
+  animation: myAnim 4s ease 0s infinite normal forwards;
+}
+
 .loading{
-  font-size: 50px;
-  padding-top: 200px;
+  font-size: 35px;
+  position: relative;
+  top: 180px;
 }
 
 .error{
@@ -63,3 +79,13 @@
   opacity: 0.5;
   cursor: not-allowed;
 } 
+
+@keyframes myAnim {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

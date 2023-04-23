@@ -20,7 +20,7 @@ const Favorites = () => {
     };
 
     return(
-        <div>
+        <div className={style.conteedorFavorites} >
 
             <select onChange={handleOrder}>
                 <option value="A">Ascendente</option>

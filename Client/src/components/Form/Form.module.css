@@ -19,25 +19,26 @@
     font-weight: normal;
     font-style: normal;
 }
-
 .contenedorDiv{
-    /* margin: 48px; */
     display: flex;
-    justify-content:center;
-    padding: 58px;
+    justify-content: center;
+    align-items: center;
     background-image: url("../Asserts/fondo-body.jpg");
     background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
 }
+    
 .contenedorForm{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
-    background-color: black;
+    justify-content: center;
     background-image: url("../Asserts/fondoForm.jpg");
-    padding: 30px;
+    background-position: center 42%;
     width: 320px;
-    height: 360px;
+    height: 430px;
     border-radius: 15px;
     box-shadow: 3px 15px 10px 5px #8ffe77;
     transition: all 500ms ease-in-out;
@@ -54,6 +55,8 @@
     animation: lights 3000ms infinite ease-out;
     width: 250px;
     font-size: 20px;
+    position: absolute;
+    top: 188px;
 }
 .inputForm:focus {
     border: 4px solid #C0E66E;
@@ -71,7 +74,7 @@
     width: 250px;
     font-size: 20px;
     position: absolute;
-    top: 239px;
+    top: 320px;
 }
 .inputForm2:focus {
     border: 4px solid #C0E66E;
@@ -90,7 +93,7 @@
     width: 120px;
     height: 30px;
     position: absolute;
-    bottom: 85px;
+    bottom: 135px;
 }
 .botonForm:hover{
     border: 2px solid #8ffe77;
@@ -102,8 +105,8 @@
     color: #00ff00;
     font-family: 'getSchwifty', sans-serif;
     font-size: 25px;
-    /* margin-top: 15px; */
-    margin-bottom: 8px;
+    position: absolute;
+    top: 140px;
     text-shadow: 0 0 15px #00b0c8, 0 0 10px #00b0c8;
 }
 .labelForm2{
@@ -113,7 +116,7 @@
     /* margin-top: 15px; */
     margin-bottom: 8px;
     position: absolute;
-    top: 195px;
+    top: 270px;
     text-shadow: 0 0 15px #00b0c8, 0 0 10px #00b0c8;
 }
 
@@ -143,7 +146,7 @@
     padding-top: 0px;
     margin-top: 5px;
     position: absolute;
-    top: 160px;
+    top: 220px;
 }
 
 .p2{
@@ -153,7 +156,7 @@
     padding-top: 0px;
     margin-top: 5px;
     position: absolute;
-    top: 270px;
+    top: 350px;
 }
 
 .botonForm:disabled {

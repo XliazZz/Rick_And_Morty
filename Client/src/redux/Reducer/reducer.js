@@ -2,7 +2,7 @@ import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SET
 
 const initialState = {
     myFavorites: [], //los personajes fav
-    allCharacters: [], //todos los personajes fav
+    allCharactersFav: [], //todos los personajes fav
     isLoading: false,
     error: null,
     characters: [], //aca estan los personajes del comp Characters
@@ -17,10 +17,11 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
         case ADD_FAV:
-            return{
+            return {
                 ...state,
-                myFavorites: [...state.allCharacters, action.payload],
-            };
+                myFavorites: [...state.allCharactersFav, action.payload],
+                allCharactersFav: [...state.allCharactersFav, action.payload]
+            }
 
         case REMOVE_FAV:
             return{
@@ -28,16 +29,18 @@ const rootReducer = (state = initialState, action) => {
                 myFavorites: state.myFavorites.filter(character => character.id !== action.payload),
             };
 
-            case FILTER:
-                const allCharactersFiltered = state.allCharacters.filter(character => character.gender === action.payload)
-                return {
-                    ...state,
-                    myFavorites: action.payload === 'allCharacters' ? [...state.allCharacters]
-                        : allCharactersFiltered
+        case FILTER:
+            const allCharactersFiltered = state.allCharactersFav.filter(character => character.gender === action.payload)
+            return {
+                ...state,
+                myFavorites: 
+                    action.payload === 'allCharacters'
+                    ? [...state.allCharactersFav]
+                    : allCharactersFiltered
                 }
 
         case ORDER:
-            const copyAllCharacters = [...state.allCharacters];
+            const copyAllCharacters = [...state.allCharactersFav];
             return{
                 ...state,
                 myFavorites: action.payload === "A" ? copyAllCharacters.sort((a, b) => a.id - b.id)
