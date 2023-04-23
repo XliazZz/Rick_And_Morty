@@ -5,12 +5,28 @@ const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
 const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
 
 
-export const addFav = (character) =>{
-    return { type: types.ADD_FAV, payload: character }
+export const addFav = (character) => {
+    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+    return (dispatch) => {
+        axios.post(endpoint, character).then(({ data }) => {
+            return dispatch({
+                type: 'ADD_FAV',
+                payload: data,
+            });
+        });
+    };
 };
 
 export const removeFav = (id) => {
-    return { type: types.REMOVE_FAV, payload: id }
+    const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`;
+    return (dispatch) => {
+        axios.delete(endpoint).then(({ data }) => {
+            return dispatch({
+                type: 'REMOVE_FAV',
+                payload: data,
+        });
+        });
+    };
 };
 
 
@@ -19,7 +35,7 @@ export const orderCards = (orden) => {
 };
 
 
-// Home
+// Characters
 
 //esta action envia la solicitud a la API.
 export const request = () => ({
@@ -51,6 +67,7 @@ export const getAllCharacters = (page) => async (dispatch) => {
         dispatch(errorRequest(errorMessage));
     };
 };
+
 
 //Paginate
 export function setPage(pageNumber){

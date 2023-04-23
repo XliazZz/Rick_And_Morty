@@ -4,7 +4,6 @@ const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
 const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
 
 const getCharById = (req, res) => {
-
     const { id } = req.params;
 
     if(!id){
@@ -21,4 +20,4 @@ const getCharById = (req, res) => {
     })
 };
 
-module.exports = getCharById;
+module.exports = {getCharById};

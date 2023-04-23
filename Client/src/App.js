@@ -96,6 +96,7 @@ import Nav from './components/Nav/Nav';
 import SignIn from './components/SignIn/SignIn';
 import About from "./components/About/About";
 import Footer from './components/Footer/Footer';
+import axios from 'axios';
 
 const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
 const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
@@ -112,13 +113,14 @@ function App() {
       setCharacters(characters.filter((character) => character.id !== id));
    };
 
-   const login = (userData) => {
-      if (userData.email === EMAIL && userData.password === PASSWORD) {
-         setAccess(true);
-         navigate('/characters');
-      } else {
-         alert('Credenciales inválidas');
-      }
+   function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
    };
 
    const logOut = () => {
