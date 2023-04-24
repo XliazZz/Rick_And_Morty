@@ -2,20 +2,15 @@ import { NavLink } from "react-router-dom";
 import style from "./Footer.module.css";
 import { useSelector } from "react-redux";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa"
-import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
-
-    const location = useLocation();
-
     const isLoading = useSelector((state) => state.isLoading);
-    const myFavorites = useSelector((state) => state.myFavorites);
 
     if (isLoading) {
         return null; // Si isLoading es true, no se muestra el Footer
     }
 
-    return location.pathname === "/" ? null : (
+    return(
         <div className={style.contenedorLoading} >
         <footer className={style.footer}>
             <NavLink to="./about" className={style.activeLink}>

@@ -97,6 +97,7 @@ import SignIn from './components/SignIn/SignIn';
 import About from "./components/About/About";
 import Footer from './components/Footer/Footer';
 import axios from 'axios';
+import Home from './components/Home/Home';
 
 const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
 const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
@@ -137,7 +138,9 @@ function App() {
       <div className="App">
          {pathname !== '/' && <Nav logOut={logOut} />}
          <Routes>
-         <Route path="/" element={<Form login={login} />} />
+            <Route path="/" element={<Home />} />
+         <Route path="/login" element={<Form login={login} />} />
+         <Route path="/sign" element={<SignIn />} />
          <Route path="/cards" element={<Cards onClose={onClose} />} />
          <Route path="/characters" element={<Characters />} />
          <Route path="/characters/page/:pageNumber" element={<Characters />} />
@@ -145,7 +148,6 @@ function App() {
          <Route path="/detail/:id" element={<Detail />} />
          <Route path="/favorites" element={<Favorites />} />
          <Route path="/contact" element={<ContactForm />} />
-         <Route path="/sign" element={<SignIn />} />
          <Route path="*" element={<Errors />} />
          </Routes>
          {pathname !== '/favorites' && <Footer />}

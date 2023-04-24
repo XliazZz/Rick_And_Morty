@@ -26,11 +26,12 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
 
    useEffect(() => {
       myFavorites.forEach((fav) => {
-         if (fav.id === id) {
-         setIsFav(true);
+         if (fav && fav.id === id) {
+            setIsFav(true);
          }
       });
    }, [myFavorites]);
+
 
    const [isHovering, setIsHovering] = useState(false);
 
@@ -42,21 +43,7 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
       setIsHovering(false);
    }
 
-   function calculateFontSize(name) {
-      if (name.length <= 5) {
-         return "25px";
-      } else if (name.length <= 10) {
-         return "22px";
-      } else if (name.length <= 15) {
-         return "22px";
-      } else if (name.length <= 20) {
-         return "18px";
-      } else if (name.length <= 25) {
-         return "17px";
-      } else if (name.length <= 30) {
-         return "17px";
-      }
-   }
+
 
    const calculateStatus = (status) => {
       if (status === "Alive") {
@@ -94,7 +81,7 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
       </NavLink>
 
       <div className={style.divNombre}>
-      <h2 className={style.name} style={{ fontSize: calculateFontSize(name) }}>{name}</h2>
+      <h2 className={style.name}>{name}</h2>
       </div>
 
       <div className={style["status-container"]} >
