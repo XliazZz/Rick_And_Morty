@@ -45,6 +45,7 @@
     padding: 20px;
     margin: 10px;
     animation: lights 4000ms infinite ease-in;
+    position: absolute;
 }
 .inputForm{
     background:white;
@@ -56,7 +57,7 @@
     width: 250px;
     font-size: 20px;
     position: absolute;
-    top: 140px;
+    top: 88px;
 }
 .inputForm:focus {
     border: 4px solid #C0E66E;
@@ -74,7 +75,7 @@
     width: 250px;
     font-size: 20px;
     position: absolute;
-    top: 275px;
+    top: 235px;
 }
 
 .inputForm2:focus {
@@ -94,7 +95,7 @@
     width: 120px;
     height: 30px;
     position: absolute;
-    bottom: 50px;
+    bottom: 25px;
 }
 
 .botonForm:hover{
@@ -109,7 +110,7 @@
     font-family: 'getSchwifty', sans-serif;
     font-size: 25px;
     position: absolute;
-    top: 90px;
+    top: 40px;
     text-shadow: 0 0 15px #00b0c8, 0 0 10px #00b0c8;
 }
 .labelForm2{
@@ -119,7 +120,7 @@
     /* margin-top: 15px; */
     margin-bottom: 8px;
     position: absolute;
-    top: 225px;
+    top: 188px;
     text-shadow: 0 0 15px #00b0c8, 0 0 10px #00b0c8;
 }
 
@@ -149,7 +150,7 @@
     padding-top: 0px;
     margin-top: 5px;
     position: absolute;
-    top: 175px;
+    top: 120px;
 }
 
 .p2{
@@ -159,7 +160,7 @@
     padding-top: 0px;
     margin-top: 5px;
     position: absolute;
-    top: 308px;
+    top: 268px;
 }
 
 .botonForm:disabled {

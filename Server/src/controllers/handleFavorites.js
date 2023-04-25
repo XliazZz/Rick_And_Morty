@@ -1,7 +1,7 @@
 let myFavorites = [];
 
 const postFav = (req, res) => {
-    const { character } = req.body;
+    const  character  = req.body;
 
     myFavorites.push(character)
 

@@ -6,26 +6,34 @@ const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
 
 
 export const addFav = (character) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav';
-    return (dispatch) => {
-        axios.post(endpoint, character).then(({ data }) => {
-            return dispatch({
-                type: 'ADD_FAV',
+    return async (dispatch) => {
+        const endpoint = 'http://localhost:3001/rickandmorty/fav';
+        try{
+            const { data } = await axios.post(endpoint, character);
+            dispatch({
+                type: types.ADD_FAV,
                 payload: data,
             });
-        });
+        }   
+        catch (error) {
+            console.error(error);
+        }
     };
 };
 
 export const removeFav = (id) => {
-    const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`;
-    return (dispatch) => {
-        axios.delete(endpoint).then(({ data }) => {
-            return dispatch({
-                type: 'REMOVE_FAV',
+    return async (dispatch) => {
+        const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`;
+        try{
+            const { data } = await axios.delete(endpoint);
+            dispatch({
+                type: types.REMOVE_FAV,
                 payload: data,
-        });
-        });
+            });
+        }
+        catch (error) {
+            console.error(error);
+        }
     };
 };
 

@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchCharacter } from "../../redux/Actions/actions";
 import { NavLink } from "react-router-dom";
+import { FaSearch } from "react-icons/fa"
+
 
 export default function SearchBar() {
    const [id, setId] = useState('');
@@ -28,7 +30,7 @@ export default function SearchBar() {
          <input placeholder="Search character..." className={style.input} onChange={handleChange} value={id} type='search' />
          
          <NavLink to="/cards" >
-         <button className={style.boton}  onClick={handleClick} >Search</button>
+         <button className={style.boton}  onClick={handleClick} > <FaSearch></FaSearch> </button>
          </NavLink>
 
          {isLoading && <p>Loading...</p>}

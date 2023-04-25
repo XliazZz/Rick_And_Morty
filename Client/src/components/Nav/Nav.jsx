@@ -2,6 +2,7 @@ import { useLocation, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Nav.module.css";
+import { RiLogoutBoxLine } from "react-icons/ri"
 
 export default function Nav({ logOut }) {
     const location = useLocation();
@@ -17,7 +18,7 @@ export default function Nav({ logOut }) {
         {location.pathname !== "/home" && (
             <NavLink to="/">
             <button className={style.logOut} onClick={logOut}>
-                Log Out
+                <RiLogoutBoxLine />
             </button>
             </NavLink>
         )}

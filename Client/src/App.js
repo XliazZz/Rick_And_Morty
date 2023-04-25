@@ -99,8 +99,8 @@ import Footer from './components/Footer/Footer';
 import axios from 'axios';
 import Home from './components/Home/Home';
 
-const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
-const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
+// const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
+// const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
 const EMAIL = 'ejemplo10@gmail.com';
 const PASSWORD = 'Contra1@';
 
@@ -114,14 +114,17 @@ function App() {
       setCharacters(characters.filter((character) => character.id !== id));
    };
 
-   function login(userData) {
+   const login = async (userData) => {
       const { email, password } = userData;
       const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      try {
+         const { data } = await axios(URL + `?email=${email}&password=${password}`);
          const { access } = data;
          setAccess(data);
          access && navigate('/home');
-      });
+      } catch (error) {
+         console.error(error);
+      }
    };
 
    const logOut = () => {
