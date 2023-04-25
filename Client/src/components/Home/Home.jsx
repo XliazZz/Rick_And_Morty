@@ -2,10 +2,43 @@ import style from "./Home.module.css";
 import PortalInicio from "../Asserts/PortalInicio.png";
 import rickcabeza from "../Asserts/rickcabeza.jpg";
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Card from "../Card/Card";
 
 const Home = () => {
 
-
+    const [characters, setCharacters] = useState([]);
+    
+    const getRandomCharacters = async () => {
+        const URL = 'http://localhost:3001/rickandmorty/random/';
+        try {
+            const { data } = await axios.get(URL);
+            console.log(data);
+            const characters = data.map((character) => {
+                const { id, status, name, species, origin, image, gender } = character;
+                return {
+                id,
+                name,
+                species,
+                origin: origin.name,
+                image,
+                gender,
+                status,
+                };
+            });
+            console.log(characters);
+            setCharacters(characters);
+            } catch (error) {
+            console.error(error);
+            }
+        };
+        
+    
+    // Llama a la función para obtener los personajes cuando se carga el componente
+    useEffect(() => {
+        getRandomCharacters();
+    }, []);
 
     return(
         <div className={style.contenedorHome} >
@@ -17,8 +50,27 @@ const Home = () => {
                 <h3>A wildly hilarious animated series that follows the outlandish adventures of a brilliant but troubled scientist and his easily influenced grandson across different dimensions and planets.
                 </h3>
             </div>
+
+            <NavLink to="/login">            
+                <button>login</button>
+            </NavLink>
+
+            {characters && characters.map((character) =>
+    <Card
+        key={character.id}
+        id={character.id}
+        name={character.name}
+        status={character.status}
+        species={character.species}
+        gender={character.gender}
+        image={character.image}
+        origin={character.origin.name}
+        onClose={character.onClose}
+    />
+)}
+
         </div>
-    );
+);
 };
 
 export default Home;

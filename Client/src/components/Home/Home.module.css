@@ -1,7 +1,7 @@
 .contenedorHome{
     background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
     padding-top: 1px;
-    height: 100vh;
+    height: 100vh; 
 }
 
 .tituloHome{
@@ -20,9 +20,9 @@
     position: relative;
     top: 70px;
     right: 350px;
-    width: 380px;
+    width: 480px;
     margin: 20px;
-    height: 300px;
+    height: 400px;
     animation: rickymorty 3s ease 1.5s 1 normal forwards;
     opacity: 0;
     transition: opacity 4s ease 3s;
@@ -47,9 +47,9 @@
 .contenedorDescription{
     width: 500px;
     position: relative;
-    left: 520px;
-    bottom: 200px;
-    font-size: 25px;
+    left: 720px;
+    bottom: 300px;
+    font-size: 30px;
     font-family: "WubbaLubbaDubDub";
     color: white;
     background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 2%), hsl(210, 60%, 5%));

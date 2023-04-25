@@ -121,7 +121,7 @@ function App() {
          const { data } = await axios(URL + `?email=${email}&password=${password}`);
          const { access } = data;
          setAccess(data);
-         access && navigate('/home');
+         access && navigate('/');
       } catch (error) {
          console.error(error);
       }
@@ -132,30 +132,31 @@ function App() {
    };
 
    useEffect(() => {
-      if (!access && pathname !== '/') {
-         navigate('/');
+      if (!access && pathname !== '/login' && pathname !== '/') {
+        navigate('/login');
       }
-   }, [access, navigate, pathname]);
+    }, [access, navigate, pathname]);
 
    return (
       <div className="App">
          {pathname !== '/' && <Nav logOut={logOut} />}
          <Routes>
             <Route path="/" element={<Home />} />
-         <Route path="/login" element={<Form login={login} />} />
-         <Route path="/sign" element={<SignIn />} />
-         <Route path="/cards" element={<Cards onClose={onClose} />} />
-         <Route path="/characters" element={<Characters />} />
-         <Route path="/characters/page/:pageNumber" element={<Characters />} />
-         <Route path="/about" element={<About />} />
-         <Route path="/detail/:id" element={<Detail />} />
-         <Route path="/favorites" element={<Favorites />} />
-         <Route path="/contact" element={<ContactForm />} />
-         <Route path="*" element={<Errors />} />
+            <Route path="/login" element={<Form login={login} />} />
+            <Route path="/sign" element={<SignIn />} />
+            <Route path="/cards" element={<Cards onClose={onClose} />} />
+            <Route path="/characters" element={<Characters />} />
+            <Route path="/characters/page/:pageNumber" element={<Characters />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/contact" element={<ContactForm />} />
+            <Route path="*" element={<Errors />} />
          </Routes>
          {pathname !== '/favorites' && <Footer />}
       </div>
    );
 }
+
 
 export default App;
