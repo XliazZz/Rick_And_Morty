@@ -1,0 +1,11 @@
+
+*.ps1
+*.cmd
+Server/node_modules/.bin/esparse
+Server/node_modules/.bin/esvalidate
+Server/node_modules/.bin/js-yaml
+Server/node_modules/.bin/jsesc
+Server/node_modules/.bin/node-which
+Server/node_modules/.bin/parser
+Server/node_modules/.bin/resolve
+*.json
