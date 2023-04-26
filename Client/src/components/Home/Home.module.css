@@ -4,12 +4,13 @@
     height: 100vh; 
 }
 
+
 .tituloHome{
     color: white;
     animation: titulo 1s ease 0.3s 1 normal forwards;
     opacity: 0;
     transition: opacity 2s ease 5s;
-    font-size: 34px;
+    font-size:  2.125em;
 }
 
 .tituloHome:hover{
@@ -17,12 +18,12 @@
 }
 
 .rickymorty{
-    position: relative;
-    top: 70px;
-    right: 350px;
-    width: 480px;
+    position: absolute;
+    top: 180px;
+    right: 650px;
+    width: 20em;
     margin: 20px;
-    height: 400px;
+    height: 15em;
     animation: rickymorty 3s ease 1.5s 1 normal forwards;
     opacity: 0;
     transition: opacity 4s ease 3s;
@@ -45,11 +46,11 @@
 }
 
 .contenedorDescription{
-    width: 500px;
-    position: relative;
-    left: 720px;
-    bottom: 300px;
-    font-size: 30px;
+    width: 20em;
+    position: absolute;
+    right: 80px;
+    top: 200px;
+    font-size: 1.5em;
     font-family: "WubbaLubbaDubDub";
     color: white;
     background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 2%), hsl(210, 60%, 5%));
@@ -97,4 +98,39 @@
     font-size: 38px;
     text-shadow: 0 0 15px #00ff00, 0 0 10px #00ff00;
     margin-left: 5px;
+}
+
+.randomCharacters{
+    position: relative;
+    top: 400px;
+    height: 100px;
+    margin: 0px;
+    background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 0%), hsl(210, 60%, 5%));
+    font-size: 57px;
+    color: white;
+    padding-top: 7px;
+}
+
+.rickPepinillo{
+    width: 185px;
+    height: 190px;
+    position: relative;
+    top: 280px;
+    right: 500px;
+    padding-top: 15px;
+}
+
+.contenedoRandom{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 0px;
+    background-image: linear-gradient(to bottom, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
+    padding: 100px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-width: 0;
+    overflow: auto;
+    position: relative;
+    top: 185px;
 }

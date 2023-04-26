@@ -153,7 +153,7 @@ function App() {
             <Route path="/contact" element={<ContactForm />} />
             <Route path="*" element={<Errors />} />
          </Routes>
-         {pathname !== '/favorites' && <Footer />}
+         {pathname !== '/favorites' && pathname !== "/" && <Footer />}
       </div>
    );
 }

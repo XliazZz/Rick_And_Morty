@@ -43,8 +43,6 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
       setIsHovering(false);
    }
 
-
-
    const calculateStatus = (status) => {
       if (status === "Alive") {
          return  'green';

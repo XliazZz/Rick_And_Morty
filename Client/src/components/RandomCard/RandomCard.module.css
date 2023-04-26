@@ -1,0 +1,62 @@
+.contenedorRandomCard{
+    margin-top: 15px;
+    height: 250px;
+    width: 450px;
+    border-radius: 7px;
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    }
+    
+.fotoRandom{
+    float: left;
+    height: 210px;
+    width: 180px;
+    border-radius: 7px 0 0 7px;
+}
+    
+.fotoRandom img {
+    border-radius: 7px 0 0 7px;
+}
+
+.infoRandom{
+    float: left;
+    height: 210px;
+    width: 250px;
+    border-radius: 0 7px 7px 0;
+    color: white;
+    background-color: #1E434C;
+}
+
+.textosRandom{
+    height: 163.5px;
+    font-size: 13px;
+    font-family: "WubbaLubbaDubDub";
+}
+
+.status-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.status-circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    right: 85px;
+    top: 5px;
+    position: relative; /* Agregado para posicionar correctamente ::after */
+}
+
+.status-circle:hover::after {
+    content: attr(data-status);
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: "WubbaLubbaDubDub";
+}

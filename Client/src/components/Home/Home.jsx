@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../Card/Card";
+import RandomCard from "../RandomCard/RandomCard";
+import rickPepinillo from "../Asserts/rickPepinillo.png"
 
 const Home = () => {
 
@@ -16,7 +18,7 @@ const Home = () => {
             const { data } = await axios.get(URL);
             console.log(data);
             const characters = data.map((character) => {
-                const { id, status, name, species, origin, image, gender } = character;
+                const { id, status, name, species, origin, image, gender, location } = character;
                 return {
                 id,
                 name,
@@ -25,6 +27,7 @@ const Home = () => {
                 image,
                 gender,
                 status,
+                location: location.name
                 };
             });
             console.log(characters);
@@ -40,6 +43,7 @@ const Home = () => {
         getRandomCharacters();
     }, []);
 
+
     return(
         <div className={style.contenedorHome} >
             <h1 className={style.tituloHome} >¡Welcome to the Multiverse of  <b className={style.rickHome} > Rick </b> and <b className={style.mortyHome}>Morty</b>!</h1>
@@ -51,23 +55,31 @@ const Home = () => {
                 </h3>
             </div>
 
-            <NavLink to="/login">            
-                <button>login</button>
-            </NavLink>
+                <h2 className={style.randomCharacters} >Random Characters</h2>
+                <img className={style.rickPepinillo} src={rickPepinillo} alt="" />
 
-            {characters && characters.map((character) =>
-    <Card
-        key={character.id}
-        id={character.id}
-        name={character.name}
-        status={character.status}
-        species={character.species}
-        gender={character.gender}
-        image={character.image}
-        origin={character.origin.name}
-        onClose={character.onClose}
-    />
-)}
+            <div className={style.contenedoRandom}>
+                {characters && characters.map((character) =>
+                    <RandomCard
+                        key={character.id}
+                        id={character.id}
+                        name={character.name}
+                        status={character.status}
+                        image={character.image}
+                        origin={character.origin}
+                        location={character.location}
+                    />
+                )}
+            </div>
+
+            <div className={style.contenedoLoginSign}>
+                <NavLink to="/login">            
+                    <button className={style.loginHome}>login</button>
+                </NavLink>
+
+                <h2>Login</h2>
+                <h2>Sign up</h2>
+            </div>
 
         </div>
 );
