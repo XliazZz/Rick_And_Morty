@@ -1,27 +1,27 @@
 .contenedorRandomCard{
     margin-top: 15px;
-    height: 250px;
+    height: 230px;
     width: 450px;
     border-radius: 7px;
     -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-    }
-    
+}
+
 .fotoRandom{
     float: left;
-    height: 210px;
-    width: 180px;
+    height: 230px;
+    width: 200px;
     border-radius: 7px 0 0 7px;
 }
-    
+
 .fotoRandom img {
     border-radius: 7px 0 0 7px;
 }
 
 .infoRandom{
     float: left;
-    height: 210px;
+    height: 230px;
     width: 250px;
     border-radius: 0 7px 7px 0;
     color: white;

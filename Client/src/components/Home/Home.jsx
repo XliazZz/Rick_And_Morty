@@ -72,14 +72,13 @@ const Home = () => {
                 )}
             </div>
 
-            <div className={style.contenedoLoginSign}>
-                <NavLink to="/login">            
-                    <button className={style.loginHome}>login</button>
-                </NavLink>
+            <div className={style.registerorsign}>Register or log in to our Rick and Morty character page to see more! Join our community now!</div>
 
-                <h2>Login</h2>
-                <h2>Sign up</h2>
-            </div>
+        {/*     <div className={style.contenedoLoginSign}>
+                <div className={style.cartasLogSig}>
+                    <img src={PortalInicio} alt={PortalInicio} />
+                </div>
+            </div> */}
 
         </div>
 );

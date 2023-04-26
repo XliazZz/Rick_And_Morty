@@ -2,6 +2,7 @@
     background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
     padding-top: 1px;
     height: 100vh; 
+    padding-bottom: 55px;
 }
 
 
@@ -10,7 +11,7 @@
     animation: titulo 1s ease 0.3s 1 normal forwards;
     opacity: 0;
     transition: opacity 2s ease 5s;
-    font-size:  2.125em;
+    font-size:  2.525em;
 }
 
 .tituloHome:hover{
@@ -102,7 +103,7 @@
 
 .randomCharacters{
     position: relative;
-    top: 400px;
+    top: 600px;
     height: 100px;
     margin: 0px;
     background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 0%), hsl(210, 60%, 5%));
@@ -115,7 +116,7 @@
     width: 185px;
     height: 190px;
     position: relative;
-    top: 280px;
+    top: 480px;
     right: 500px;
     padding-top: 15px;
 }
@@ -127,10 +128,28 @@
     row-gap: 0px;
     background-image: linear-gradient(to bottom, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
     padding: 100px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 50px;
+    padding-bottom: 90px;
     min-width: 0;
     overflow: auto;
     position: relative;
-    top: 185px;
+    top: 385px;
+    padding-left: 185px;
+}
+
+.registerorsign{
+    position: relative;
+    color: white;
+    font-size: 50px;
+    top: 380px;
+    background-color: hsl(210, 60%, 5%);
+    padding-top: 90px;
+    padding-bottom: 10px;
+}
+
+.cartasLogSig{
+    position: absolute;
+    border: 2px solid red;
+    width: 340px;
+    height: 420px;
 }
