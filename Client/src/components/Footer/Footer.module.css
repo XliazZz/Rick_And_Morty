@@ -39,5 +39,11 @@
 }
 
 .rickandmorty{
+    padding-left: 60px;
     font-family: "getSchwifty";
+}
+
+
+p{
+    font-size: 15px;
 }

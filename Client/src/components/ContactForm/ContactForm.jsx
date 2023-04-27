@@ -31,9 +31,10 @@ const ContactForm = () => {
 
   return (
     <div className={styles.background}>
+
       <form className={styles.contactForm} onSubmit={handleSubmit}>
         
-        <label htmlFor="name" className={styles.label}>
+        <label htmlFor="name" className={styles.label1}>
           Name
         </label>
         <input
@@ -41,13 +42,13 @@ const ContactForm = () => {
           name="name"
           value={contactForm.name}
           onChange={handleChange}
-          className={styles.input}
+          className={styles.input1}
         />
         {errors.name && (
-          <p className={styles.errorText}>{errors.name}</p>
+          <p className={styles.errorText1}>{errors.name}</p>
         )}
 
-        <label htmlFor="email" className={styles.label}>
+        <label htmlFor="email" className={styles.label2}>
           Email
         </label>
         <input
@@ -55,13 +56,13 @@ const ContactForm = () => {
           name="email"
           value={contactForm.email}
           onChange={handleChange}
-          className={styles.input}
+          className={styles.input2}
         />
         {errors.email && (
-          <p className={styles.errorText}>{errors.email}</p>
+          <p className={styles.errorText2}>{errors.email}</p>
         )}
 
-        <label htmlFor="message" className={styles.label}>
+        <label htmlFor="message" className={styles.label3}>
           Message
         </label>
         <textarea
@@ -74,7 +75,7 @@ const ContactForm = () => {
           className={styles.textarea}
         ></textarea>
         {errors.message && (
-          <p className={styles.errorText}>{errors.message}</p>
+          <p className={styles.errorText3}>{errors.message}</p>
         )}
 
         <button

@@ -5,42 +5,58 @@ import style from "./Detail.module.css";
 const Detail = () => {
     const { id } = useParams();
 
-    const [character, setCharacter] = useState({})
+    const [character, setCharacter] = useState({});
+    const [episodeCount, setEpisodeCount] = useState(0);
 
     useEffect(() => {
         fetch(`http://localhost:3001/rickandmorty/character/${id}`)
         .then((response) => response.json())
         .then((char) => {
-            if(char.name) {
-                setCharacter(char);
-            }  else {
-                alert("Character not found");
+            if (char.name) {
+            setCharacter(char);
+            setEpisodeCount(char.episode.length); // Cantidad de episodios
+            } else {
+            alert("Character not found");
             }
         })
         .catch((err) => {
             alert("Character not found");
-        })
+        });
+
         return setCharacter({});
-    },[id])
+    }, [id]);
 
     return (
-        <div className={style.contenedorDetail} >
-
-            <div className={style.foto}>
-            <img src={character.image} alt={character.name}/>
-            </div>
-            <h2 className={style.nombre} >{character.name}</h2>
-
-            <div className={style.texto}>
-            <h2> <b>Status : </b> {character.status}</h2>
-            <h2> <b>Specie : </b> {character.species}</h2>
-            <h2> <b>Gender : </b> {character.gender}</h2>
-            <h2> <b>Origin : </b> {character.origin?.name}</h2>
-            <h2> <b>Location : </b> {character.location?.name}</h2>
-            </div>
-
+        <div className={style.contenedorDetail}>
+        <div className={style.foto}>
+            <img src={character.image} alt={character.name} />
         </div>
-    )
-}
+        <h2 className={style.nombre}>{character.name}</h2>
 
-export default Detail
+        <div className={style.texto}>
+            <h2>
+            <b>Status:</b> {character.status}
+            </h2>
+            <h2>
+            <b>Specie:</b> {character.species}
+            </h2>
+            <h2>
+            <b>Gender:</b> {character.gender}
+            </h2>
+            <h2>
+            <b>Origin:</b> {character.origin?.name}
+            </h2>
+            <h2>
+            <b>Location:</b> {character.location?.name}
+            </h2>
+
+            {/* Nueva sección para mostrar la cantidad de episodios */}
+            <h2>
+            <b>Episodes:</b> {episodeCount}
+            </h2>
+        </div>
+        </div>
+    );
+};
+
+export default Detail;

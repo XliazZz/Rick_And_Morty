@@ -3,6 +3,7 @@ const {postFav, deleteFav} = require("../controllers/handleFavorites");
 const {login} = require("../controllers/login");
 const { Router } = require('express');
 const { sendRandomCharacters } = require("../controllers/randomCharacters")
+const { register } = require("../controllers/register")
 
 const router = Router();
 
@@ -27,6 +28,10 @@ router.delete('/fav/:id', (req, res) => {
 
 router.get('/random', (req, res) => {
     sendRandomCharacters(req, res);
+});
+
+router.post("/register", (req, res) => {
+    register(req, res);
 });
 
 module.exports = {

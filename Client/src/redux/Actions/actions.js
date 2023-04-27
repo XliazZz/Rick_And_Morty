@@ -122,3 +122,38 @@ export const filterGender = (gender) => {
 export const addMessage = (name, email, message) => {
     return { type: types.ADD_MESSAGE, payload: { name, email, message } };
 };
+
+//Register
+export const registerUser = (userData) => {
+    return async (dispatch) => {
+        try {
+            dispatch(registerRequest());
+            const endpoint = 'http://localhost:3001/rickandmorty/register';
+            const response = await axios.post(endpoint, userData);
+            dispatch(registerSuccess(response.data));
+            alert("se pudo");
+        } catch (error) {
+            dispatch(registerFailure(error.message));
+        }
+        };
+    };
+
+export const registerRequest = () => {
+    return {
+        type: types.REGISTER_REQUEST,
+    };
+};
+
+export const registerSuccess = (data) => {
+    return {
+        type: types.REGISTER_SUCCESS,
+        payload: data,
+    };
+};
+
+export const registerFailure = (error) => {
+    return {
+        type: types.REGISTER_FAILURE,
+        payload: error,
+    };
+};

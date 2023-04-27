@@ -1,6 +1,8 @@
 import style from "./Form.module.css"
 import { useState } from "react"
 import validation from "../validation/validation"
+import { BiArrowBack } from "react-icons/bi"
+import { NavLink } from "react-router-dom"
 
 const Form = ({ login }) => {
 
@@ -28,15 +30,19 @@ const Form = ({ login }) => {
 
     return (
         <div className={style.contenedorDiv}>
+            <NavLink to="/">
+            <button className={style.backForm}><BiArrowBack></BiArrowBack></button>
+            </NavLink>
+
             <form onSubmit={handleSubmit} className={style.contenedorForm}>
                 <label className={style.labelForm} htmlFor="email">Email:</label>
                 <input
                 id="email"
                 name="email" 
-                value={userData.email} 
-                className={style.inputForm} 
                 type="email"
                 placeholder="Type your email..."
+                value={userData.email} 
+                className={style.inputForm} 
                 onChange={handleChange}  />
                 {errors.email && <p className={style.p1}>{errors.email}</p> } 
 

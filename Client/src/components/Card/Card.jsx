@@ -52,6 +52,22 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
          return  "gray";
       }
    }
+   const calculateFontSize = (name) => {
+      if (name.length < 10) {
+         return "25px";
+         } else if (name.length < 15) {
+         return "20px";
+         } else if (name.length < 20) {
+         return "21px";
+         } else if (name.length < 25) {
+         return "17px";
+         } else if (name.length < 30) {
+         return "15px";
+         } else if (name.length < 35) {
+         return "11px";
+         } 
+      };
+      
 
    return (
       <div className={style.card} >
@@ -79,7 +95,7 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
       </NavLink>
 
       <div className={style.divNombre}>
-      <h2 className={style.name}>{name}</h2>
+      <h2 style={{ fontSize: calculateFontSize(name) }} className={style.name}>{name}</h2>
       </div>
 
       <div className={style["status-container"]} >

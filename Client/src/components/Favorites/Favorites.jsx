@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { filterGender, orderCards, filterCharactersBySpecies } from "../../redux/Actions/actions";
+import { filterGender, orderCards } from "../../redux/Actions/actions";
 import Card from "../Card/Card";
 import style from "./Favorite.module.css"
 

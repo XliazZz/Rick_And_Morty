@@ -16,15 +16,16 @@
     height: 100vh;
     margin: 0 auto;
     background-color: #1a1a1a; 
+    padding-top: 90px;
 }
 
 
 .subtitle {
     font-size: 3em;
     text-align: center;
-    margin-top: 1em;
+    margin-top: 5rem;
     margin-bottom: 1em;
-    color: #00ff00;
+    color: white;
     text-shadow: 5px 4px 9px #00bcd7;
 }
 
@@ -33,8 +34,6 @@
     text-shadow: 5px 4px 9px #31c400;
     animation: myAnim 2s ease 0s 1 normal forwards;
 }
-
-
 
 @keyframes myAnim {
 	0% {
@@ -85,29 +84,32 @@
 .unorderedList {
     list-style-type: none;
     padding: 0;
-    margin-bottom: 3em;
-    display: flex;
-    flex-direction: row;
+    margin-bottom: 15em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
 }
 
 .listItem {
+    height: 100px;
+    width: 150px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    width: 15vw;
-    height: 15vh;
+    justify-content: center;
     background-color: #000000;
     color: white;
     padding: 0.9em;
-    margin: 5px;
     font-size: 19px;
     font-weight: 600;
     border-radius: 5%;
     font-family: "WubbaLubbaDubDub";
     transition: all 500ms ease-in-out;
     animation: lights 4000ms infinite ease-in;
+    margin-bottom: 8px;
+
 }
+
 .listItem:hover {
     background-color: white;
     color: black;
@@ -115,20 +117,16 @@
 
 @keyframes lights {
     0% {
-
-    border: 2px solid #62d747;
+        border: 2px solid #62d747;
     }
     50% {
-
-    border: 2px solid #0093a8;
+        border: 2px solid #0093a8;
     }
     70% {
-
-    border: 2px solid #00bcd7;
+        border: 2px solid #00bcd7;
     }
     100% {
-
-    border: 2px solid #62d747;
+        border: 2px solid #62d747;
     }
 }
 
@@ -136,4 +134,10 @@
     width: 47%;
     object-fit: cover;
     margin: 15px;
+}
+
+h2{
+    color: white;
+    text-shadow: 5px 4px 9px #31c400;
+
 }

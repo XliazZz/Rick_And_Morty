@@ -23,3 +23,8 @@ export const REMOVE_CARD = "REMOVE_CARD";
 
 //ContactFomr
 export const ADD_MESSAGE = "ADD_MESSAGE";
+
+//Register
+export const REGISTER_REQUEST = "REGISTER_REQUEST";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAILURE = "REGISTER_FAILURE";

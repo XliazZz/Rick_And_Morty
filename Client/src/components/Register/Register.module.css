@@ -1,31 +1,12 @@
-@font-face {
-    font-family: 'getSchwifty';
-    src:
-        url('getSchwifty.ttf') format('truetype'),
-        url('getschwifty-webfont.woff2') format('woff2'),
-        url('getschwifty-webfont.woff') format('woff');
-    font-weight: medium;
-    font-style: medium;
-}
-
-@font-face {
-    font-family: 'WubbaLubbaDubDub';
-    src:
-        url('WubbaLubbaDubDub.ttf') format('truetype'),
-        url('WubbaLubbaDubDub.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .contenedorDiv{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../Asserts/fondo-body.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     min-height: 100vh;
+    background-image: url("../Asserts/FONDOESTRELLAS.jpg");
 }
 
 .contenedorForm{
@@ -33,15 +14,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("../Asserts/fondoForm.jpg");
-    background-position: center 85%;
-    width: 320px;
-    height: 430px;
+
+    background-color: rgb(1, 15, 24);
+
+    width: 490px;
+    height: 455px;
     border-radius: 15px;
-    box-shadow: 3px 15px 10px 5px #8ffe77;
+    box-shadow: 3px 15px 10px 5px rgba(2,92,104,1);
     transition: all 500ms ease-in-out;
-    padding: 20px;
-    margin: 10px;
+    padding: 10px;
+    margin: 5px;
     animation: lights 4000ms infinite ease-in;
     position: absolute;
 }
@@ -55,8 +37,8 @@
     animation: lights 3000ms infinite ease-out;
     width: 250px;
     font-size: 20px;
-    position: absolute;
-    top: 88px;
+    position: relative;
+    left: 190px;
 }
 
 .inputForm:focus {
@@ -65,28 +47,17 @@
     animation: none;
 }
 
-.inputForm2{
-    background:white;
-    outline: none;
-    color: #00b0c8;
-    border-radius: 16px;
-    font-family: 'WubbaLubbaDubDub';
-    animation: lights 3000ms infinite ease-out;
-    width: 250px;
-    font-size: 20px;
-    position: absolute;
-    top: 235px;
-}
-
-.inputForm2:focus {
-    border: 4px solid #C0E66E;
-    transition: all 100ms ease-out;
-    animation: none;
+.formGroup {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Dos columnas, la primera ocupa 1 fracción y la segunda ocupa 2 fracciones */
+    grid-gap: 30px; /* Espacio entre las columnas */
+    align-items: center; /* Alineación vertical */
+    margin-bottom: 50px;
 }
 
 .botonForm{
-    background-color: #009500;
-    border: 5px solid #8ffe77;
+    background-color: #007282;
+    border: 5px solid #00b0c8;
     color: white;
     transition: all 100ms ease-in-out;
     animation: lights 4000ms infinite ease-in;
@@ -95,7 +66,7 @@
     width: 120px;
     height: 30px;
     position: absolute;
-    bottom: 25px;
+    bottom: 20px;
 }
 
 .botonForm:hover{
@@ -106,67 +77,88 @@
 }
 
 .labelForm{
-    color: #00ff00;
+    color: white;
     font-family: 'getSchwifty', sans-serif;
     font-size: 25px;
+    text-shadow: 0 0 15px #00ff00, 0 0 10px #00ff00;
+    font-family: 'WubbaLubbaDubDub';
     position: absolute;
-    top: 40px;
-    text-shadow: 0 0 15px #00b0c8, 0 0 10px #00b0c8;
-}
-.labelForm2{
-    color: #00ff00;
-    font-family: 'getSchwifty', sans-serif;
-    font-size: 25px;
-    /* margin-top: 15px; */
-    margin-bottom: 8px;
-    position: absolute;
-    top: 188px;
-    text-shadow: 0 0 15px #00b0c8, 0 0 10px #00b0c8;
+    left: 50px;
 }
 
 @keyframes lights {
     0% {
     box-shadow: 0px 0px 10px 2px #00d8f5;
-    border: 1px solid #00ff00;
+    border: 1px solid #00d8f5;
     }
     50% {
     box-shadow: 0px 0px 10px 2px #007282;
-    border: 1px solid #21b601;
+    border: 1px solid #007282;
     }
     70% {
     box-shadow: 0px 0px 10px 2px #007282;
-    border: 1px solid #007282;
+    border: 1px solid #00ff00;
     }
     100% {
     box-shadow: 0px 0px 10px 2px #00d8f5;
-    border: 1px solid #00ff00;
+    border: 1px solid #00d8f5;
     }
+}
+
+.fotoPNG{
+    position: relative;
+    width: 200px;
+    height: 250px;
+    right: 500px;
+    top: 100px;
+    transform: rotate(34deg);
+-webkit-transform: rotate(34deg);
+-moz-transform: rotate(34deg);
+}
+
+p{
+    font-size: 10px;
 }
 
 .p1{
     color: red;
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'WubbaLubbaDubDub';
-    padding-top: 0px;
-    margin-top: 5px;
     position: absolute;
-    top: 120px;
+    top: 75px;
+    left: 270px;
 }
 
 .p2{
     color: red;
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'WubbaLubbaDubDub';
-    padding-top: 0px;
-    margin-top: 5px;
     position: absolute;
-    top: 268px;
+    top: 160px;
+    left: 250px;
 }
 
-.botonForm:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-} 
+.p3{
+    position: absolute;
+    font-size: 20px;
+    font-family: 'WubbaLubbaDubDub';
+    color: red;
+    top: 240px;
+    left: 235px;
+}
+
+.p4{
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    font-family: 'WubbaLubbaDubDub';
+    top: 330px;
+    left: 180px;
+}
+
+.terms{
+    color: white;
+}
 
 .backForm{
     position: absolute;
@@ -189,3 +181,8 @@
 .backForm:hover{
     background-color: green;
 }
+
+.botonForm:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+} 

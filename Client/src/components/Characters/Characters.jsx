@@ -102,6 +102,7 @@ import Card from '../Card/Card';
 import style from "./Characters.module.css"
 import { NavLink } from 'react-router-dom';
 import portal from "../Asserts/PortalInicio.png"
+import ScrollTop from '../ScrollTop/ScrollTop';
 
 const Characters = ({ characters }) => {
 
@@ -171,6 +172,10 @@ const Characters = ({ characters }) => {
                 >
                     Next
                 </NavLink>
+            </div>
+
+            <div  className={style.botonTop}>
+            <ScrollTop ></ScrollTop>
             </div>
         </div>
     )

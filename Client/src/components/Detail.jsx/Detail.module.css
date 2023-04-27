@@ -1,6 +1,7 @@
 .contenedorDetail{
-    background-color: red ;       
-    width: 100vw;;
+    background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
+
+    width: 100%;
     height: 44vw;
     padding-bottom: 5px;
 }
@@ -13,7 +14,7 @@
     top: 125px;
     border: 2px solid #00d8f5;
     animation: lights 1000ms infinite ease-in;
-
+    
 }
 
 @keyframes lights {
@@ -36,21 +37,22 @@
 }
 
 .nombre{
-    color: red;
+    color: white;
     position: absolute;
     right: 190px;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .texto{
     color: #00ff00;
     position: absolute;
-    left: 100px;
-    top: 145px;
+    left: 65px;
+    top: 90px;
     font-family: "WubbaLubbaDubDub";
     font-size: 20px;
     text-shadow: 4px 4px 5px rgba(72,176,211,1);
-    background-color: black;
+    background-image: linear-gradient(to top, hsl(310, 63%, 9%),  hsl(0, 0%, 0%));
+    width: 400px;
 }
 
 b{

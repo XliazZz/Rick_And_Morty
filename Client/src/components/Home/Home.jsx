@@ -7,6 +7,8 @@ import axios from "axios";
 import Card from "../Card/Card";
 import RandomCard from "../RandomCard/RandomCard";
 import rickPepinillo from "../Asserts/rickPepinillo.png"
+import Footer from "../Footer/Footer";
+import ScrollTop from "../ScrollTop/ScrollTop";
 
 const Home = () => {
 
@@ -74,14 +76,33 @@ const Home = () => {
 
             <div className={style.registerorsign}>Register or log in to our Rick and Morty character page to see more! Join our community now!</div>
 
-        {/*     <div className={style.contenedoLoginSign}>
-                <div className={style.cartasLogSig}>
-                    <img src={PortalInicio} alt={PortalInicio} />
-                </div>
-            </div> */}
+        <div className={style.contenedorLoginRegister}>
+                <div className={style.contenedoLoginSign}>
 
+                        <div className={style.cartasLog}>
+                            <h3 className={style.h3Log} >Log In</h3>
+                    <NavLink to="/login">
+                            <img className={style.portalLog} src={PortalInicio} alt={PortalInicio} />
+                    </NavLink>
+                        </div>
+
+                        <div className={style.cartasRes}>
+                            <h3 className={style.h3Res} >Register</h3>
+                    <NavLink to="/register">
+                            <img className={style.portalRes} src={PortalInicio} alt={PortalInicio} />
+                    </NavLink>
+                        </div>
+
+                </div>
+            </div>
+
+            <div  className={style.botonTop}>
+            <ScrollTop ></ScrollTop>
+            </div>
+
+            <Footer></Footer>
         </div>
-);
+    );
 };
 
 export default Home;

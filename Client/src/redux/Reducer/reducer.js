@@ -1,4 +1,4 @@
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SET_PAGE, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, } from "../Action-types/actions-types"
+import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SET_PAGE, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, } from "../Action-types/actions-types"
 
 const initialState = {
     myFavorites: [], //los personajes fav
@@ -108,6 +108,26 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 messages: [...state, action.payload]
             };
+
+        case REGISTER_REQUEST:
+            return{
+                ...state,
+                isLoading: true,
+            };
+
+        case REGISTER_SUCCESS:
+            return{
+                ...state,
+                isLoading: false,
+                error: null
+            }
+
+        case REGISTER_FAILURE:
+            return{
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
 
         default:
             return{...state};

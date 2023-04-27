@@ -1,36 +1,124 @@
-.background{
+.background {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));  width: 100%;
+  min-height: 100vh;
 }
 
-.contactForm{
-  background-color: red;
-  background-color: red;
+.contactForm {
+  background-color: hsl(204, 60%, 5%);
   width: 400px;
-  height: 400px;
-}
-
-.textarea{
-  resize: none;
-  height: 100px;
-}
-
-.label{
-  display: block;
-  margin-bottom: 0.5rem;
-  margin-top: 1.0rem;
-  font-size: 25px;
-  font-family: "WubbaLubbaDubDub";
-}
-
-.submitButton{
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 3px 7px 7px 5px hsl(204, 61%, 13%);
+  transition: all 500ms ease-in-out;
   position: absolute;
-  bottom: 25px;
-  left: 500px;
+  margin: 20px;
 }
 
-.input{
-  width: 300px;
+.textarea {
+  resize: none;
+  height: 50px;
+  position: absolute;
+  top: 305px;
 }
+
+.label1{
+  display: block;
+  margin-bottom: 1.0rem;
+  font-size: 35px;
+  font-family: "WubbaLubbaDubDub";
+  position: absolute;
+  color: white;
+  top: 20px;
+}
+
+.input1{
+  position: absolute;
+  top: 70px;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.errorText1{
+  font-size: 18px;
+  margin: 0px;
+  position: absolute;
+  color: red;
+  top:100px
+}
+
+.label2{
+  display: block;
+  margin-bottom: 1.0rem;
+  font-size: 35px;
+  font-family: "WubbaLubbaDubDub";
+  position: absolute;
+  color: white;
+  top: 140px;
+}
+
+.input2{
+  position: absolute;
+  top: 190px;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.errorText2{
+  font-size: 18px;
+  margin: 0px;
+  position: absolute;
+  color: red;
+  top:220px
+}
+
+.label3{
+  display: block;
+  margin-bottom: 1.0rem;
+  font-size: 35px;
+  font-family: "WubbaLubbaDubDub";
+  position: absolute;
+  color: white;
+  top: 250px;
+}
+
+.errorText3{
+  font-size: 18px;
+  margin: 0px;
+  position: absolute;
+  color: red;
+  top:365px
+}
+
+.submitButton {
+  background-color: #007282;
+  border: 5px solid #00d8f5;
+  color: white;
+  transition: all 100ms ease-in-out;
+  animation: lights 4000ms infinite ease-in;
+  border-radius: 15px;
+  font-family: 'WubbaLubbaDubDub';
+  width: 120px;
+  height: 30px;
+  position: absolute;
+  bottom: 15px;
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 
+
+.submitButton:hover{
+  border: 2px solid #0c2406;
+  box-shadow: 0px 0px 10px 2px;
+  animation: none;
+  background-color: #00b0c8;
+}
+

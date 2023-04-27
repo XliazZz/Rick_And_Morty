@@ -7,7 +7,7 @@ const getCharById = async (req, res) => {
 
     try{
         const respose = await axios(`${URL}/${id}`);
-        const {status, name, species, origin, image, gender} = respose.data;
+        const {status, name, species, origin, image, gender, location, episode} = respose.data;
         
         if (name) {
             const character = {
@@ -18,6 +18,8 @@ const getCharById = async (req, res) => {
                 image,
                 gender,
                 status,
+                location,
+                episode
             };
             return res.status(200).json(character);
         }

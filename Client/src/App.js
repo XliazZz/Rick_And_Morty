@@ -93,7 +93,7 @@ import Errors from './components/Error/Error';
 import Favorites from './components/Favorites/Favorites';
 import Form from './components/Form/Form';
 import Nav from './components/Nav/Nav';
-import SignIn from './components/SignIn/SignIn';
+import Register from './components/Register/Register';
 import About from "./components/About/About";
 import Footer from './components/Footer/Footer';
 import axios from 'axios';
@@ -121,7 +121,7 @@ function App() {
          const { data } = await axios(URL + `?email=${email}&password=${password}`);
          const { access } = data;
          setAccess(data);
-         access && navigate('/');
+         access && navigate('/characters');
       } catch (error) {
          console.error(error);
       }
@@ -132,18 +132,18 @@ function App() {
    };
 
    useEffect(() => {
-      if (!access && pathname !== '/login' && pathname !== '/') {
-        navigate('/login');
+      if (!access && pathname !== '/login' && pathname !== '/' && pathname !== "/register") {
+         navigate('/login');
       }
-    }, [access, navigate, pathname]);
+      }, [access, navigate, pathname]);
 
    return (
       <div className="App">
-         {pathname !== '/' && <Nav logOut={logOut} />}
+         {pathname !== '/' && pathname !=="/login" && pathname !== "/register" && <Nav logOut={logOut} />}
          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Form login={login} />} />
-            <Route path="/sign" element={<SignIn />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/cards" element={<Cards onClose={onClose} />} />
             <Route path="/characters" element={<Characters />} />
             <Route path="/characters/page/:pageNumber" element={<Characters />} />
@@ -153,7 +153,7 @@ function App() {
             <Route path="/contact" element={<ContactForm />} />
             <Route path="*" element={<Errors />} />
          </Routes>
-         {pathname !== '/favorites' && pathname !== "/" && <Footer />}
+         {pathname !== '/favorites' && pathname !== "/" && pathname !== "/login" && pathname !== "/register" && <Footer />}
       </div>
    );
 }
