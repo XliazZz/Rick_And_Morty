@@ -1,6 +1,5 @@
 const express = require("express");
 const {router} = require("./routes/index");
-
 const server = express();
 
 server.use(express.json());
@@ -21,6 +20,4 @@ server.use((req, res, next) => {
 
 server.use('/rickandmorty', router);
 
-module.exports = {
-    server
-}
+module.exports = server
