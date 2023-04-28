@@ -47,12 +47,12 @@
     color: #00ff00;
     position: absolute;
     left: 65px;
-    top: 90px;
+    top: 75px;
     font-family: "WubbaLubbaDubDub";
     font-size: 20px;
     text-shadow: 4px 4px 5px rgba(72,176,211,1);
     background-image: linear-gradient(to top, hsl(310, 63%, 9%),  hsl(0, 0%, 0%));
-    width: 400px;
+    width: 500px;
 }
 
 b{

@@ -3,15 +3,26 @@ import style from "./Cards.module.css"
 import { useSelector, useDispatch } from 'react-redux';
 import { searchCharacter } from "../../redux/Actions/actions";
 import { useEffect } from "react";
+import portal from "../Asserts/PortalInicio.png"
 
 
 const Cards= ({ match  }) => {
    const searchResults = useSelector(state => state.searchResults);
+   const isLoading = useSelector(state => state.isLoading)
    const dispatch = useDispatch();
 
    useEffect(() => {
       dispatch(searchCharacter(match))
    }, [dispatch, match])
+
+   if (isLoading) {
+      return (
+      <div>
+          <img className={style.portalLoading} src={portal} alt="portal" />
+          <p className={style.loading} >Loading...</p>
+      </div>
+      )
+  }
 
    return (
       <div className={style.contenedorCards} >

@@ -315,3 +315,62 @@ box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     animation: salir 1000ms infinite ease-in;
     border: 1px solid black;
 }
+
+.episodesButton:before {
+    content: '';
+    background: linear-gradient(45deg, #8ffe77, #00d8f5, #8ffe77, #00d8f5, #8ffe77, #00d0ff, #8ffe77, #00d0ff, #8ffe77);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.episodesButton:active {
+    color: #000
+}
+
+.episodesButton:active:after {
+    background: transparent;
+}
+
+.episodesButton:hover:before {
+    opacity: 1;
+}
+
+.episodesButton:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #00d8f5;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+.episodesButton{
+    width: 115px;
+height: 35px;
+border: none;
+outline: none;
+color: black;
+background: #00d8f5;
+position: absolute;
+z-index: 0;
+border-radius: 10px;
+margin: 0 auto;
+left: 28.3%;
+transform: translateX(-50%);
+font-family: "WubbaLubbaDubDub";
+font-size: 23px;
+box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}

@@ -2,7 +2,7 @@ import style from "./SearchBar.module.css"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchCharacter } from "../../redux/Actions/actions";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa"
 
 
@@ -18,9 +18,11 @@ export default function SearchBar() {
       setId(event.target.value)
    }
 
+   const navigate = useNavigate();
+
    const handleClick = () => {
       if (id) {
-         dispatch(searchCharacter(id));
+         dispatch(searchCharacter(id, navigate));
          setId('');
       }
    }

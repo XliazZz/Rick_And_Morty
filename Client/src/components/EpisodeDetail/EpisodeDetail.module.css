@@ -1,0 +1,73 @@
+.contenedorDetail{
+    background-color: hsl(205, 60%, 4%);
+    padding-top: 20px;
+    font-family: "WubbaLubbaDubDub";
+}
+
+.contenedorCharacters{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr)) 1fr; /* Agregamos una fila adicional */
+    column-gap: 50px;
+    row-gap: 30px;
+    background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
+    padding: 50px;
+    min-height: 100vh;
+    min-width: 0;
+    overflow: auto;
+}
+
+.contenedorLoading{
+    height: 100vh;
+}
+
+
+  
+  .portalLoading{
+    position: relative;
+    top: 150px;
+    width: 300px;
+    height: 280px;
+    border-radius: 999px;
+    animation: myAnim 4s ease 0s infinite normal forwards;
+  }
+  
+  .loading{
+    font-size: 35px;
+    position: relative;
+    top: 150px;
+
+  }
+  
+  .error{
+    font-size: 50px;
+    color:red ;
+  }
+
+  .backForm{
+    position: absolute;
+    color: white;
+    top: 80px;
+    left: 55px;
+    width: 55px;
+    padding-top: 5px;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: black;
+    background: #00ff00;
+    border-radius: 10px;
+    margin: 0 auto;
+    font-family: "WubbaLubbaDubDub";
+    font-size: 23px;
+}
+
+.backForm:hover{
+    background-color: green;
+}
+
+.botonTop{
+  position: relative;
+  bottom: 40px;
+  right: 9px;
+}

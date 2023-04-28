@@ -1,10 +1,12 @@
 import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SET_PAGE, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, } from "../Action-types/actions-types"
+import { success } from "../Actions/actions";
 
 const initialState = {
     myFavorites: [], //los personajes fav
     allCharactersFav: [], //todos los personajes fav
     isLoading: false,
     error: null,
+    success: false,
     characters: [], //aca estan los personajes del comp Characters
     currentPage: 1,
     itemsPerPage: 20,
@@ -106,8 +108,9 @@ const rootReducer = (state = initialState, action) => {
         case ADD_MESSAGE:
             return{
                 ...state,
-                messages: [...state, action.payload]
+                messages: [...state.messages, action.payload, alert("se pudo"), console.log(state.messages)  ]
             };
+            
 
         case REGISTER_REQUEST:
             return{
@@ -119,7 +122,8 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                 isLoading: false,
-                error: null
+                error: null,
+                success: true,
             }
 
         case REGISTER_FAILURE:

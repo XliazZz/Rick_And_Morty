@@ -31,7 +31,7 @@
 
 .subtitle:hover{
     color: #00bcd7;
-    text-shadow: 5px 4px 9px #31c400;
+    text-shadow: 2px 1px 6px white;
     animation: myAnim 2s ease 0s 1 normal forwards;
 }
 

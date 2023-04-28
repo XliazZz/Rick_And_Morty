@@ -1,10 +1,13 @@
+.elCapo{
+  
+  background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
+}
 .contenedorCharacters{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(0, 1fr)) 1fr; /* Agregamos una fila adicional */
   column-gap: 50px;
   row-gap: 30px;
-  background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
   padding: 50px;
   min-height: 100vh;
   min-width: 0;
@@ -50,10 +53,6 @@
   box-shadow: 0 0 20px rgba(142, 198, 63, 0.75);
 }
 
-.contenedorLoading{
-  background-color: red;
-
-}
 
 .portalLoading{
   position: relative;
@@ -91,7 +90,13 @@
 }
 
 .botonTop{
-  position: absolute;
-  top: 1880px;
-  right: 80px;
+  padding-right: 20px;
+  padding-bottom: 45px;
+}
+label{
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  justify-content: center;
+  font-family: "WubbaLubbaDubDub";
 }

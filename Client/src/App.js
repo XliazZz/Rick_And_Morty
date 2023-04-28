@@ -98,65 +98,79 @@ import About from "./components/About/About";
 import Footer from './components/Footer/Footer';
 import axios from 'axios';
 import Home from './components/Home/Home';
+import EpisodeList from './components/Episodes/Episodes';
+import EpisodeDetail from './components/EpisodeDetail/EpisodeDetail';
 
-// const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
-// const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
 const EMAIL = 'ejemplo10@gmail.com';
 const PASSWORD = 'Contra1@';
 
 function App() {
-   const [characters, setCharacters] = useState([]);
-   const [access, setAccess] = useState(false);
-   const { pathname } = useLocation();
-   const navigate = useNavigate();
+  const [characters, setCharacters] = useState([]);
+  const [access, setAccess] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
-   const onClose = (id) => {
-      setCharacters(characters.filter((character) => character.id !== id));
-   };
+  const onClose = (id) => {
+    setCharacters(characters.filter((character) => character.id !== id));
+  };
 
-   const login = async (userData) => {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
-      try {
-         const { data } = await axios(URL + `?email=${email}&password=${password}`);
-         const { access } = data;
-         setAccess(data);
-         access && navigate('/characters');
-      } catch (error) {
-         console.error(error);
+  const login = async (userData) => {
+    const { email, password, userName } = userData;
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+  
+    try {
+      let endpoint = URL;
+      if (email) {
+        endpoint += `?email=${email}&password=${password}`;
+      } else if (userName) {
+        endpoint += `?userName=${userName}&password=${password}`;
+      } else {
+        console.error('Email or userName is required.');
+        return;
       }
-   };
+  
+      const { data } = await axios.get(endpoint);
+      const { access } = data;
+      setAccess(access);
+      access && navigate('/characters');
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-   const logOut = () => {
-      setAccess(false);
-   };
+  const logOut = () => {
+    setAccess(false);
+  };
 
-   useEffect(() => {
-      if (!access && pathname !== '/login' && pathname !== '/' && pathname !== "/register") {
-         navigate('/login');
-      }
-      }, [access, navigate, pathname]);
+  useEffect(() => {
+    if (!access && pathname !== '/login' && pathname !== '/' && pathname !== "/register") {
+      navigate('/login');
+    } else if (access && (pathname === '/login' || pathname === '/')) {
+      navigate('/characters');
+    }
+  }, [access, navigate, pathname]);
 
-   return (
-      <div className="App">
-         {pathname !== '/' && pathname !=="/login" && pathname !== "/register" && <Nav logOut={logOut} />}
-         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Form login={login} />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/cards" element={<Cards onClose={onClose} />} />
-            <Route path="/characters" element={<Characters />} />
-            <Route path="/characters/page/:pageNumber" element={<Characters />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/detail/:id" element={<Detail />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/contact" element={<ContactForm />} />
-            <Route path="*" element={<Errors />} />
-         </Routes>
-         {pathname !== '/favorites' && pathname !== "/" && pathname !== "/login" && pathname !== "/register" && <Footer />}
-      </div>
-   );
+  return (
+    <div className="App">
+      {pathname !== '/' && pathname !== "/login" && pathname !== "/register" && pathname !== "/*" && <Nav logOut={logOut} />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {!access && <Route path="/login" element={<Form login={login} />} />}
+        {!access && <Route path="/register" element={<Register />} />}
+        {access && <Route path="/cards" element={<Cards onClose={onClose} />} />}
+        {access && <Route path="/characters" element={<Characters />} />}
+        {access && <Route path="/characters/page/:pageNumber" element={<Characters />} />}
+        <Route path="/about" element={<About />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path='/episodes' element={<EpisodeList />} />
+        <Route path='/episode/detail/:id' element={<EpisodeDetail />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/contact" element={<ContactForm />} />
+        <Route path="*" element={<Errors />} />
+      </Routes>
+      {pathname !== '/favorites' && pathname !== "/" && pathname !== "/login" && pathname !== "/register" && pathname !== "/*" && <Footer />}
+    </div>
+  );
 }
-
 
 export default App;

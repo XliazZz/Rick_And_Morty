@@ -1,13 +1,10 @@
 .error{
-    background-color: black;
-    height: 500px;
+    background-image: linear-gradient(to bottom right, #000000, #1a1a1a);
+    height: 98.2vh;
     margin:0px;
     padding: 5px;
     color: white;
-    
 }
-
-
 
 .fondoError{    
     position: absolute;
@@ -17,24 +14,30 @@
     border-radius: 500px;
 }
 
+.contenedor404{
+    position: relative;
+    bottom: 230px;
+}
+
 .primero1{
     position: absolute;
     left: 250px;
     font-size: 250px;
     top: 0px;
+    bottom: 0px;
 }
 
 .segundo2{
     position: absolute;
-    right: 250px;
+    right: 260px;
     font-size: 250px;
     top: 0px;
 }
 
 .youGun{
     position: absolute;
-    bottom: 0px;
-    left: 370px;
+    bottom: 20px;
+    left: 410px;
 }
 .insulto{
     position: absolute;
@@ -52,3 +55,24 @@ b{
     color: #8ffe77;
 }
 
+.backForm{
+    position: absolute;
+    color: white;
+    top: 30px;
+    left: 30px;
+    width: 55px;
+    padding-top: 5px;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: black;
+    background: #00ff00;
+    border-radius: 10px;
+    margin: 0 auto;
+    font-family: "WubbaLubbaDubDub";
+    font-size: 23px;
+}
+
+.backForm:hover{
+    background-color: green;
+}

@@ -95,7 +95,7 @@
 // export default connect(mapStateToProps, { getAllCharacters })(Characters)
 
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { getAllCharacters, setPage } from '../../redux/Actions/actions';
 import Card from '../Card/Card';
@@ -103,15 +103,19 @@ import style from "./Characters.module.css"
 import { NavLink } from 'react-router-dom';
 import portal from "../Asserts/PortalInicio.png"
 import ScrollTop from '../ScrollTop/ScrollTop';
+import { useState } from 'react';
 
 const Characters = ({ characters }) => {
 
     const dispatch = useDispatch();
     const { currentPage, itemsPerPage, isLoading, error } = useSelector(state => state);
+    const [speciesFilter, setSpeciesFilter] = useState('');
+    const [statusFilter, setStatusFilter] = useState('')
+    const [genderFilter, setGenderFilter] = useState('')
 
     useEffect(() => {
-        dispatch(getAllCharacters(currentPage))
-    }, [dispatch, currentPage]);
+        dispatch(getAllCharacters(currentPage, speciesFilter, statusFilter, genderFilter));
+    }, [dispatch, currentPage, speciesFilter, statusFilter, genderFilter]);
 
     if (isLoading) {
         return (
@@ -138,8 +142,58 @@ const Characters = ({ characters }) => {
         dispatch(setPage(currentPage + 1));
     };
 
+    const handleSpeciesChange = (event) => {
+        setSpeciesFilter(event.target.value);
+    };
+
+    const handleStatusChange = (event) => {
+        setStatusFilter(event.target.value);
+    };
+
+    const handleGenderChange = (event) => {
+        setGenderFilter(event.target.value);
+    };
+
     return (
-        <div className={style.contenedorCharacters}>
+        <div className={style.elCapo}>
+
+            <div className={style.speciesFilter}>
+                <label htmlFor="species">Filter by Species:</label>
+                <select id="species" value={speciesFilter} onChange={handleSpeciesChange}>
+                <option value="">All</option>
+                <option value="Human">Human</option>
+                <option value="Alien">Alien</option>
+                <option value="Humanoid">Humanoid</option>
+                <option value="Mythological Creature">Mythological Creature</option>
+                <option value="Animal">Animal</option>
+                <option value="Robot">Robot</option>
+                <option value="Cronenberg">Cronenberg</option>
+                <option value="Disease">Disease</option>
+                <option value="Unknown">Unknown</option>
+                </select>
+            </div>
+
+            <div className={style.statusFilter}>
+                <label htmlFor="status">Filter by Status:</label>
+                <select id="status" value={statusFilter} onChange={handleStatusChange}>
+                <option value="">All</option>
+                <option value="Alive">Alive</option>
+                <option value="Dead">Dead</option>
+                <option value="unknown">unknown</option>
+                </select>
+            </div>
+
+            <div className={style.genderFilter}>
+                <label htmlFor="gender">Filter by Gender:</label>
+                <select id="gender" value={genderFilter} onChange={handleGenderChange}>
+                <option value="">All</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="unknown">unknown</option>
+                </select>
+            </div>
+
+            <div className={style.contenedorCharacters}>
             {characters?.map((character) =>
                 <Card
                     key={character.id}
@@ -153,14 +207,13 @@ const Characters = ({ characters }) => {
                     onClose={character.onClose}
                 />
             )}
-
             <div className={style.contenedorboton}>
                 <NavLink
                     to={`/Characters/page/${currentPage - 1}`}
                     onClick={handlePreviousPage}
                     className={style.botonPage}
                     disabled={currentPage === 1}
-                >
+                    >
                     Back
                 </NavLink>
 
@@ -169,11 +222,12 @@ const Characters = ({ characters }) => {
                     onClick={handleNextPage}
                     className={style.botonPage}
                     disabled={endIndex >= characters.length}
-                >
+                    >
                     Next
                 </NavLink>
-            </div>
 
+                    </div>
+            </div>
             <div  className={style.botonTop}>
             <ScrollTop ></ScrollTop>
             </div>

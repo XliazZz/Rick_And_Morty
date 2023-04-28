@@ -1,0 +1,33 @@
+.contenedorEpisodes{
+    font-family: "WubbaLubbaDubDub";
+    background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
+    padding-top: 6px;
+    padding-bottom: 100px;
+}
+
+.allEpi{
+    font-size: 40px;
+}
+
+.season{
+    color: #8ffe77;
+    font-size: 30px;
+    padding: 0px;
+    padding-top: 30px;
+    margin-bottom: 15px;
+}
+
+.activeLink{
+    color: white;
+}
+
+.episode{
+    margin: 10px;
+    font-size: 22px;
+}
+
+.botonTop{
+    position: relative;
+    bottom: -50px;
+    right: 10px;
+}
