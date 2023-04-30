@@ -125,6 +125,7 @@ const Register = () => {
                 <div className={style.Genero}>
                     <label htmlFor="male">Male</label>
                     <input
+                        className={style.male}
                         type="radio"
                         id="male"
                         name="gender"
@@ -135,6 +136,7 @@ const Register = () => {
 
                     <label htmlFor="female">Female</label>
                     <input
+                        className={style.female}
                         type="radio"
                         id="female"
                         name="gender"
@@ -145,6 +147,7 @@ const Register = () => {
 
                     <label htmlFor="other">Other</label>
                     <input
+                        className={style.other}
                         type="radio"
                         id="other"
                         name="gender"

@@ -188,7 +188,15 @@ p{
     cursor: not-allowed;
 } 
 
-.Genero{
+.success{
+    color: #00ff00;
+    font-size: 30px;
+    position: relative;
+    top: 200px;
+    left: 0px;
+}
+
+.Genero {
     color: white;
     font-family: "WubbaLubbaDubDub";
     font-size: 20px;
@@ -196,10 +204,26 @@ p{
     bottom: 20px;
 }
 
-.success{
+.Genero label {
+    margin-right: 0px; /* Agrega un margen entre las etiquetas */
+    margin-left: 50px; /* Agrega un margen entre las etiquetas */
+}
+
+.success {
     color: #00ff00;
     font-size: 30px;
     position: relative;
     top: 200px;
     left: 0px;
+}
+
+.male {
+}
+
+.female {
+    padding: 5px;
+}
+
+.other {
+    padding: 5px;
 }

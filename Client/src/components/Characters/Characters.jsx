@@ -206,7 +206,9 @@ const Characters = ({ characters }) => {
                     origin={character.origin.name}
                     onClose={character.onClose}
                 />
-            )}
+                )}
+                </div>
+                
             <div className={style.contenedorboton}>
                 <NavLink
                     to={`/Characters/page/${currentPage - 1}`}
@@ -226,7 +228,6 @@ const Characters = ({ characters }) => {
                     Next
                 </NavLink>
 
-                    </div>
             </div>
             <div  className={style.botonTop}>
             <ScrollTop ></ScrollTop>

@@ -99,8 +99,6 @@ const Home = () => {
             <div  className={style.botonTop}>
             <ScrollTop ></ScrollTop>
             </div>
-
-            <Footer></Footer>
         </div>
     );
 };

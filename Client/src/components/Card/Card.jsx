@@ -84,7 +84,7 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
       </button>
    
 
-      {pathname !== "/favorites" && pathname !== "/characters" && !pathname.startsWith("/episode/detail/") && (
+      {pathname === "/cards" && ( // Mostrar el botón de cierre solo si la ruta es "/cards"
          <button className={style.button} onClick={onClose}>
             X
          </button>

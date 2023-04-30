@@ -17,10 +17,10 @@
 .contenedorboton {
   display: flex;
   justify-content: center;
-  padding: 0px 0px 0px 236px; /* Agregado padding a la derecha */
   column-gap: 15px;
   position: relative;
-  left: 255px;
+  bottom: 20px;
+  padding-left: 15px;
 }
 
 .botonPage{
@@ -32,7 +32,7 @@
   transition: all 0.2s ease-in-out;
   margin-top: 20px;
   height: 45px;
-  width: 200px;
+  width: 60px;
   position: relative;
   right: 0px;
   background-color: #8ffe77;

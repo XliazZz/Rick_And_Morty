@@ -16,15 +16,13 @@
     height: 100vh;
     margin: 0 auto;
     background-color: #1a1a1a; 
-    padding-top: 90px;
+    padding-top: 150px;
 }
 
 
 .subtitle {
     font-size: 3em;
     text-align: center;
-    margin-top: 5rem;
-    margin-bottom: 1em;
     color: white;
     text-shadow: 5px 4px 9px #00bcd7;
 }
@@ -83,11 +81,10 @@
 
 .unorderedList {
     list-style-type: none;
-    padding: 0;
-    margin-bottom: 15em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
+    margin-bottom: 200px;
 }
 
 .listItem {
@@ -140,4 +137,22 @@ h2{
     color: white;
     text-shadow: 5px 4px 9px #31c400;
 
+}
+
+.h3About{
+    font-size: 20px;
+    color: white;
+    padding: 0px;
+    margin: 5px;
+    font-family: "WubbaLubbaDubDub";
+}
+
+.redesSociales{
+    font-size: 40px;
+    display: flex;
+    gap: 10px;
+}
+
+.icono{
+    color: #8ffe77 ;
 }
