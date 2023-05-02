@@ -104,6 +104,7 @@ import { NavLink } from 'react-router-dom';
 import portal from "../Asserts/PortalInicio.png"
 import ScrollTop from '../ScrollTop/ScrollTop';
 import { useState } from 'react';
+import CardLoading from '../CardLoading/CardLoading';
 
 const Characters = ({ characters }) => {
 
@@ -117,14 +118,16 @@ const Characters = ({ characters }) => {
         dispatch(getAllCharacters(currentPage, speciesFilter, statusFilter, genderFilter));
     }, [dispatch, currentPage, speciesFilter, statusFilter, genderFilter]);
 
-    if (isLoading) {
+/*     if (isLoading) {
+        const loadingComponents = Array.from({ length: 20 }).map((_, index) => (
+            <CardLoading key={index} />
+        ));
         return (
-        <div>
-            <img className={style.portalLoading} src={portal} alt="portal" />
-            <p className={style.loading} >Loading...</p>
-        </div>
-        )
-    }
+            <div className={style.contenedorCharacters}>
+                {loadingComponents}
+            </div>
+        );
+    } */
 
     if (error) {
         return <div>Error: {error}</div>;
@@ -194,19 +197,25 @@ const Characters = ({ characters }) => {
             </div>
 
             <div className={style.contenedorCharacters}>
-            {characters?.map((character) =>
-                <Card
-                    key={character.id}
-                    id={character.id}
-                    name={character.name}
-                    status={character.status}
-                    species={character.species}
-                    gender={character.gender}
-                    image={character.image}
-                    origin={character.origin.name}
-                    onClose={character.onClose}
-                />
-                )}
+            {characters?.map((character) => {
+                if (isLoading) {
+                    return <CardLoading key={character.id} />;
+                } else {
+                    return (
+                        <Card
+                            key={character.id}
+                            id={character.id}
+                            name={character.name}
+                            status={character.status}
+                            species={character.species}
+                            gender={character.gender}
+                            image={character.image}
+                            origin={character.origin.name}
+                            onClose={character.onClose}
+                        />
+                    );
+                }
+            })}
                 </div>
                 
             <div className={style.contenedorboton}>

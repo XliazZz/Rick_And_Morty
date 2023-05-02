@@ -1,0 +1,63 @@
+.cardLoading {
+    border-radius: 5px;
+    width: 220px;
+    height: 299px;
+    font-weight: bold;
+    padding-top: 7px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 0%, rgba(1,0,16,0.832847787552521) 0%, rgba(0,0,0,0.6619794402135855) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imageLoading {
+    width: 160px;
+    height: 160px;
+    background-color: #eee;
+    border-radius: 100px;
+    margin-top: 40px;
+    animation: myAnim 3s ease 0s infinite normal forwards;
+}   
+
+.nameLoading {
+    width: 75%;
+    height: 40px;
+    margin-top: 35px;
+    background-color: #eee;
+    animation: myAnim 3s ease 0s infinite normal forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.statusLoading{
+    width: 15px;
+    height: 15px;
+    background-color: #eee;
+    border-radius: 100px;
+    animation: myAnim 3s ease 0s infinite normal forwards;
+    position: absolute;
+    top: 35px;
+    left: 13px;
+}
+
+@keyframes myAnim {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.2;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

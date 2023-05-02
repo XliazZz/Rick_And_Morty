@@ -2,7 +2,7 @@
     background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
     padding-top: 1px;
     height: 100vh; 
-    padding-bottom: 210px;
+    padding-bottom: 55px;
 }
 
 
@@ -104,27 +104,27 @@
 .randomCharacters{
     position: relative;
     top: 600px;
-    height: 110px;
+    height: 100px;
     margin: 0px;
-    background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 0%),  hsl(310, 60%, 5%));
+    background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 0%), hsl(210, 60%, 5%));
     font-size: 57px;
     color: white;
-    padding-top: 15px;
+    padding-top: 7px;
 }
 
 .rickPepinillo{
-    width: 155px;
-    height: 200px;
+    width: 185px;
+    height: 190px;
     position: relative;
     top: 480px;
     right: 500px;
-    padding-top: 5px;
+    padding-top: 15px;
 }
 
 .contenedoRandom{
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 50px;
+    column-gap: 20px;
     row-gap: 0px;
     background-image: linear-gradient(to bottom, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
     padding: 100px;
@@ -134,150 +134,22 @@
     overflow: auto;
     position: relative;
     top: 385px;
+    padding-left: 185px;
 }
 
 .registerorsign{
     position: relative;
     color: white;
-    font-size: 30px;
+    font-size: 50px;
     top: 380px;
-    background-color: hsl(205, 60%, 4%);
-    padding-top: 45px;
-    padding-bottom: 45px;
-    font-family: "WubbaLubbaDubDub";
-}
-
-.contenedorLoginRegister{
-    background-color: hsl(204, 60%, 5%);
+    background-color: hsl(210, 60%, 5%);
+    padding-top: 90px;
     padding-bottom: 10px;
 }
 
-.contenedorLoginSign{
-    display: grid;
-    grid-template-columns: repeat(2, 280px);
-    column-gap: 50px;
-    z-index: 1;
-}
-
-
-.cartasLog{
-    background-image: linear-gradient(to top, rgb(0, 168, 0), rgba(0,0,0,1));
-    width: 280px;
-    height: 370px;
-    margin: 20px;
-    position: relative;
-    left: 600px;
-    top: 380px;
-    box-shadow: 0px 17px 24px 0px rgba(5,53,5,1);
-    -webkit-box-shadow:  0px 17px 24px 0px rgba(5,53,5,1);
-    -moz-box-shadow: 0px 17px 24px 0px rgba(5,53,5,1);
-    animation: lights2 4000ms infinite ease-in;
-
-}
-
-.h3Log{
-    font-size: 50px;
-    font-family: "WubbaLubbaDubDub";
-    margin: 0px;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    color: white;
-}
-
-.portalLog{
-    width: 220px;
-    height: 190px;
-    position: relative;
-    top: 0px;
-    border-radius: 1009px;
-}
-
-@keyframes rotatePortal {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.portalLog:hover {
-    animation-name: rotatePortal;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-.cartasRes{
-    background-image: linear-gradient(to top, rgb(0, 154, 175), rgba(0,0,0,1));
-    width: 280px;
-    height: 370px;
-    margin: 20px;
-    position: relative;
-    left: 110px;
-    bottom: 13px;
-    box-shadow: 0px 17px 24px 0px rgba(2,92,104,1);
-    -webkit-box-shadow: 0px 17px 24px 0px rgba(2,92,104,1);
-    -moz-box-shadow: 0px 17px 24px 0px rgba(2,92,104,1);
-    animation: lights 4000ms infinite ease-in;
-
-}
-
-.portalRes{
-    width: 220px;
-    height: 190px;
-    position: relative;
-    top: 0px;
-}
-
-.portalRes:hover {
-    animation-name: rotatePortal;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-.h3Res{
-    font-size: 50px;
-    font-family: "WubbaLubbaDubDub";
-    margin: 0px;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    color: white;
-}
-
-.botonTop{
+.cartasLogSig{
     position: absolute;
-    top: 2000px;
-    right: 80px;
-}
-
-@keyframes lights {
-    0% {
-    box-shadow: 0px 0px 10px 2px #00d8f5;
-    }
-    50% {
-    box-shadow: 0px 0px 10px 2px #007282;
-    }
-    70% {
-    box-shadow: 0px 0px 10px 2px #007282;
-    }
-    100% {
-    box-shadow: 0px 0px 10px 2px #00d8f5;
-    }
-}
-
-@keyframes lights2 {
-    0% {
-    box-shadow: 0px 0px 10px 2px #00ff00;
-    }
-    50% {
-    box-shadow: 0px 0px 10px 2px #21b601;
-    }
-    70% {
-    box-shadow: 0px 0px 10px 2px #21b601;
-    }
-    100% {
-    box-shadow: 0px 0px 10px 2px #00ff00;
-    }
+    border: 2px solid red;
+    width: 340px;
+    height: 420px;
 }

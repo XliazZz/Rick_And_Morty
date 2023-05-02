@@ -9,8 +9,8 @@ export default function Nav({ logOut }) {
 
     const isLoading = useSelector((state) => state.isLoading);
 
-    if (isLoading) {
-        return null; // Si isLoading es true, no se muestra el Footer
+    if (isLoading && location.pathname !== "/characters") {
+        return null; 
     }
 
     return (
