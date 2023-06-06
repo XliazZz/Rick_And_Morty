@@ -4,7 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import style from "./Nav.module.css";
 import { RiLogoutBoxLine } from "react-icons/ri"
 
-export default function Nav({ logOut }) {
+export default function Nav({ handleLogout }) {
     const location = useLocation();
 
     const isLoading = useSelector((state) => state.isLoading);
@@ -17,7 +17,7 @@ export default function Nav({ logOut }) {
         <div className={style.navegador}>
         {location.pathname !== "/home" && (
             <NavLink to="/">
-            <button className={style.logOut} onClick={logOut}>
+            <button className={style.logOut} onClick={handleLogout}>
                 <RiLogoutBoxLine />
             </button>
             </NavLink>

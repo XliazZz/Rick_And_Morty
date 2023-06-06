@@ -1,9 +1,6 @@
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SET_PAGE, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, } from "../Action-types/actions-types"
-import { success } from "../Actions/actions";
+import {  REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, POST_FAVORITE_REQUEST, POST_FAVORITE_SUCCESS, POST_FAVORITE_ERROR, } from "../Action-types/actions-types"
 
 const initialState = {
-    myFavorites: [], //los personajes fav
-    allCharactersFav: [], //todos los personajes fav
     isLoading: false,
     error: null,
     success: false,
@@ -18,11 +15,25 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
-        case ADD_FAV:
+        case POST_FAVORITE_REQUEST:
             return{ 
                 ...state,
-                myFavorites: action.payload,
-                allCharactersFav: action.payload 
+                loading: true,
+                error: false,
+                success: false,
+            };
+        case POST_FAVORITE_SUCCESS:
+            return{ 
+                ...state,
+                success: true,
+                loading: false,
+                error: false,
+            };
+        case POST_FAVORITE_ERROR:
+            return{ 
+                ...state,
+                isLoading: false,
+                error: action.payload
             };
 
         case REMOVE_FAV:
@@ -71,11 +82,6 @@ const rootReducer = (state = initialState, action) => {
                 error: action.payload,
             };
 
-        case SET_PAGE:
-            return{
-                ...state,
-                currentPage: action.payload
-            };
 
         case SEARCH_CHARACTER:
             return{
@@ -90,6 +96,7 @@ const rootReducer = (state = initialState, action) => {
                 searchResults: [...state.searchResults, action.payload],
                 isLoading: false,
                 error: null,
+                success: true,
             };
 
         case SEARCH_CHARACTER_ERROR:

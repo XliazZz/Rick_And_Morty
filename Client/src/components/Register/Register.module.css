@@ -218,12 +218,15 @@ p{
 }
 
 .male {
+    cursor: pointer;
 }
 
 .female {
     padding: 5px;
+    cursor: pointer;
 }
 
 .other {
     padding: 5px;
+    cursor: pointer;
 }

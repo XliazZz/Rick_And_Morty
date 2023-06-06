@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 
 const Register = () => {
     const dispatch = useDispatch();
-    const success = useSelector(state => state.success);
+    const [formSubmitted, setFormSubmitted] = useState(false); // nueva variable de estado
 
     const [errors, setErrors] = useState({});
     const [userData, setUserData] = useState({
@@ -47,13 +47,13 @@ const Register = () => {
         !userData.lastname ||
         Object.values(errors).some((error) => error.length > 0);
 
-
+    const success = useSelector((state) => state.success )
 
     return (
         <div className={style.contenedorDiv}>
         <NavLink to="/">
             <button className={style.backForm}>
-            <BiArrowBack />
+            <BiArrowBack className={style.botonBackCursor} />
             </button>
         </NavLink>
 
@@ -158,8 +158,13 @@ const Register = () => {
                 </div>
 
         <div className={style.terms}>
-        <label htmlFor="terms">I accept the terms and conditions</label>
-        <input type="checkbox" name="terms" id="terms" required />
+            <label htmlFor="terms">I accept the terms and conditions</label>
+            <input                         
+                className={style.female}
+                type="checkbox" 
+                name="terms" 
+                id="terms" required 
+            />
         </div>
 
         {success === true ? null : (
@@ -177,8 +182,6 @@ const Register = () => {
             <p className={style.success}>User created successfully</p>
         </div>
     )}
-
-
 
     <img className={style.fotoPNG} src={jerryMusculoso} alt="" />
     </div>

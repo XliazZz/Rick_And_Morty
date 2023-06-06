@@ -1,5 +1,10 @@
-export const ADD_FAV = "ADD_FAV";
+//Post Activity
+export const POST_FAVORITE_REQUEST = "POST_FAVORITE_REQUEST";
+export const POST_FAVORITE_SUCCESS = "POST_FAVORITE_SUCCESS";
+export const POST_FAVORITE_ERROR = "POST_FAVORITE_ERROR";
+
 export const REMOVE_FAV = "REMOVE_FAV";
+
 export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 

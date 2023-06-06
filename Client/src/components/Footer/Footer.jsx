@@ -14,11 +14,11 @@ const Footer = () => {
         <div className={style.contenedorLoading} >
         <footer className={style.footer}>
             <NavLink to="./about" className={style.activeLink}>
-                <p>About me</p>
+                <p className={style.link}>About me</p>
             </NavLink>
 
                 <NavLink to="./contact" className={style.activeLink}>
-                    <p>Contact Us</p>
+                    <p className={style.link}>Contact Us</p>
                 </NavLink>
 
             <p className={style.rickandmorty} > <b className={style.rick} >Rick</b> and <b className={style.morty} >Morty</b> </p>

@@ -2,29 +2,46 @@ import * as types from "../Action-types/actions-types";
 import axios from 'axios';
 import { useNavigate } from "react-router";
 
-const URL_BASE = "https://be-a-rym.up.railway.app/api/character";
-const API_KEY = "6404c390b0dc.11ee869a4a7f5e41d047";
+const token = localStorage.getItem('token');
+const headers = {
+  Authorization: `Bearer ${token}`
+};
 
+const URL = 'http://localhost:3001';
 
-export const addFav = (character) => {
+export const postFavoriteCountryRequest = () => ({
+    type: types.POST_FAVORITE_REQUEST,
+});
+
+export const postFavoriteCountrySuccess = ( character ) => ({
+    type: types.POST_FAVORITE_SUCCESS,
+        payload: character,
+});
+
+export const postFavoriteCountryError = ( error ) => ({
+    type: types.POST_FAVORITE_ERROR,
+    payload: error,
+});
+
+export const postFavorite = (character) => {
     return async (dispatch) => {
-        const endpoint = 'http://localhost:3001/rickandmorty/fav';
-        try{
-            const { data } = await axios.post(endpoint, character);
-            dispatch({
-                type: types.ADD_FAV,
-                payload: data,
-            });
-        }   
-        catch (error) {
-            console.error(error);
-        }
+        dispatch(postFavoriteCountryRequest());
+        const endpoint = 'http://localhost:3001/fav';
+        try {
+            const { data } = await axios.post(endpoint, character, { headers });
+            dispatch(postFavoriteCountrySuccess(data));
+        } catch (error) {
+            const errorMessage = error.response?.data?.error || error.message;
+            dispatch(postFavoriteCountryError(errorMessage));
+        };
     };
 };
 
+
+
 export const removeFav = (id) => {
     return async (dispatch) => {
-        const endpoint = `http://localhost:3001/rickandmorty/fav/${id}`;
+        const endpoint = `${URL}/fav/${id}`;
         try{
             const { data } = await axios.delete(endpoint);
             dispatch({
@@ -45,40 +62,34 @@ export const orderCards = (orden) => {
 
 
 // Characters
-
-//esta action envia la solicitud a la API.
 export const request = () => ({
     type: types.REQUEST,
 });
 
-//Se envia cuando se reciben los datos correctamente,
 export const success = (characters) => ({
     type: types.SUCCESS,
     payload: characters,
 });
 
-//Se envia cuando hay un error en la peticion.
 export const errorRequest = (error) => ({
     type: types.ERRORREQUEST,
     payload: error,
 });
 
-//Hace la peticion a la api. Si es exitosa, se envia la accion "fetchCharacterSuccess", con los datos recibidos como argumento. si falla si envia "fetchCharacterFailure"
-export const getAllCharacters = (page, species, status, gender) => {
+export const getAllCharacters = () => {
     return async (dispatch) => {
     dispatch(request());
     
     try {
-        const response = await axios.get(`${URL_BASE}?key=${API_KEY}&page=${page}&species=${species}&status=${status}&gender=${gender}`);
+        const response = await axios.get(`${URL}/characters`);
         const characters = response.data;
-        dispatch(success(characters.info.results));
+        dispatch(success(characters));
     } catch (error) {
         const errorMessage = error.message;
         dispatch(errorRequest(errorMessage));
-    }
     };
+  };
 };
-
 
 
 //Paginate
@@ -102,7 +113,7 @@ export const searchCharacter = (id, navigate) => (dispatch, getState) => {
         dispatch({ type: types.SEARCH_CHARACTER });
     
         axios
-        .get(`${URL_BASE}/${id}?key=${API_KEY}`)
+        .get(`${URL}/characters`)
         .then((response) => {
             const character = response.data;
             dispatch({ type: types.SEARCH_CHARACTER_SUCCESS, payload: character });
@@ -134,7 +145,7 @@ export const registerUser = (userData) => {
     return async (dispatch) => {
         try {
             dispatch(registerRequest());
-            const endpoint = 'http://localhost:3001/rickandmorty/users';
+            const endpoint = `${URL}/api/signup`;
             const response = await axios.post(endpoint, userData);
             dispatch(registerSuccess(response.data));
         } catch (error) {

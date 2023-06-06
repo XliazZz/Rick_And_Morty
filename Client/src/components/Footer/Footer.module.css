@@ -24,14 +24,17 @@
 
 .icono{
     color: #00b0c8 ;
+    margin-left: 10px;
+}
+
+.icono:hover{
+    color: #7bf0ff;
 }
 
 .rick{
     color: #8ffe77;
     font-size: 20px;
 }
-
-
 
 .morty{
     color:#00b0c8;
@@ -43,7 +46,10 @@
     font-family: "getSchwifty";
 }
 
-
 p{
     font-size: 15px;
+}
+
+.link{
+    cursor: pointer;
 }

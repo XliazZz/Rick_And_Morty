@@ -1,10 +1,8 @@
 .contenedorHome{
     background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
     padding-top: 1px;
-    height: 100vh; 
-    padding-bottom: 55px;
+    /* padding-bottom: 55px; */
 }
-
 
 .tituloHome{
     color: white;
@@ -19,15 +17,14 @@
 }
 
 .rickymorty{
-    position: absolute;
-    top: 180px;
-    right: 650px;
     width: 20em;
     margin: 20px;
     height: 15em;
     animation: rickymorty 3s ease 1.5s 1 normal forwards;
     opacity: 0;
     transition: opacity 4s ease 3s;
+    margin-right: 50%;
+    margin-top: 15%;
 }
 
 .rickymorty:hover{
@@ -48,13 +45,14 @@
 
 .contenedorDescription{
     width: 20em;
-    position: absolute;
     right: 80px;
-    top: 200px;
+    position: relative;
+    left: 50%;
+    top: -250px;
     font-size: 1.5em;
     font-family: "WubbaLubbaDubDub";
     color: white;
-    background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 2%), hsl(210, 60%, 5%));
+    background-color:  hsl(210, 60%, 5%);
     animation: description 2s ease 1s 1 normal forwards;
     opacity: 0;
     transition: opacity 3s ease 5s;
@@ -102,54 +100,79 @@
 }
 
 .randomCharacters{
-    position: relative;
-    top: 600px;
     height: 100px;
     margin: 0px;
-    background-image: linear-gradient(to top, hsl(310, 60%, 5%), hsl(180, 40%, 0%), hsl(210, 60%, 5%));
+    background-color:  hsl(210, 60%, 5%);
     font-size: 57px;
     color: white;
-    padding-top: 7px;
+    padding-top: 2%;
 }
 
 .rickPepinillo{
-    width: 185px;
+    width: 145px;
     height: 190px;
     position: relative;
-    top: 480px;
-    right: 500px;
+    top: -120px;
+    right: 550px;
     padding-top: 15px;
 }
 
 .contenedoRandom{
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 20px;
-    row-gap: 0px;
-    background-image: linear-gradient(to bottom, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
-    padding: 100px;
-    padding-top: 50px;
-    padding-bottom: 90px;
-    min-width: 0;
-    overflow: auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 50px;
+    margin-left: 6%;
     position: relative;
-    top: 385px;
-    padding-left: 185px;
+    top: -135px;
 }
 
 .registerorsign{
-    position: relative;
     color: white;
-    font-size: 50px;
-    top: 380px;
+    font-size: 35px;
     background-color: hsl(210, 60%, 5%);
-    padding-top: 90px;
-    padding-bottom: 10px;
+    padding: 50px;
+    margin-top: 5%;
 }
 
-.cartasLogSig{
-    position: absolute;
-    border: 2px solid red;
-    width: 340px;
-    height: 420px;
+.cartas{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.portal{
+    width: 50%;
+    animation: giro 20000ms ease 0s infinite normal forwards;
+    cursor: pointer;
+    border-radius: 99rem;
+
+}
+
+.opcion{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.contenedorOpcion{
+    margin: 50px;
+    background-color: #30122f;
+    border-radius: 10px;
+    padding-bottom: 25px;
+}
+
+@keyframes giro {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.contenedorOpcion:hover{
+    box-shadow: 1px 12px 24px 11px  #1a0a1a;
 }

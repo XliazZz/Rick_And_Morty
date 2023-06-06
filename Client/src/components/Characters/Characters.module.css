@@ -2,6 +2,7 @@
   
   background-image: linear-gradient(to top, hsl(310, 60%, 10%), hsl(180, 40%, 5%), hsl(210, 60%, 10%));
 }
+
 .contenedorCharacters{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -1,36 +1,61 @@
 import style from "./Card.module.css";
 import { NavLink, useLocation } from "react-router-dom";
-import { addFav, removeFav, removeCard } from "../../redux/Actions/actions";
+import { postFavorite, removeFav, removeCard } from "../../redux/Actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 function Card({ id, name, status, species, gender, origin, image, location }) {
    const { pathname } = useLocation();
    const dispatch = useDispatch();
-   const myFavorites = useSelector((state) => state.myFavorites);
    const [isFav, setIsFav] = useState(false);
 
-   const handleFavorite = () => {
-      if (isFav) {
-         setIsFav(false);
-         dispatch(removeFav(id));
-      } else {
-         setIsFav(true);
-         dispatch(addFav({ id, name, status, species, gender, origin, image, location }));
-      }
-   };
+   const [favs, setFavs] = useState([]);
+
+   useEffect(() => {
+      const allFav = async () => {
+          try {
+              const respose = await axios.get('http://localhost:3001/favorites');
+              const data = respose.data;
+              setFavs(data);
+          } catch (error) {
+              throw new Error(`${error.message}`);
+          }
+      };
+      allFav();
+  }, []);
+
+  const handleFavorite = () => {
+     if (isFav) {
+        setIsFav(false);
+        dispatch(removeFav(id));
+        setFavs(prevFavs => prevFavs.filter(fav => fav.id !== id)); // Actualiza favs después de eliminar una tarjeta de favoritos
+     } else {
+        setIsFav(true);
+        dispatch(postFavorite({ id, name, status, species, gender, origin, image, location }));
+        setFavs(prevFavs => [...prevFavs, { id, name, status, species, gender, origin, image, location }]); // Actualiza favs después de agregar una tarjeta a favoritos
+     }
+  };
+
+  useEffect(() => {
+     favs.forEach((fav) => {
+        if (fav && fav.id === id) {
+           setIsFav(true);
+        }
+     });
+  }, [favs, id]);
 
    const onClose = () => {
       dispatch(removeCard(id));
    };
 
    useEffect(() => {
-      myFavorites.forEach((fav) => {
+      favs.forEach((fav) => {
          if (fav && fav.id === id) {
             setIsFav(true);
          }
       });
-   }, [myFavorites]);
+   }, [favs]);
 
 
    const [isHovering, setIsHovering] = useState(false);

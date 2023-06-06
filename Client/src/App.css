@@ -6,3 +6,7 @@
 html {
    scroll-behavior: smooth;
 }
+
+input{
+   cursor: text;
+}

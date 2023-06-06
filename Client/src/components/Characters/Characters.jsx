@@ -1,242 +1,128 @@
-// import React, { useEffect } from 'react';
-// import { connect } from 'react-redux';
-// import { getAllCharacters, setPage } from '../../redux/Actions/actions';
-// import Card from '../Card/Card';
-// import { useDispatch, useSelector } from 'react-redux';
-// import style from "./Characters.module.css"
-// import { NavLink } from 'react-router-dom';
-
-// const Characters = ({ characters, isLoading, error, getAllCharacters }) => {
-
-//     const dispatch = useDispatch();
-//     const currentPage = useSelector(state => state.currentPage);
-//     const itemsPerPage = useSelector(state => state.itemsPerPage);
-
-//     useEffect(() => {
-//         getAllCharacters(currentPage)
-//     }, [getAllCharacters, currentPage]);
-
-//     if (isLoading) {
-//         return <div className={style.loading} >Loading...</div>;
-//     }
-
-//     if (error) {
-//         return <div>Error: {error}</div>;
-//     }
-
-//     // Cálculo de los índices de inicio y fin para los elementos de la página actual
-//     const startIndex = (currentPage - 1) * itemsPerPage;
-//     const endIndex = Math.min(startIndex + itemsPerPage, characters.length);
-//     const currentItems = characters.slice(startIndex, endIndex);
-
-//     const handlePreviousPage = () => {
-//         dispatch(setPage(currentPage - 1));
-//     };
-
-//     const handleNextPage = () => {
-//         dispatch(setPage(currentPage + 1));
-//     };
-
-//     return (
-//         <div className={style.contenedorCharacters}>
-//         {Array.isArray(characters) && (
-//             characters?.map((character) => <Card
-//             key={character.id}
-//             id={character.id}
-//             name={character.name}
-//             status={character.status}
-//             species={character.species}
-//             gender={character.gender}
-//             image={character.image}
-//             origin={character.origin.name}
-//             onClose={character.onClose}
-//         />)
-//         )
-//         }
-//         <div>
-//         {/* <ul>
-//             {currentItems.map((item, index) => {
-//                 return <li key={index}>{item.name}</li>
-//             })}
-//         </ul> */}
-//         </div>
-
-//         <div className={style.contenedorboton}>
-//         <NavLink
-//             to={`/Characters/page/${currentPage - 1}`}
-//             onClick={handlePreviousPage}
-//             className={style.botonPage}
-//             disabled={currentPage === 1} // Deshabilitar el botón si currentPage es 1
-//             >
-//             Back
-//             </NavLink>
-
-//             <NavLink
-//             to={`/Characters/page/${currentPage + 1}`}
-//             onClick={handleNextPage}
-//             className={style.botonPage}
-//             disabled={endIndex >= characters.length}
-//             >
-//             Next
-//             </NavLink>
-//         </div>
-        
-
-//         </div>
-//     )
-// };
-
-// const mapStateToProps = (state) => ({
-//     isLoading: state.isLoading,
-//     error: state.error,
-//     characters: state.characters,
-// })
-
-// export default connect(mapStateToProps, { getAllCharacters })(Characters)
-
-
-import { useEffect } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { getAllCharacters, setPage } from '../../redux/Actions/actions';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCharacters } from '../../redux/Actions/actions';
 import Card from '../Card/Card';
 import style from "./Characters.module.css"
-import { NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import portal from "../Asserts/PortalInicio.png"
 import ScrollTop from '../ScrollTop/ScrollTop';
-import { useState } from 'react';
 import CardLoading from '../CardLoading/CardLoading';
 
-const Characters = ({ characters }) => {
+const Characters = () => {
 
     const dispatch = useDispatch();
-    const { currentPage, itemsPerPage, isLoading, error } = useSelector(state => state);
-    const [speciesFilter, setSpeciesFilter] = useState('');
-    const [statusFilter, setStatusFilter] = useState('')
-    const [genderFilter, setGenderFilter] = useState('')
 
-    useEffect(() => {
-        dispatch(getAllCharacters(currentPage, speciesFilter, statusFilter, genderFilter));
-    }, [dispatch, currentPage, speciesFilter, statusFilter, genderFilter]);
+    const characters = useSelector((state) => state.characters)
+    const isLoading = useSelector((state) => state.isLoading)
+    const error = useSelector((state) => state.error)
 
-/*     if (isLoading) {
-        const loadingComponents = Array.from({ length: 20 }).map((_, index) => (
-            <CardLoading key={index} />
-        ));
-        return (
-            <div className={style.contenedorCharacters}>
-                {loadingComponents}
-            </div>
-        );
-    } */
+    const { pageNumber } = useParams(); // obtiene el número de página actual de la ruta
 
-    if (error) {
-        return <div>Error: {error}</div>;
+    const [currentPage, setCurrentPage] = useState(pageNumber ? pageNumber - 1 : 0);
+
+    const [selectedSpecie, setSelectedSpecie] = useState(''); // estado para guardar el continente seleccionado
+    let filteredCharacters = characters;
+    if (selectedSpecie) {
+        filteredCharacters = characters.filter(character => character.species.includes(selectedSpecie));
     }
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, characters.length);
-    const currentItems = characters.slice(startIndex, endIndex);
+    useEffect(() => {
+        dispatch(getAllCharacters());
+    }, [dispatch]);
 
-    const handlePreviousPage = () => {
-        dispatch(setPage(currentPage - 1));
-    };
+    const itemsPerPage = 20;
+    const offset = currentPage * itemsPerPage;
+    const currentItems = filteredCharacters.slice(offset, offset + itemsPerPage);
 
-    const handleNextPage = () => {
-        dispatch(setPage(currentPage + 1));
-    };
+    // calcula el número de páginas en función de la cantidad de elementos
+    const pageCount = Math.ceil(filteredCharacters.length / itemsPerPage);
+
+    const handlePageChange = ({ selected }) => {
+        setCurrentPage(selected);
+        window.scrollTo(0, 0);
+    }
+
+    const [species, setSpecies] = useState([]);
+
+    useEffect(() => {
+        const fetchSpecies = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/species');
+                const data = await response.json();
+                setSpecies(data);
+            } catch (error) {
+                throw new Error(`${error.message}`);
+            }
+        };
+
+        fetchSpecies();
+    }, []);
 
     const handleSpeciesChange = (event) => {
-        setSpeciesFilter(event.target.value);
-    };
-
-    const handleStatusChange = (event) => {
-        setStatusFilter(event.target.value);
-    };
-
-    const handleGenderChange = (event) => {
-        setGenderFilter(event.target.value);
-    };
-
+        setSelectedSpecie(event.target.value);
+        setCurrentPage(0); // resetea la página actual cuando se cambia el continente seleccionado
+    }
+    
     return (
         <div className={style.elCapo}>
 
             <div className={style.speciesFilter}>
-                <label htmlFor="species">Filter by Species:</label>
-                <select id="species" value={speciesFilter} onChange={handleSpeciesChange}>
-                <option value="">All</option>
-                <option value="Human">Human</option>
-                <option value="Alien">Alien</option>
-                <option value="Humanoid">Humanoid</option>
-                <option value="Mythological Creature">Mythological Creature</option>
-                <option value="Animal">Animal</option>
-                <option value="Robot">Robot</option>
-                <option value="Cronenberg">Cronenberg</option>
-                <option value="Disease">Disease</option>
-                <option value="Unknown">Unknown</option>
-                </select>
+            <h2 className={style.h2Filter}>Species</h2>
+                    <select value={selectedSpecie} onChange={handleSpeciesChange}>
+                        <option value="">All</option>
+                        {species.map(Specie => (
+                        <option key={Specie} value={Specie}>{Specie}</option>
+                        ))}
+                    </select>
             </div>
 
-            <div className={style.statusFilter}>
-                <label htmlFor="status">Filter by Status:</label>
-                <select id="status" value={statusFilter} onChange={handleStatusChange}>
-                <option value="">All</option>
-                <option value="Alive">Alive</option>
-                <option value="Dead">Dead</option>
-                <option value="unknown">unknown</option>
-                </select>
-            </div>
-
-            <div className={style.genderFilter}>
-                <label htmlFor="gender">Filter by Gender:</label>
-                <select id="gender" value={genderFilter} onChange={handleGenderChange}>
-                <option value="">All</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="unknown">unknown</option>
-                </select>
-            </div>
 
             <div className={style.contenedorCharacters}>
-            {characters?.map((character) => {
-                if (isLoading) {
-                    return <CardLoading key={character.id} />;
-                } else {
-                    return (
-                        <Card
-                            key={character.id}
-                            id={character.id}
-                            name={character.name}
-                            status={character.status}
-                            species={character.species}
-                            gender={character.gender}
-                            image={character.image}
-                            origin={character.origin.name}
-                            onClose={character.onClose}
-                        />
-                    );
-                }
+            {currentItems?.map((character) => {
+              if (isLoading) {
+                return <CardLoading key={character.id} />;
+              } else {
+                return (
+                  <Card
+                    key={character.id}
+                    id={character.id}
+                    name={character.name}
+                    status={character.status}
+                    species={character.species}
+                    gender={character.gender}
+                    image={character.image}
+                    origin={character.origin.name}
+                    onClose={character.onClose}
+                  />
+                );
+              }
             })}
+
                 </div>
                 
+
             <div className={style.contenedorboton}>
-                <NavLink
-                    to={`/Characters/page/${currentPage - 1}`}
-                    onClick={handlePreviousPage}
+            {currentPage !== 0 &&             
+              <button
                     className={style.botonPage}
-                    disabled={currentPage === 1}
-                    >
+                    onClick={() => handlePageChange({ selected: currentPage - 1 })}
+                    disabled={currentPage === 0}
+                >
                     Back
-                </NavLink>
+                </button>
+            }
 
-                <NavLink
-                    to={`/Characters/page/${currentPage + 1}`}
-                    onClick={handleNextPage}
+            <h2 className={style.spanPage}> {currentPage + 1}/{pageCount} </h2>
+                
+            { currentPage !== pageCount-1 &&               
+                <button
                     className={style.botonPage}
-                    disabled={endIndex >= characters.length}
-                    >
+                    onClick={() => handlePageChange({ selected: currentPage + 1 })}
+                    disabled={currentPage === pageCount - 1}
+                >
                     Next
-                </NavLink>
-
+                </button>
+            }
             </div>
             <div  className={style.botonTop}>
             <ScrollTop ></ScrollTop>
@@ -245,6 +131,5 @@ const Characters = ({ characters }) => {
     )
 };
 
-const mapStateToProps = ({ isLoading, error, characters }) => ({ isLoading, error, characters });
 
-export default connect(mapStateToProps, { getAllCharacters })(Characters)
+export default Characters;

@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { filterGender, orderCards } from "../../redux/Actions/actions";
 import Card from "../Card/Card";
+import axios from "axios";
 import style from "./Favorite.module.css"
 
 const Favorites = () => {
     const [aux, setAux] = useState(false);
+    const [favs, setFavs] = useState([]);
 
-    const favorites = useSelector((state) => state.myFavorites);
+    useEffect(() => {
+        const allFav = async () => {
+            try {
+                const respose = await axios.get('http://localhost:3001/favorites');
+                const data = respose.data;
+                setFavs(data)
+            } catch (error) {
+                throw new Error(`${error.message}`);
+            }
+        }
+        allFav();
+    }, [])
+
     const dispatch = useDispatch();
 
     const handleOrder = (event) => {
@@ -38,7 +52,7 @@ const Favorites = () => {
 
             <div className={style.contenedorFavs}>
                 {
-                    favorites?.map(({id, name, status, species, gender, origin, image}) => {
+                    favs?.map(({id, name, status, species, gender, origin, image}) => {
                         return(
                             <Card 
                                 id={id}
