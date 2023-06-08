@@ -94,10 +94,16 @@
   padding-right: 20px;
   padding-bottom: 45px;
 }
-label{
-  color: white;
-  font-size: 25px;
-  text-align: center;
-  justify-content: center;
-  font-family: "WubbaLubbaDubDub";
+
+.divFilters{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.h2Filter{
+  margin: 0;
+  margin-top: 30px;
 }

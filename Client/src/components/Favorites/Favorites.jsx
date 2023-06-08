@@ -33,6 +33,8 @@ const Favorites = () => {
         dispatch(filterGender(event.target.value));
     };
 
+    console.log(favs);
+
     return(
         <div className={style.conteedorFavorites} >
 

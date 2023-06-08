@@ -44,7 +44,7 @@ function App() {
       const { data } = await axios.get(endpoint);
       const { token } = data; 
       localStorage.setItem('token', token); 
-      navigate('/character')
+      navigate('/characters')
     } catch (error) {
       console.error(error);
     }

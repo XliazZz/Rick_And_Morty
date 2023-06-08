@@ -3,9 +3,8 @@ import axios from 'axios';
 import { useNavigate } from "react-router";
 
 const token = localStorage.getItem('token');
-const headers = {
-  Authorization: `Bearer ${token}`
-};
+
+console.log(token);
 
 const URL = 'http://localhost:3001';
 
@@ -13,30 +12,34 @@ export const postFavoriteCountryRequest = () => ({
     type: types.POST_FAVORITE_REQUEST,
 });
 
-export const postFavoriteCountrySuccess = ( character ) => ({
+export const postFavoriteCountrySuccess = (character) => ({
     type: types.POST_FAVORITE_SUCCESS,
-        payload: character,
+    payload: character,
 });
 
-export const postFavoriteCountryError = ( error ) => ({
+export const postFavoriteCountryError = (error) => ({
     type: types.POST_FAVORITE_ERROR,
     payload: error,
 });
 
 export const postFavorite = (character) => {
     return async (dispatch) => {
-        dispatch(postFavoriteCountryRequest());
-        const endpoint = 'http://localhost:3001/fav';
-        try {
-            const { data } = await axios.post(endpoint, character, { headers });
-            dispatch(postFavoriteCountrySuccess(data));
-        } catch (error) {
-            const errorMessage = error.response?.data?.error || error.message;
-            dispatch(postFavoriteCountryError(errorMessage));
-        };
+      dispatch(postFavoriteCountryRequest());
+      const endpoint = `${URL}/fav`;
+      try {
+        const { data } = await axios.post(endpoint, character, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        dispatch(postFavoriteCountrySuccess(data));
+      } catch (error) {
+        const errorMessage = error.response?.data?.error || error.message;
+        dispatch(postFavoriteCountryError(errorMessage));
+      }
     };
-};
-
+  };
+  
 
 
 export const removeFav = (id) => {

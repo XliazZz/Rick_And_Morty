@@ -10,7 +10,7 @@ const initialState = {
     totalPages: 1,
     searchResults: [], //resultados de la busqueda
     messages: [],
-    // characterDetail: {}
+    // favorites: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -28,6 +28,7 @@ const rootReducer = (state = initialState, action) => {
                 success: true,
                 loading: false,
                 error: false,
+                // favorites: [...state.favorites, action.payload]
             };
         case POST_FAVORITE_ERROR:
             return{ 

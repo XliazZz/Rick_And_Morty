@@ -8,9 +8,9 @@ const { signIn, signUp } = require('../controllers/User/authController');
 // Character
 const {getCharById} = require("../controllers/Character/getCharById");
 const { sendRandomCharacters } = require("../controllers/Character/randomCharacters");
-const { filterStatus } = require("../controllers/Character/filterStatus");
-const { filterGender } = require("../controllers/Character/filterGender");
 const getSpecies = require("../controllers/Character/respose/getSpecies");
+const getStatus = require("../controllers/Character/respose/getStatus");
+const getGender = require("../controllers/Character/respose/getGender");
 
 // Favorite
 const postFav = require('../controllers/Favorite/postFav');
@@ -43,6 +43,8 @@ router.get('/random', (req, res) => {
 });
 
 router.get('/species', getSpecies);
+router.get('/status', getStatus);
+router.get('/gender', getGender);
 
 router.get('/status', async (req, res) => {
     const status = req.query.status;
@@ -74,9 +76,21 @@ router.get('/characters', async (req, res) => {
 });
 
 // Favorite
-router.post('/fav', (req, res) => {
-    postFav(req, res);
+
+router.post('/fav', async (req, res) => {
+  try {
+    const token = req.headers.Authorization?.split(' ')[1];
+    const character = req.body.character; // Modificación aquí
+      const fav = await postFav(character, token); // Modificación aquí
+
+      res.status(200).json(fav);
+  } catch (error) {
+      console.error('Error in /fav route:', error);
+      res.status(404).send(error.message);
+  }
 });
+
+
 
 router.delete('/fav/:id', (req, res) => {
     deleteFav(req, res);

@@ -25,7 +25,6 @@ module.exports = (sequelize) => {
         },
         origin: {
             type: DataTypes.STRING,
-            allowNull:false,
         },
         image: {
             type: DataTypes.STRING,
@@ -33,7 +32,6 @@ module.exports = (sequelize) => {
         },
         location: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
     })
 };

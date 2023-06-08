@@ -1,34 +1,41 @@
+const { Favorite, User } = require('../../db');
 const jwt = require('jsonwebtoken');
 const { AUTH_SECRET } = process.env;
-const { Favorite } = require('../../db');
 
-const postFav = async (req, res) => {
-  try {
-    const { characterId } = req.body; // Obtén el ID del personaje de la solicitud
-
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) {
-      return res.status(401).json({ msg: 'No se proporcionó el token de autenticación.' });
-    }
-
+const postFav = async (character, token) => {
     try {
-      const decoded = jwt.verify(token, AUTH_SECRET);
-      const userId = decoded.user.id; // Obtén el ID del usuario desde el token
+        if (!token) {
+            throw new Error('No se proporcionó el token de autenticación.');
+        }
 
-      // Asocia el personaje favorito al usuario correspondiente
-      const favorite = await Favorite.create({
-        userId: userId,
-        characterId: characterId
-      });
-      console.log(favorite);
+        console.log(token);
 
-      return res.json({ msg: 'Personaje agregado como favorito.', favorite: favorite });
+        try {
+            const decoded = jwt.verify(token, AUTH_SECRET);
+            const userId = decoded.user.id; // Obtén el ID del usuario desde el token
+console.log(userId);
+            const favorite = await Favorite.create({
+                id: character.id,
+                name: character.name,
+                status: character.status,
+                species: character.species,
+                gender: character.gender,
+                origin: character.origin,
+                image: character.image,
+                location: character.location
+            });
+
+            const user = await User.findByPk(userId);
+            await user.addFavorite(favorite);
+
+            return favorite;
+        } catch (error) {
+            throw new Error('Token inválido: ' + error.message);
+        }
     } catch (error) {
-      return res.status(401).json({ msg: 'Token inválido.' });
+        throw new Error('Error al agregar favorito: ' + error.message);
     }
-  } catch (error) {
-    return res.status(500).json({ msg: 'Error al agregar el personaje como favorito.' });
-  }
 };
 
 module.exports = postFav;
+
