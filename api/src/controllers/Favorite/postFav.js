@@ -8,12 +8,9 @@ const postFav = async (character, token) => {
             throw new Error('No se proporcionó el token de autenticación.');
         }
 
-        console.log(token);
-
         try {
             const decoded = jwt.verify(token, AUTH_SECRET);
             const userId = decoded.user.id; // Obtén el ID del usuario desde el token
-console.log(userId);
             const favorite = await Favorite.create({
                 id: character.id,
                 name: character.name,

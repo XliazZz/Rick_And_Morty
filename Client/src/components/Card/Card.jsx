@@ -27,10 +27,12 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
 
   const [favs, setFavs] = useState([]);
 
+  const URL = 'http://localhost:3001';
   useEffect(() => {
       const allCountriesFav = async () => {
+        const endpoint = `${URL}/favorites`;
           try {
-              const respose = await axios.get('http://localhost:3001/favorites');
+              const respose = await axios.get(endpoint);
               const data = respose.data;
               setFavs(data)
           } catch (error) {
@@ -41,12 +43,15 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
   }, [])
 
   useEffect(() => {
-    favs?.forEach((fav) => {
-      if (fav && fav.id === id) {
-        setIsFav(true);
-      }
-    });
+    if (Array.isArray(favs)) {
+      favs.forEach((fav) => {
+        if (fav && fav.id === id) {
+          setIsFav(true);
+        }
+      });
+    }
   }, [favs]);
+  
 
   const [isHovering, setIsHovering] = useState(false);
 

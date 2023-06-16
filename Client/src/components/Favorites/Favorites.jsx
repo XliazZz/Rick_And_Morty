@@ -9,18 +9,21 @@ const Favorites = () => {
     const [aux, setAux] = useState(false);
     const [favs, setFavs] = useState([]);
 
-    useEffect(() => {
-        const allFav = async () => {
-            try {
-                const respose = await axios.get('http://localhost:3001/favorites');
-                const data = respose.data;
-                setFavs(data)
-            } catch (error) {
-                throw new Error(`${error.message}`);
-            }
-        }
-        allFav();
-    }, [])
+  const URL = 'http://localhost:3001';
+  useEffect(() => {
+      const allCountriesFav = async () => {
+        const endpoint = `${URL}/favorites`;
+          try {
+              const respose = await axios.get(endpoint);
+              const data = respose.data;
+              setFavs(data)
+          } catch (error) {
+              throw new Error(`${error.message}`);
+          }
+      }
+      allCountriesFav();
+  }, [])
+
 
     const dispatch = useDispatch();
 
@@ -53,22 +56,22 @@ const Favorites = () => {
             </select>
 
             <div className={style.contenedorFavs}>
-                {
-                    favs?.map(({id, name, status, species, gender, origin, image}) => {
-                        return(
-                            <Card 
-                                id={id}
-                                key={id}
-                                name={name}
-                                status={status}
-                                species={species}
-                                gender={gender}
-                                origin={origin}
-                                image={image}
-                            />
-                            )})
-                }
-            </div>
+  {Array.isArray(favs) && favs.map(({ id, name, status, species, gender, origin, image }) => {
+    return (
+      <Card 
+        id={id}
+        key={id}
+        name={name}
+        status={status}
+        species={species}
+        gender={gender}
+        origin={origin}
+        image={image}
+      />
+    );
+  })}
+</div>
+
         </div>
     );
 };

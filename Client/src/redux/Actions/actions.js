@@ -4,8 +4,6 @@ import { useNavigate } from "react-router";
 
 const token = localStorage.getItem('token');
 
-console.log(token);
-
 const URL = 'http://localhost:3001';
 
 export const postFavoriteCountryRequest = () => ({
@@ -23,22 +21,18 @@ export const postFavoriteCountryError = (error) => ({
 });
 
 export const postFavorite = (character) => {
-    return async (dispatch) => {
-      dispatch(postFavoriteCountryRequest());
-      const endpoint = `${URL}/fav`;
-      try {
-        const { data } = await axios.post(endpoint, character, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        dispatch(postFavoriteCountrySuccess(data));
-      } catch (error) {
-        const errorMessage = error.response?.data?.error || error.message;
-        dispatch(postFavoriteCountryError(errorMessage));
-      }
-    };
+  return async (dispatch) => {
+    dispatch(postFavoriteCountryRequest());
+    const endpoint = `${URL}/fav`;
+    try {
+      const { data } = await axios.post(endpoint, { character, token }); // Enviar token en el cuerpo de la solicitud
+      dispatch(postFavoriteCountrySuccess(data));
+    } catch (error) {
+      const errorMessage = error.response?.data?.error || error.message;
+      dispatch(postFavoriteCountryError(errorMessage));
+    }
   };
+};
   
 
 

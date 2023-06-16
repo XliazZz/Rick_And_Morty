@@ -76,21 +76,19 @@ router.get('/characters', async (req, res) => {
 });
 
 // Favorite
-
 router.post('/fav', async (req, res) => {
   try {
-    const token = req.headers.Authorization?.split(' ')[1];
-    const character = req.body.character; // Modificación aquí
-      const fav = await postFav(character, token); // Modificación aquí
+    const token = req.body.token; 
+    console.log(req.body);
+    const character = req.body.character;
+    const fav = await postFav(character, token);
 
-      res.status(200).json(fav);
+    res.status(200).json(fav);
   } catch (error) {
-      console.error('Error in /fav route:', error);
-      res.status(404).send(error.message);
+    console.error('Error in /fav route:', error);
+    res.status(404).send(error.message);
   }
 });
-
-
 
 router.delete('/fav/:id', (req, res) => {
     deleteFav(req, res);
@@ -98,7 +96,8 @@ router.delete('/fav/:id', (req, res) => {
 
 router.get('/favorites', async (req, res) => {
     try {
-        const favorites = await getAllFavorites();
+        const token = req.body.token; 
+        const favorites = await getAllFavorites(token);
         res.status(200).json(favorites);
     } catch (error) {
         res.status(404).send(error.message);
