@@ -1,4 +1,4 @@
-const { Favorite, User } = require('../../db');
+const { Favorite } = require('../../db');
 const jwt = require('jsonwebtoken');
 const { AUTH_SECRET } = process.env;
 
@@ -19,13 +19,14 @@ const postFav = async (character, token) => {
                 gender: character.gender,
                 origin: character.origin,
                 image: character.image,
-                location: character.location
+                location: character.location,
+                userId: userId,
+                characterId: character.id
             });
 
-            const user = await User.findByPk(userId);
-            await user.addFavorite(favorite);
 
             return favorite;
+
         } catch (error) {
             throw new Error('Token inválido: ' + error.message);
         }
@@ -35,4 +36,3 @@ const postFav = async (character, token) => {
 };
 
 module.exports = postFav;
-

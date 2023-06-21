@@ -34,8 +34,11 @@ const { User, Favorite, Character } = sequelize.models;
 
 // Aca vendrian las relaciones
 
-User.belongsToMany(Favorite, { through: 'favorite_character' });
-Favorite.belongsToMany(User, { through: 'favorite_character' });
+User.hasMany(Favorite, { foreignKey: 'userId' });
+Favorite.belongsTo(User, { foreignKey: 'userId' });
+
+Character.hasMany(Favorite, { foreignKey: 'characterId' });
+Favorite.belongsTo(Character, { foreignKey: 'characterId' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

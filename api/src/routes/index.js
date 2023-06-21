@@ -18,7 +18,8 @@ const deleteFav = require('../controllers/Favorite/deleteFav');
 const getAllFavorites = require('../controllers/Favorite/getAllFavorites');
 const getAllCharacters = require('../controllers/Character/getAllCharacters');
 
-
+// const jwt = require('jsonwebtoken');
+// const { AUTH_SECRET } = process.env;
 
 // ---------------------------------------- !RESPUESTAS ------------------------------------------
 
@@ -79,7 +80,7 @@ router.get('/characters', async (req, res) => {
 router.post('/fav', async (req, res) => {
   try {
     const token = req.body.token; 
-    console.log(req.body);
+    // console.log(req.body);
     const character = req.body.character;
     const fav = await postFav(character, token);
 
@@ -94,14 +95,27 @@ router.delete('/fav/:id', (req, res) => {
     deleteFav(req, res);
 });
 
-router.get('/favorites', async (req, res) => {
-    try {
-        const token = req.body.token; 
-        const favorites = await getAllFavorites(token);
-        res.status(200).json(favorites);
-    } catch (error) {
-        res.status(404).send(error.message);
-    };
+router.get('/fav', async (req, res) => {
+  try {
+    const authorizationHeader = req.headers.authorization;
+
+    if (!authorizationHeader) {
+      return res.status(401).json({ error: 'Token missing' });
+    }
+    
+    const token = authorizationHeader.split(' ')[1];
+
+    const favorites = await getAllFavorites(token);
+    if (!favorites) {
+      return res.status(404).json({ error: 'No favorites found' });
+    }
+
+    res.status(200).json(favorites);
+  } catch (error) {
+    console.error('Error al obtener favoritos:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
+
 
 module.exports = router
