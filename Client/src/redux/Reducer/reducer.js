@@ -1,4 +1,4 @@
-import {  REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, POST_FAVORITE_REQUEST, POST_FAVORITE_SUCCESS, POST_FAVORITE_ERROR, } from "../Action-types/actions-types"
+import {  REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, POST_FAVORITE_REQUEST, POST_FAVORITE_SUCCESS, POST_FAVORITE_ERROR, GET_FAVORITE_REQUEST, GET_FAVORITE_SUCCESS, GET_FAVORITE_ERROR, } from "../Action-types/actions-types"
 
 const initialState = {
     isLoading: false,
@@ -10,6 +10,7 @@ const initialState = {
     totalPages: 1,
     searchResults: [], //resultados de la busqueda
     messages: [],
+    // favorites: [],
     // favorites: [],
 };
 
@@ -140,6 +141,29 @@ const rootReducer = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+
+
+        // case GET_FAVORITE_REQUEST:
+        //     return{
+        //         ...state,
+        //         isLoading: true
+        //     };
+
+        // case GET_FAVORITE_SUCCESS:
+        //     return{
+        //         ...state,
+        //         isLoading: false,
+        //         error: null,
+        //         success: true,
+        //         favorites: action.payload,
+        //     };
+
+        // case GET_FAVORITE_ERROR:
+        //     return{
+        //         ...state,
+        //         isLoading: false,
+        //         error: action.payload,
+        //     };
 
         default:
             return{...state};

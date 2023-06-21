@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Card({ id, name, status, species, gender, origin, image, location }) {
+  const token = localStorage.getItem('token');
+
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
@@ -28,19 +30,24 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
   const [favs, setFavs] = useState([]);
 
   const URL = 'http://localhost:3001';
+  
   useEffect(() => {
-      const allCountriesFav = async () => {
-        const endpoint = `${URL}/favorites`;
-          try {
-              const respose = await axios.get(endpoint);
-              const data = respose.data;
-              setFavs(data)
-          } catch (error) {
-              throw new Error(`${error.message}`);
-          }
+    const allCountriesFav = async () => {
+      const endpoint = `${URL}/fav`;
+      try {
+        const response = await axios.get(endpoint, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Agrega el token como encabezado de autorización
+          },
+        });
+        const data = response.data;
+        setFavs(data);
+      } catch (error) {
+        throw new Error(`${error.message}`);
       }
-      allCountriesFav();
-  }, [])
+    };
+    allCountriesFav();
+  }, []);
 
   useEffect(() => {
     if (Array.isArray(favs)) {

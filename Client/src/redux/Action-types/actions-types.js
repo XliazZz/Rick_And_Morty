@@ -1,13 +1,22 @@
-//Post Activity
+//Post Favorite
 export const POST_FAVORITE_REQUEST = "POST_FAVORITE_REQUEST";
 export const POST_FAVORITE_SUCCESS = "POST_FAVORITE_SUCCESS";
 export const POST_FAVORITE_ERROR = "POST_FAVORITE_ERROR";
 
+//Get Favorite
+export const GET_FAVORITE_REQUEST = "GET_FAVORITE_REQUEST";
+export const GET_FAVORITE_SUCCESS = "GET_FAVORITE_SUCCESS";
+export const GET_FAVORITE_ERROR = "GET_FAVORITE_ERROR";
+
+//Delete Favorite
 export const REMOVE_FAV = "REMOVE_FAV";
 
-export const FILTER = "FILTER";
-export const ORDER = "ORDER";
 
+//Filter
+export const FILTER = "FILTER";
+
+//Order
+export const ORDER = "ORDER";
 
 //types para mostrar todos los personajes
 export const REQUEST = 'REQUEST';

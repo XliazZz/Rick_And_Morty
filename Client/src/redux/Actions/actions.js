@@ -1,55 +1,82 @@
 import * as types from "../Action-types/actions-types";
 import axios from 'axios';
-import { useNavigate } from "react-router";
 
 const token = localStorage.getItem('token');
-
 const URL = 'http://localhost:3001';
 
-export const postFavoriteCountryRequest = () => ({
+console.log(token);
+
+export const postFavoriteCharacterRequest = () => ({
     type: types.POST_FAVORITE_REQUEST,
 });
 
-export const postFavoriteCountrySuccess = (character) => ({
+export const postFavoriteCharacterSuccess = (character) => ({
     type: types.POST_FAVORITE_SUCCESS,
     payload: character,
 });
 
-export const postFavoriteCountryError = (error) => ({
+export const postFavoriteCharacterError = (error) => ({
     type: types.POST_FAVORITE_ERROR,
     payload: error,
 });
 
 export const postFavorite = (character) => {
   return async (dispatch) => {
-    dispatch(postFavoriteCountryRequest());
+    dispatch(postFavoriteCharacterRequest());
     const endpoint = `${URL}/fav`;
     try {
       const { data } = await axios.post(endpoint, { character, token }); // Enviar token en el cuerpo de la solicitud
-      dispatch(postFavoriteCountrySuccess(data));
+      dispatch(postFavoriteCharacterSuccess(data));
     } catch (error) {
       const errorMessage = error.response?.data?.error || error.message;
-      dispatch(postFavoriteCountryError(errorMessage));
+      dispatch(postFavoriteCharacterError(errorMessage));
     }
   };
 };
+
+// export const getFavoriteCharacterRequest = () => ({
+//   type: types.GET_FAVORITE_REQUEST,
+// });
+
+// export const getFavoriteCharacterSuccess = (characters) => ({
+//   type: types.GET_FAVORITE_SUCCESS,
+//   payload: characters,
+// });
+
+// export const getFavoriteCharacterError = (error) => ({
+//   type: types.GET_FAVORITE_ERROR,
+//   payload: error,
+// });
+
+// export const getFavorites = (characters) => {
+//   return async (dispatch) => {
+//     dispatch(getFavoriteCharacterRequest());
+//     const endpoint = `${URL}/fav`;
+//     try {
+//       const { data } = await axios.get(endpoint, { characters, token });
+//       dispatch(getFavoriteCharacterSuccess(data));
+//     } catch (error) {
+//       const errorMessage = error.response?.data?.error || error.message;
+//       dispatch(getFavoriteCharacterError(errorMessage));
+//     };
+//   };
+// };
   
 
-
 export const removeFav = (id) => {
-    return async (dispatch) => {
-        const endpoint = `${URL}/fav/${id}`;
-        try{
-            const { data } = await axios.delete(endpoint);
-            dispatch({
-                type: types.REMOVE_FAV,
-                payload: data,
-            });
-        }
-        catch (error) {
-            console.error(error);
-        }
-    };
+  return async (dispatch) => {
+    const endpoint = `${URL}/fav/${id}`;
+    try{
+      const { data } = await axios.delete(endpoint);
+      dispatch({
+          type: types.REMOVE_FAV,
+          payload: data,
+      });
+    }
+      catch (error) {
+      console.error(error);
+    }
+  };
 };
 
 
