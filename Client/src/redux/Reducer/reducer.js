@@ -1,17 +1,15 @@
-import {  REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, POST_FAVORITE_REQUEST, POST_FAVORITE_SUCCESS, POST_FAVORITE_ERROR, GET_FAVORITE_REQUEST, GET_FAVORITE_SUCCESS, GET_FAVORITE_ERROR, } from "../Action-types/actions-types"
+import {  REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, POST_FAVORITE_REQUEST, POST_FAVORITE_SUCCESS, POST_FAVORITE_ERROR, RESET_REGISTER, SET_ERROR, CLEAR_ERROR } from "../Action-types/actions-types"
 
 const initialState = {
-    isLoading: false,
+    loading: false,
     error: null,
     success: false,
     characters: [], //aca estan los personajes del comp Characters
     currentPage: 1,
     itemsPerPage: 20,
     totalPages: 1,
-    searchResults: [], //resultados de la busqueda
+    searchResults: [], 
     messages: [],
-    // favorites: [],
-    // favorites: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -19,23 +17,17 @@ const rootReducer = (state = initialState, action) => {
         case POST_FAVORITE_REQUEST:
             return{ 
                 ...state,
-                loading: true,
-                error: false,
-                success: false,
+                loading: { ...state.loading, postFavorite: true }
             };
         case POST_FAVORITE_SUCCESS:
             return{ 
                 ...state,
-                success: true,
-                loading: false,
-                error: false,
-                // favorites: [...state.favorites, action.payload]
+                success: { ...state.success, postFavorite: true }
             };
         case POST_FAVORITE_ERROR:
             return{ 
                 ...state,
-                isLoading: false,
-                error: action.payload
+                error: { ...state.error, postFavorite: action.payload }
             };
 
         case REMOVE_FAV:
@@ -65,47 +57,40 @@ const rootReducer = (state = initialState, action) => {
         case REQUEST:
             return{
                 ...state,
-                isLoading:true,
-                error: null,
+                loading: { ...state.loading, getCharacters: true }
             };
 
         case SUCCESS:
             return{
                 ...state,
-                isLoading: false,
-                error: null,
+                success: { ...state.success, getCharacters: true },
                 characters: action.payload,
             };
 
         case ERRORREQUEST:
             return{
                 ...state,
-                isLoading:false,
-                error: action.payload,
+                error: { ...state.error, getCharacters: action.payload }
             };
 
 
         case SEARCH_CHARACTER:
             return{
                 ...state,
-                isLoading: true,
-                error: null,
+                loading: { ...state.loading, searchCharacter: true }
             };
 
         case SEARCH_CHARACTER_SUCCESS:
             return{
                 ...state,
+                success: { ...state.success, searchCharacter: true },
                 searchResults: [...state.searchResults, action.payload],
-                isLoading: false,
-                error: null,
-                success: true,
             };
 
         case SEARCH_CHARACTER_ERROR:
             return{
                 ...state,
-                isLoading: false,
-                error: action.payload
+                error: { ...state.error, searchCharacter: action.payload }
             };
 
         case REMOVE_CARD:
@@ -124,46 +109,28 @@ const rootReducer = (state = initialState, action) => {
         case REGISTER_REQUEST:
             return{
                 ...state,
-                isLoading: true,
+                loading: true
             };
 
         case REGISTER_SUCCESS:
             return{
                 ...state,
-                isLoading: false,
-                error: null,
                 success: true,
             }
 
         case REGISTER_FAILURE:
             return{
                 ...state,
-                isLoading: false,
                 error: action.payload
             }
 
-
-        // case GET_FAVORITE_REQUEST:
-        //     return{
-        //         ...state,
-        //         isLoading: true
-        //     };
-
-        // case GET_FAVORITE_SUCCESS:
-        //     return{
-        //         ...state,
-        //         isLoading: false,
-        //         error: null,
-        //         success: true,
-        //         favorites: action.payload,
-        //     };
-
-        // case GET_FAVORITE_ERROR:
-        //     return{
-        //         ...state,
-        //         isLoading: false,
-        //         error: action.payload,
-        //     };
+        case RESET_REGISTER:
+            return{
+                ...state,
+                loading:false,
+                success: false,
+                error: false
+            };
 
         default:
             return{...state};

@@ -1,0 +1,57 @@
+.errorContainerAlert {
+  position: absolute;
+  border-radius: 15px;
+  width: 230px;
+  height: 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  right: 1%;
+  bottom: 10%;
+  background: linear-gradient(to top, #dfe9f3cd 0%, rgba(255, 255, 255, 0.855) 100%);
+  animation: entrada 2s ease 0s 1 normal forwards;
+}
+
+.error {
+  color: red;
+  font-size: 18px;
+  margin-top: 10px;
+  font-family: "WubbaLubbaDubDub";
+  margin: 0;
+}
+
+.alert {
+  color: red;
+  font-size: 40px;
+  margin: 0;
+}
+
+@keyframes entrada {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+
+	10%,
+	30%,
+	50%,
+	70% {
+		transform: translateX(-10px);
+	}
+
+	20%,
+	40%,
+	60% {
+		transform: translateX(10px);
+	}
+
+	80% {
+		transform: translateX(8px);
+	}
+
+	90% {
+		transform: translateX(-8px);
+	}
+}

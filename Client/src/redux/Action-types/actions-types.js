@@ -42,3 +42,15 @@ export const ADD_MESSAGE = "ADD_MESSAGE";
 export const REGISTER_REQUEST = "REGISTER_REQUEST";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
+
+//Reset register
+export const RESET_REGISTER = "RESET_REGISTER";
+
+//Login Google
+export const LOGIN_GOOGLE_REQUEST = "LOGIN_GOOGLE_REQUEST";
+export const LOGIN_GOOGLE_SUCCESS = "LOGIN_GOOGLE_SUCCESS";
+export const LOGIN_GOOGLE_ERROR = "LOGIN_GOOGLE_ERROR";
+
+//Errors
+export const SET_ERROR = "SET_ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";

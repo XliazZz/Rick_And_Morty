@@ -1,0 +1,45 @@
+.div1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: linear-gradient(
+    to top,
+    hsl(310, 60%, 10%),
+    hsl(180, 40%, 5%),
+    hsl(210, 60%, 10%)
+  );
+  height: 100vh;
+  width: 100%;
+}
+
+.div2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.texto {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  margin-top: 2em;
+}
+
+.portal {
+  width: 125px;
+  height: 100px;
+  animation: giro 8000ms ease 0s infinite normal forwards;
+  border-radius: 99rem;
+}
+
+@keyframes giro {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

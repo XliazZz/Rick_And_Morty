@@ -3,7 +3,7 @@ const router = Router();
 
 // User
 const getAllUsers = require("../controllers/User/users");
-const { signIn, signUp } = require('../controllers/User/authController');
+const { signIn, signUp, signInGoogle, signUpGoogle } = require('../controllers/User/authController');
 
 // Character
 const {getCharById} = require("../controllers/Character/getCharById");
@@ -25,8 +25,10 @@ const getAllCharacters = require('../controllers/Character/getAllCharacters');
 
 // User
 router.get('/api/signin', signIn);
+router.get('/api/signingoogle', signInGoogle);
 
 router.post('/api/signup', signUp);
+router.post('/api/signupgoogle', signUpGoogle);
 
 router.get('/users', (req, res) => {
     const users = getAllUsers();

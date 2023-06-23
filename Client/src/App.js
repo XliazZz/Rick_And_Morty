@@ -16,6 +16,7 @@ import axios from 'axios';
 import Home from './components/Home/Home';
 import EpisodeList from './components/Episodes/Episodes';
 import EpisodeDetail from './components/EpisodeDetail/EpisodeDetail';
+import Loading from './components/Loading/Loading';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -67,13 +68,14 @@ function App() {
 
   return (
     <div className="App">
-      {pathname !== '/' && pathname !== "/login" && pathname !== "/register" && pathname !== "/*" && <Nav handleLogout={handleLogout} />}
+      {pathname !== '/' && pathname !== "/loading" && pathname !== "/login" && pathname !== "/register" && pathname !== "/*" && <Nav handleLogout={handleLogout} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Form login={login} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cards" element={<Cards onClose={onClose} />} />
         <Route path="/characters" element={<Characters />} />
+        <Route path="/loading" element={<Loading />} />
         <Route path="/characters/page/:pageNumber" element={<Characters />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
@@ -83,7 +85,7 @@ function App() {
         <Route path="/contact" element={<ContactForm />} />
         <Route path="*" element={<Errors />} />
       </Routes>
-      {pathname !== '/favorites' && pathname !== "/login" && pathname !== "/register" && <Footer />}
+      {pathname !== "/loading" && pathname !== '/favorites' && pathname !== "/login" && pathname !== "/register" && <Footer />}
     </div>
   );
 }
