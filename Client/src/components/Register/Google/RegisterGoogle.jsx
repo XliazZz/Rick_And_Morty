@@ -66,7 +66,6 @@ const RegisterGoogle = () => {
         } catch (error) {
           setErrores(error.response.data.error);
           setSuccess(false);
-          console.error("Error. Can't send the data:", error);
         };
       };
     };
@@ -82,7 +81,7 @@ const RegisterGoogle = () => {
 
       {errores === null && success && (
         <div >
-          <AlertSuccess texto={"Usuario creado"} />
+          <AlertSuccess texto={"User create"} />
         </div>
       )}
 

@@ -57,7 +57,7 @@ const Register = () => {
         const { data } = await axios.get(endpoint);
         const { token } = data;
         localStorage.setItem('token', token);
-        navigate('/characters');
+        navigate('/loading');
       } else {
         console.error('Email is required.');
         return;
@@ -250,7 +250,7 @@ const Register = () => {
           <h4 className={style.h4Register}>Do you hava a account? <NavLink className={style.linkSign} to={"/login"}>Sign In</NavLink> </h4>
         </div>
 
-        <hr style={{ width: '90%' }} />
+        <hr style={{ width: '90%' } } />
         <div className={style.div3}>
           <RegisterGoogle/>
         </div>

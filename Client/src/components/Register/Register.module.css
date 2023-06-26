@@ -1,3 +1,4 @@
+/* Div principal */
 .div1{
   display: flex;
   justify-content: center;
@@ -9,42 +10,25 @@
   background-image: url("../Asserts/FONDOESTRELLAS.jpg");
 }
 
+/* Div form */
 .form{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(1, 15, 24);
   width: 50%;
   height: 88vh;
   border-radius: 15px;
-  box-shadow: 3px 15px 10px 5px rgba(2,92,104,1);
-  transition: all 500ms ease-in-out;
   padding: 10px;
   margin: 5px;
-  animation: lights 4000ms infinite ease-in;
   display: grid;
+  background-color: rgb(1, 15, 24);
+  transition: all 500ms ease-in-out;
+  box-shadow: 3px 15px 10px 5px rgba(2,92,104,1);
+  animation: lights 4000ms infinite ease-in;
 }
 
-@keyframes lights {
-  0% {
-  box-shadow: 0px 0px 10px 2px #00d8f5;
-  border: 1px solid #00d8f5;
-  }
-  50% {
-  box-shadow: 0px 0px 10px 2px #007282;
-  border: 1px solid #007282;
-  }
-  70% {
-  box-shadow: 0px 0px 10px 2px #007282;
-  border: 1px solid #00ff00;
-  }
-  100% {
-  box-shadow: 0px 0px 10px 2px #00d8f5;
-  border: 1px solid #00d8f5;
-  }
-}
-
+/* Grupo de label, input y error */
 .formGroup {
   color: aliceblue;
   display: grid;
@@ -53,7 +37,7 @@
   gap: 70px;
 }
 
-
+/* Label */
 .labelForm {
   color: white;
   font-size: 25px;
@@ -61,6 +45,7 @@
   font-family: 'WubbaLubbaDubDub';
 }
 
+/* Input */
 .inputContainer {
   display: flex;
   flex-direction: column;
@@ -87,6 +72,7 @@
   box-sizing: border-box;
 }
 
+/* Error p */
 .errorForm {
   color: red;
   font-size: 13px;
@@ -139,44 +125,6 @@
   padding-top: 10px;
 }
 
-.backForm{
-  position: absolute;
-  color: white;
-  top: 30px;
-  left: 30px;
-  width: 55px;
-  padding-top: 5px;
-  height: 35px;
-  border: none;
-  outline: none;
-  color: black;
-  background: #00ff00;
-  border-radius: 10px;
-  margin: 0 auto;
-  font-family: "WubbaLubbaDubDub";
-  font-size: 23px;
-}
-
-.backForm:hover{
-  background-color: green;
-}
-
-.botonForm:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-} 
-
-.fotoPNG{
-  position: absolute;
-  width: 200px;
-  height: 250px;
-  right: 950px;
-  top: 200px;
-  transform: rotate(34deg);
-  -webkit-transform: rotate(34deg);
-  -moz-transform: rotate(34deg);
-}
-
 .botonForm{
   background-color: #007282;
   border: 5px solid #00b0c8;
@@ -196,33 +144,22 @@
   background-color: #00b0c8;
 }
 
-@keyframes entrada {
-	0%,
-	100% {
-		transform: translateX(0);
-	}
+.botonForm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 
 
-	10%,
-	30%,
-	50%,
-	70% {
-		transform: translateX(-10px);
-	}
-
-	20%,
-	40%,
-	60% {
-		transform: translateX(10px);
-	}
-
-	80% {
-		transform: translateX(8px);
-	}
-
-	90% {
-		transform: translateX(-8px);
-	}
+.fotoPNG{
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  right: 950px;
+  top: 200px;
+  transform: rotate(34deg);
+  -webkit-transform: rotate(34deg);
+  -moz-transform: rotate(34deg);
 }
+
 
 .successContainerAlert{
   position: absolute;
@@ -316,4 +253,74 @@
 
 .linkSign:hover{
   color: #00ff00;
+}
+
+@keyframes lights {
+  0% {
+  box-shadow: 0px 0px 10px 2px #00d8f5;
+  border: 1px solid #00d8f5;
+  }
+  50% {
+  box-shadow: 0px 0px 10px 2px #007282;
+  border: 1px solid #007282;
+  }
+  70% {
+  box-shadow: 0px 0px 10px 2px #007282;
+  border: 1px solid #00ff00;
+  }
+  100% {
+  box-shadow: 0px 0px 10px 2px #00d8f5;
+  border: 1px solid #00d8f5;
+  }
+}
+
+.backForm{
+  position: absolute;
+  color: white;
+  top: 30px;
+  left: 30px;
+  width: 55px;
+  padding-top: 5px;
+  height: 35px;
+  border: none;
+  outline: none;
+  color: black;
+  background: #00ff00;
+  border-radius: 10px;
+  margin: 0 auto;
+  font-family: "WubbaLubbaDubDub";
+  font-size: 23px;
+}
+
+.backForm:hover{
+  background-color: green;
+}
+
+
+@keyframes entrada {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+
+	10%,
+	30%,
+	50%,
+	70% {
+		transform: translateX(-10px);
+	}
+
+	20%,
+	40%,
+	60% {
+		transform: translateX(10px);
+	}
+
+	80% {
+		transform: translateX(8px);
+	}
+
+	90% {
+		transform: translateX(-8px);
+	}
 }

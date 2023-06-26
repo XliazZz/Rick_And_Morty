@@ -26,30 +26,6 @@ function App() {
   const onClose = (id) => {
     setCharacters(characters.filter((character) => character.id !== id));
   };
-
-  const login = async (userData) => {
-    const { email, password, userName } = userData;
-    const URL = 'http://localhost:3001/api/signin';
-  
-    try {
-      let endpoint = URL;
-      if (email) {
-        endpoint += `?email=${email}&password=${password}`;
-      } else if (userName) {
-        endpoint += `?userName=${userName}&password=${password}`;
-      } else {
-        console.error('Email or userName is required.');
-        return;
-      }
-  
-      const { data } = await axios.get(endpoint);
-      const { token } = data; 
-      localStorage.setItem('token', token); 
-      navigate('/characters')
-    } catch (error) {
-      console.error(error);
-    }
-  };
   
   const handleLogout = () => {
     // Eliminar el token del almacenamiento local
@@ -71,7 +47,7 @@ function App() {
       {pathname !== '/' && pathname !== "/loading" && pathname !== "/login" && pathname !== "/register" && pathname !== "/*" && <Nav handleLogout={handleLogout} />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Form login={login} />} />
+        <Route path="/login" element={<Form  />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cards" element={<Cards onClose={onClose} />} />
         <Route path="/characters" element={<Characters />} />
