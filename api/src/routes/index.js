@@ -6,17 +6,31 @@ const getAllUsers = require("../controllers/User/users");
 const { signIn, signUp, signInGoogle, signUpGoogle } = require('../controllers/User/authController');
 
 // Character
-const {getCharById} = require("../controllers/Character/getCharById");
+const getCharById = require("../controllers/Character/getCharById");
 const { sendRandomCharacters } = require("../controllers/Character/randomCharacters");
 const getSpecies = require("../controllers/Character/respose/getSpecies");
 const getStatus = require("../controllers/Character/respose/getStatus");
 const getGender = require("../controllers/Character/respose/getGender");
+const getCharacterByName = require("../controllers/Character/getCharacterByName");
 
 // Favorite
 const postFav = require('../controllers/Favorite/postFav');
 const deleteFav = require('../controllers/Favorite/deleteFav');
 const getAllFavorites = require('../controllers/Favorite/getAllFavorites');
 const getAllCharacters = require('../controllers/Character/getAllCharacters');
+
+//Episode
+const getAllEpisodes = require('../controllers/Episode/getAllEpisodes')
+
+
+router.get('/episodes', async (req, res) => {
+  try {
+      const episodes = await getAllEpisodes();
+      res.status(200).json(episodes);
+  } catch (error) {
+      res.status(404).send(error.message);
+  };
+});
 
 // const jwt = require('jsonwebtoken');
 // const { AUTH_SECRET } = process.env;
@@ -37,8 +51,17 @@ router.get('/users', (req, res) => {
 
 
 // Character
-router.get('/character/:id', (req, res) => {
-    getCharById(req, res);
+router.get('/character/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const character = await getCharById(id);
+    if (character.error) {
+      throw new Error(character.error)
+    }
+    return res.status(200).json(character);
+  } catch (error) {
+    return res.status(404).send(error.message)
+  }
 });
 
 router.get('/random', (req, res) => {
@@ -76,6 +99,16 @@ router.get('/characters', async (req, res) => {
     } catch (error) {
         res.status(404).send(error.message);
     };
+});
+
+router.get('/character', async (req, res) => {
+  try {
+    const { name } = req.query;
+    const characters = await getCharacterByName(name);
+    return res.status(200).json(characters)
+  } catch (error) {
+    return res.status(404).send(error.message)
+  }
 });
 
 // Favorite
@@ -117,6 +150,16 @@ router.get('/fav', async (req, res) => {
     console.error('Error al obtener favoritos:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+//Episode
+router.get('/episodes', async (req, res) => {
+  try {
+      const episodes = await getAllEpisodes();
+      res.status(200).json(episodes);
+  } catch (error) {
+      res.status(404).send(error.message);
+  };
 });
 
 

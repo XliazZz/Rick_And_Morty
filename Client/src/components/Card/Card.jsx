@@ -81,7 +81,9 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
   }
 
   const calculateFontSize = (name) => {
-    if (name.length < 10) {
+    if (!name) {
+      return "20px"; // Otra fuente predeterminada si el nombre no está definido
+    } else if (name.length < 10) {
       return "25px";
     } else if (name.length < 15) {
       return "20px";
@@ -95,6 +97,7 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
       return "11px";
     } 
   };
+  
       
   return (
     <div className={style.card} >
@@ -110,7 +113,7 @@ function Card({ id, name, status, species, gender, origin, image, location }) {
         >{isFav ? "💚" : "🤍"}</span>
       </button>
 
-      {pathname === "/cards" && ( 
+      {pathname === "/*" && ( 
         <button className={style.button} onClick={onClose}>
             X
         </button>

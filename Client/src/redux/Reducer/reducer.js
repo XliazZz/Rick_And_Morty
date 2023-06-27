@@ -1,4 +1,4 @@
-import {  REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, POST_FAVORITE_REQUEST, POST_FAVORITE_SUCCESS, POST_FAVORITE_ERROR, RESET_REGISTER, SET_ERROR, CLEAR_ERROR } from "../Action-types/actions-types"
+import {  REMOVE_FAV, FILTER, ORDER, SUCCESS, ERRORREQUEST, REQUEST, SEARCH_CHARACTER, SEARCH_CHARACTER_SUCCESS, SEARCH_CHARACTER_ERROR, REMOVE_CARD, ADD_MESSAGE, REGISTER_SUCCESS, REGISTER_REQUEST, REGISTER_FAILURE, POST_FAVORITE_REQUEST, POST_FAVORITE_SUCCESS, POST_FAVORITE_ERROR, RESET_REGISTER, SET_ERROR, CLEAR_ERROR, GET_EPISODES_REQUEST, GET_EPISODES_SUCCESS, GET_EPISODES_ERROR } from "../Action-types/actions-types"
 
 const initialState = {
     loading: false,
@@ -10,6 +10,7 @@ const initialState = {
     totalPages: 1,
     searchResults: [], 
     messages: [],
+    episodes: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -73,31 +74,32 @@ const rootReducer = (state = initialState, action) => {
                 error: { ...state.error, getCharacters: action.payload }
             };
 
+        case REMOVE_CARD:
+            return{
+                ...state,
+                searchResults: state.searchResults.filter((char) => char.id !== action.payload )
+            };
 
         case SEARCH_CHARACTER:
             return{
                 ...state,
-                loading: { ...state.loading, searchCharacter: true }
+                loading: true 
             };
 
         case SEARCH_CHARACTER_SUCCESS:
             return{
                 ...state,
-                success: { ...state.success, searchCharacter: true },
+                success:  true ,
                 searchResults: [...state.searchResults, action.payload],
             };
 
         case SEARCH_CHARACTER_ERROR:
             return{
                 ...state,
-                error: { ...state.error, searchCharacter: action.payload }
+                error: action.payload 
             };
 
-        case REMOVE_CARD:
-            return{
-                ...state,
-                searchResults: state.searchResults.filter((char) => char.id !== action.payload )
-            };
+
 
         case ADD_MESSAGE:
             return{
@@ -111,13 +113,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 loading: true
             };
-
         case REGISTER_SUCCESS:
             return{
                 ...state,
                 success: true,
             }
-
         case REGISTER_FAILURE:
             return{
                 ...state,
@@ -131,6 +131,24 @@ const rootReducer = (state = initialState, action) => {
                 success: false,
                 error: false
             };
+
+
+        case GET_EPISODES_REQUEST:
+            return{
+                ...state,
+                loading: true
+            };
+        case GET_EPISODES_SUCCESS:
+            return{
+                ...state,
+                success: true,
+                episodes: action.payload
+            };
+        case GET_EPISODES_ERROR:
+            return{
+                ...state,
+                error: action.payload
+            }
 
         default:
             return{...state};

@@ -93,29 +93,43 @@ export function setPage(pageNumber){
   };
 };
 
+
 //SearchBar
-export const searchCharacter = (id, navigate) => (dispatch, getState) => {
-  const { searchResults } = getState();
-  const existingCharacter = searchResults.find((character) => character.id === id);
-    
-  if (existingCharacter) {
-    alert(`Character with id ${id} already exists in search results.`);
-    return;
-  }
-    
-  dispatch({ type: types.SEARCH_CHARACTER });
-    
-  axios
-  .get(`${URL}/characters`)
-  .then((response) => {
-    const character = response.data;
-    dispatch({ type: types.SEARCH_CHARACTER_SUCCESS, payload: character });
-  })
-  .catch((error) => {
-    dispatch({ type: types.SEARCH_CHARACTER_ERROR, payload: error.message });
-    navigate('*'); // Redirige al usuario a la página de errores
-  });
+export const searchCharacterRequest = () => {
+  return {
+    type: types.SEARCH_CHARACTER,
+  };
 };
+
+export const searchCharacterSuccess = (name) => {
+  return {
+    type: types.SEARCH_CHARACTER_SUCCESS,
+    payload: name,
+  };
+}
+
+export const searchCharacterError = (error) => {
+  return {
+    type: types.SEARCH_CHARACTER_ERROR,
+    payload: error,
+  };
+}
+
+export const searchCharacter = (name) => async (dispatch, getState) => {
+  const { searchResults } = getState();
+  const existingCharacter = searchResults.find((character) => character.name === name);
+
+  try {
+    dispatch(searchCharacterRequest()); 
+    const response = await axios.get(`http://localhost:3001/character?name=${name}`);
+    const data = response.data;
+    dispatch(searchCharacterSuccess(data)); 
+  } catch (error) {
+    console.log(error);
+    dispatch(searchCharacterError(error.response.data)); 
+  }
+};
+
 
 
 //OnClose
@@ -175,50 +189,86 @@ export const resetRegister = () => {
 };
 
 
-export const loginGoogleRequest = () => {
+// export const loginGoogleRequest = () => {
+//   return {
+//     type: types.LOGIN_GOOGLE_REQUEST,
+//   };
+// };
+
+// export const loginGoogleSuccess = (data) => {
+//   return {
+//     type: types.LOGIN_GOOGLE_SUCCESS,
+//     payload: data,
+//   };
+// };
+
+// export const loginGoogleError = (error) => {
+//   return {
+//     type: types.LOGIN_GOOGLE_ERROR,
+//     payload: error,
+//   };
+// };
+
+// export const loginGoogle = (userdata) => {
+//   return async (dispatch) => {
+//     try {
+//       dispatch(loginGoogleRequest());
+
+//       const { email } = userdata;
+//       const URL = 'http://localhost:3001/api/signingoogle';
+//       const endpoint = URL;
+
+//       if (email) {
+//         endpoint += `?email=${email}`;
+//       }  else {
+//         dispatch(loginGoogleError('Email invalid.'));
+//         return;
+//       }
+
+//       const { data } = await axios.get(endpoint);
+//       const { token } = data;
+//       localStorage.setItem('token', token);
+//       dispatch(loginGoogleSuccess(data));
+
+//     } catch (error) {
+//       console.error(error);
+//       dispatch(loginGoogleError(error));
+//     }
+//   };
+// };
+
+// Episodes
+
+export const getEpisodesRequest = () => {
   return {
-    type: types.LOGIN_GOOGLE_REQUEST,
+    type: types.GET_EPISODES_REQUEST,
   };
 };
 
-export const loginGoogleSuccess = (data) => {
+export const getEpisodesSuccess = (episodes) => {
   return {
-    type: types.LOGIN_GOOGLE_SUCCESS,
-    payload: data,
+    type: types.GET_EPISODES_SUCCESS,
+    payload: episodes,
   };
 };
 
-export const loginGoogleError = (error) => {
+export const getEpisodesError = (error) => {
   return {
-    type: types.LOGIN_GOOGLE_ERROR,
+    type: types.GET_EPISODES_ERROR,
     payload: error,
   };
 };
 
-export const loginGoogle = (userdata) => {
+export const getEpisode = (episodes) => {
   return async (dispatch) => {
     try {
-      dispatch(loginGoogleRequest());
-
-      const { email } = userdata;
-      const URL = 'http://localhost:3001/api/signingoogle';
-      const endpoint = URL;
-
-      if (email) {
-        endpoint += `?email=${email}`;
-      }  else {
-        dispatch(loginGoogleError('Email invalid.'));
-        return;
-      }
-
-      const { data } = await axios.get(endpoint);
-      const { token } = data;
-      localStorage.setItem('token', token);
-      dispatch(loginGoogleSuccess(data));
-
+      dispatch(getEpisodesRequest());
+      const endpoint = `${URL}/episodes`;
+      const response = await axios.get(endpoint, episodes);
+      console.log(response);
+      dispatch(getEpisodesSuccess(response.data));
     } catch (error) {
-      console.error(error);
-      dispatch(loginGoogleError(error));
+      dispatch(getEpisodesError(error.response));
     }
   };
 };

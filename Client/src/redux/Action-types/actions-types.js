@@ -54,3 +54,8 @@ export const LOGIN_GOOGLE_ERROR = "LOGIN_GOOGLE_ERROR";
 //Errors
 export const SET_ERROR = "SET_ERROR";
 export const CLEAR_ERROR = "CLEAR_ERROR";
+
+//Get episode
+export const GET_EPISODES_REQUEST = "GET_EPISODES_REQUEST";
+export const GET_EPISODES_SUCCESS = "GET_EPISODES_SUCCESS";
+export const GET_EPISODES_ERROR = "GET_EPISODES_ERROR";

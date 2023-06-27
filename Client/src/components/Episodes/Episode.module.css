@@ -19,6 +19,13 @@
 
 .activeLink{
     color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.activeLink:hover{
+    color: #00c3dd;
+    font-size: 22px;
 }
 
 .episode{

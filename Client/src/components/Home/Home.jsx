@@ -69,7 +69,7 @@ const Home = () => {
               )}
           </div>
 
-          <div className={style.registerorsign}>Register or log in to our Rick and Morty character page to see more! Join our community now!</div>
+          <div className={style.registerorsign}>Register or log in to our <b>Rick</b> and <b className={style.morty}>Morty</b> character page to see more! <h3> Join our community now!</h3></div>
 
             <div className={style.cartas}>
 

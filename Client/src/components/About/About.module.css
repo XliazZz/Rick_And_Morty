@@ -155,4 +155,9 @@ h2{
 
 .icono{
     color: #8ffe77 ;
+    margin-top: 10px;
+}
+
+.icono:hover{
+    color: #00bcd7;
 }

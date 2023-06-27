@@ -7,46 +7,30 @@ import { FaSearch } from "react-icons/fa"
 
 
 export default function SearchBar() {
-   const [id, setId] = useState('');
+   const [name, setName] = useState('');
    
    const dispatch = useDispatch();
-   const searchResults = useSelector((state) => state.searchResults)
-   const isLoading = useSelector((state) => state.isLoading)
-   const error = useSelector((state) => state.error)
-   
+
    const handleChange = (event) => {
-      setId(event.target.value)
+      setName(event.target.value)
    }
 
    const navigate = useNavigate();
 
    const handleClick = () => {
-      if (id) {
-         dispatch(searchCharacter(id, navigate));
-         setId('');
+      if (name) {
+         dispatch(searchCharacter(name, navigate));
+         setName('');
       }
    }
 
    return (
       <>
-         <input placeholder="Search character..." className={style.input} onChange={handleChange} value={id} type='search' />
+         <input placeholder="Search character..." className={style.input} onChange={handleChange} value={name} type='search' />
          
          <NavLink to="/cards" >
          <button className={style.boton}  onClick={handleClick} > <FaSearch></FaSearch> </button>
          </NavLink>
-
-         {isLoading && <p>Loading...</p>}
-
-         {error && <p>{error}</p>}
-
-         
-         {/* {searchResults && (
-         <div>
-            <h2>{searchResults.name}</h2>
-            <img src={searchResults.image} alt={searchResults.name} />
-         </div>
-      )} */}
-
       </>
    );
 }
